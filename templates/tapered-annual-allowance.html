@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Tapered Annual Allowance 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>High earners may find their pension annual allowance reduced below the standard £60,000 — down to a minimum of £10,000. This is the tapered annual allowance. Whether it applies to you depends on two income tests, and understanding the calculations is essential to avoid an unexpected annual allowance tax charge.</p>
+
+  <article class="card">
+    <h2>The two income tests</h2>
+    <p>HMRC applies two separate income tests to determine whether the taper applies. Both must be exceeded for the taper to kick in.</p>
+
+    <h3>Test 1 — Threshold income</h3>
+    <p>Threshold income is broadly your net income for the year, <em>excluding</em> employer pension contributions. If your threshold income is £200,000 or below, the tapered annual allowance does not apply regardless of your adjusted income. This protects people who have very high employer pension contributions pushing their adjusted income above the limit, but whose own earnings are modest.</p>
+
+    <h3>Test 2 — Adjusted income</h3>
+    <p>Adjusted income adds employer pension contributions back onto your net income (along with some other adjustments). If your adjusted income is £260,000 or below, no taper applies. Only when <em>both</em> threshold income exceeds £200,000 <strong>and</strong> adjusted income exceeds £260,000 does the taper begin.</p>
+  </article>
+
+  <article class="card">
+    <h2>How the taper works</h2>
+    <p>For every £2 of adjusted income above £260,000, your annual allowance reduces by £1. The minimum tapered annual allowance is £10,000, which is reached when adjusted income hits £360,000 or above.</p>
+    <p>In summary:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Adjusted income ≤ £260,000: full £60,000 annual allowance</li>
+      <li>Adjusted income £260,001–£360,000: taper applies — AA reduces by £1 per £2 excess</li>
+      <li>Adjusted income ≥ £360,000: minimum £10,000 annual allowance</li>
+    </ul>
+  </article>
+
+  <article class="card">
+    <h2>Worked example</h2>
+    <p>Jordan earns a salary of £280,000. Their employer contributes £30,000 to their pension. Jordan makes no employee contributions.</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Threshold income: £280,000 (salary, excluding employer pension) — exceeds £200,000, so taper may apply.</li>
+      <li>Adjusted income: £280,000 + £30,000 employer contribution = £310,000 — exceeds £260,000, so taper applies.</li>
+      <li>Excess over £260,000: £310,000 − £260,000 = £50,000.</li>
+      <li>Taper reduction: £50,000 ÷ 2 = £25,000.</li>
+      <li>Tapered annual allowance: £60,000 − £25,000 = <strong>£35,000</strong>.</li>
+    </ul>
+    <p>Jordan's total pension inputs (employer + employee contributions) must not exceed £35,000 to avoid an annual allowance charge.</p>
+  </article>
+
+  <article class="card">
+    <h2>Salary sacrifice and the tapered allowance</h2>
+    <p>Salary sacrifice can affect adjusted income. When you sacrifice salary, your employer pays higher pension contributions instead of you. This reduces your gross salary — but those employer contributions are added back when calculating adjusted income. The net effect on adjusted income is often neutral, because the salary reduction and the employer contribution increase cancel out.</p>
+    <p>However, salary sacrifice does reduce threshold income (since your salary is lower). If sacrificing salary brings your threshold income to £200,000 or below, the taper cannot apply regardless of adjusted income — which can be a significant planning opportunity for those close to the threshold income limit.</p>
+  </article>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">See your pension relief numbers</strong>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Use our calculator to estimate your pension tax relief based on your income and contribution method.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>What is the tapered annual allowance?</summary>
+      <div class="faq-answer">
+        <p>The tapered annual allowance is a reduction to the standard £60,000 pension annual allowance that applies to high earners. It reduces the allowance by £1 for every £2 of adjusted income above £260,000, down to a minimum of £10,000. It only applies when both threshold income exceeds £200,000 and adjusted income exceeds £260,000.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Does salary sacrifice affect the taper?</summary>
+      <div class="faq-answer">
+        <p>Salary sacrifice typically has a neutral effect on adjusted income, since the salary reduction is offset by higher employer contributions being added back. However, it does reduce threshold income, which can be useful — if salary sacrifice brings threshold income below £200,000, the taper cannot apply at all, even if adjusted income is above £260,000.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>What is adjusted income?</summary>
+      <div class="faq-answer">
+        <p>Adjusted income is broadly your net income plus employer pension contributions (and some other items). For most people it is salary plus employer pension contributions. If you have other income sources (rental income, dividends, interest) these are also included. Your tax adviser or pension provider can give you a precise calculation for your circumstances.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>What happens if I exceed the tapered annual allowance?</summary>
+      <div class="faq-answer">
+        <p>If your total pension inputs exceed your tapered annual allowance, you face an annual allowance charge — effectively a tax charge that claws back the relief on the excess contributions. The charge is calculated at your marginal income tax rate. You report this on your Self Assessment return, or your pension scheme can pay it on your behalf (known as "scheme pays").</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I use carry forward with the tapered annual allowance?</summary>
+      <div class="faq-answer">
+        <p>Yes, but carry forward can only be applied against your tapered annual allowance for prior years, not to increase above it for the current year. For example, if your tapered AA in a prior year was £40,000 and you only used £20,000, you have £20,000 of carry forward from that year. You cannot carry forward to restore your allowance to the standard £60,000 in the current year.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>Official sources</h2>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><a href="https://www.gov.uk/guidance/pension-schemes-work-out-your-tapered-annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Work out your tapered annual allowance</a></li>
+    <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-pension-schemes/pension-schemes-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension schemes rates and allowances</a></li>
+    <li><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Tax on your private pension contributions</a></li>
+  </ul>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">
+      <strong style="color:var(--text-primary);">Disclaimer:</strong> This guide is for general information only and does not constitute financial or tax advice. Pension tax rules are complex and individual circumstances vary. Figures shown are for England, Wales and Northern Ireland unless stated. Consult a qualified financial adviser or HMRC for personalised guidance.
+    </p>
+  </div>
+</section>
+{% endblock %}

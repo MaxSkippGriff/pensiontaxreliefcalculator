@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Higher Rate Pension Relief Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:620px;">Estimate the extra pension tax relief available if you pay income tax at 40% or 45%. Results update instantly.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Higher Rate Pension Relief</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Total gross income</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="gross_income" value="70000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Gross pension contribution</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="gross_contribution" value="10000" min="0" oninput="calculate()">
+          </div>
+          <div class="field-hint">The gross amount going into the pension (including any provider top-up)</div>
+        </div>
+        <div class="field">
+          <label>Contribution method</label>
+          <select id="contribution_method" oninput="calculate()">
+            <option value="relief_at_source">Relief at source (personal pension / SIPP)</option>
+            <option value="net_pay">Net pay arrangement (workplace scheme)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross contribution</span><span class="results-value">£<span id="r_gross">10,000</span></span></div>
+      <div class="results-row"><span class="results-label">Basic-rate relief (20%)</span><span class="results-value">£<span id="r_basic_relief">2,000</span></span></div>
+      <div class="results-row"><span class="results-label">Extra higher/additional rate relief</span><span class="results-value">£<span id="r_extra_relief">2,000</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total relief</span><span class="results-value">£<span id="r_total_relief">4,000</span></span></div>
+      <div class="results-row"><span class="results-label">Net cost to you</span><span class="results-value">£<span id="r_net_cost">6,000</span></span></div>
+      <div class="results-row"><span class="results-label">Your marginal rate</span><span class="results-value"><span id="r_marginal_rate">40%</span></span></div>
+      <div id="r_method_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+    </div>
+  </div>
+
+  <div id="pa_warning" style="display:none;margin-bottom:1.25rem;padding:1rem 1.25rem;background:#fff8e6;border:1.5px solid #f0a000;border-radius:var(--radius);font-size:0.88rem;">
+    <strong style="color:#b07000;">Personal allowance clawback zone (£100,000–£125,140)</strong><br>
+    Income between £100,000 and £125,140 loses the personal allowance at 50p for each £1 of income. Pension contributions reduce adjusted net income, which can restore some or all of the personal allowance — making the effective relief rate up to 60% for contributions that fall in this band. See the <a href="/pension-relief-over-100k" style="color:#b07000;">over £100k guide</a>.
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How it works</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Pension tax relief is a government subsidy on pension saving. The rate you receive depends on the income tax rate you pay and the method your pension scheme uses.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">Under <strong>relief at source</strong>, your provider claims 20% basic rate relief from HMRC automatically. If you pay tax at 40% or 45%, you can claim the extra 20% or 25% through Self Assessment or by calling HMRC. This calculator shows the total relief and net cost.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">Under a <strong>net pay arrangement</strong>, your contribution is taken from your gross pay before tax is calculated. Your full marginal rate of relief is applied automatically — there is nothing extra to claim.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How to claim extra relief via Self Assessment</h2>
+    <ol style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Log in to HMRC's Self Assessment online service.</li>
+      <li>In the "Pension contributions" section, enter your total <em>gross</em> relief-at-source contributions for the year (your provider's annual statement shows this figure).</li>
+      <li>HMRC calculates the extra relief owed and reduces your tax bill or issues a refund.</li>
+      <li>Alternatively, call or write to HMRC to request a PAYE tax code adjustment — relief is then spread over the remainder of the tax year.</li>
+    </ol>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">You can back-claim for up to four previous tax years. See our full guide: <a href="/claim-higher-rate-pension-tax-relief" style="color:var(--accent);">How to claim higher rate pension tax relief</a>.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.88rem;"><strong>Sarah</strong> earns £80,000 and makes a gross SIPP contribution of £10,000 (relief at source). She pays £8,000; her provider tops up to £10,000.</p>
+    <ul style="color:var(--text-secondary);line-height:1.9;padding-left:1.25rem;margin:0.4rem 0;font-size:0.88rem;">
+      <li>Basic rate relief (claimed by provider): £2,000</li>
+      <li>Extra higher-rate relief (claimed via SA): £2,000 (20% × £10,000)</li>
+      <li>Total relief: £4,000</li>
+      <li>Net cost to Sarah: £6,000 for £10,000 in her pension</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does my pension provider claim any relief automatically?</summary>
+        <div class="faq-answer"><p>Under relief at source, yes — your provider claims 20% basic rate relief from HMRC on your behalf. You only need to claim the extra yourself if you are a higher or additional rate taxpayer.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>I'm in a net pay scheme. Do I need to do anything?</summary>
+        <div class="faq-answer"><p>No. Net pay schemes deduct contributions from gross salary before tax, so all relief is applied automatically at your marginal rate. There is no extra claim to make through Self Assessment for the pension contribution itself.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What if my income is between £100,000 and £125,140?</summary>
+        <div class="faq-answer"><p>This band sees the personal allowance tapered — losing £1 of allowance for every £2 of income. Pension contributions reduce adjusted net income, which can restore the personal allowance and create an effective relief rate of up to 60%. See our <a href="/pension-relief-over-100k" style="color:var(--accent);">over £100k guide</a>.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I back-claim relief for previous years?</summary>
+        <div class="faq-answer"><p>Yes — you can submit or amend Self Assessment returns to claim higher-rate relief for up to four previous tax years. Don't leave unclaimed relief on the table.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Is there a limit on how much I can contribute?</summary>
+        <div class="faq-answer"><p>The annual allowance for 2026/27 is £60,000 (or 100% of earnings if lower). Contributions above this limit are subject to the annual allowance charge. Use our <a href="/annual-allowance-checker" style="color:var(--accent);">Annual Allowance Checker</a> to verify.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Related calculators and guides</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/relief-at-source-calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Relief at Source Calculator</a>
+      <a href="/annual-allowance-checker" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Annual Allowance Checker</a>
+      <a href="/claim-higher-rate-pension-tax-relief" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Claiming Higher Rate Relief Guide</a>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-tertiary);">
+    Tax year 2026/27 · Estimates only — not financial or tax advice ·
+    <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Pension tax relief</a> ·
+    <a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Self Assessment</a>
+  </div>
+</section>
+
+<script>
+    const PERSONAL_ALLOWANCE = 12570;
+    const BASIC_RATE_LIMIT = 50270;
+    const HIGHER_RATE_THRESHOLD = 50270;
+    const ADDITIONAL_RATE_THRESHOLD = 125140;
+    const BASIC_RATE = 0.20;
+    const HIGHER_RATE = 0.40;
+    const ADDITIONAL_RATE = 0.45;
+    const ANNUAL_ALLOWANCE = 60000;
+
+    function getMarginalRate(income) {
+      if (income <= PERSONAL_ALLOWANCE) return 0;
+      if (income <= BASIC_RATE_LIMIT) return BASIC_RATE;
+      if (income <= ADDITIONAL_RATE_THRESHOLD) return HIGHER_RATE;
+      return ADDITIONAL_RATE;
+    }
+
+    function calculate() {
+      const income = +document.getElementById('gross_income').value || 0;
+      const grossContrib = +document.getElementById('gross_contribution').value || 0;
+      const method = document.getElementById('contribution_method').value;
+
+      const marginalRate = getMarginalRate(income);
+
+      const basicRateRelief = grossContrib * BASIC_RATE;
+      let extraRelief = 0;
+      let netPaymentFromYou = 0;
+
+      if (method === 'relief_at_source') {
+        netPaymentFromYou = grossContrib * 0.8;
+        if (marginalRate > BASIC_RATE) {
+          extraRelief = grossContrib * (marginalRate - BASIC_RATE);
+        }
+      } else {
+        netPaymentFromYou = grossContrib;
+        extraRelief = 0;
+      }
+
+      const totalRelief = basicRateRelief + extraRelief;
+      const netCost = grossContrib - totalRelief;
+
+      const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+      document.getElementById('r_gross').textContent = fmt(grossContrib);
+      document.getElementById('r_basic_relief').textContent = fmt(basicRateRelief);
+      document.getElementById('r_extra_relief').textContent = fmt(extraRelief);
+      document.getElementById('r_total_relief').textContent = fmt(totalRelief);
+      document.getElementById('r_net_cost').textContent = fmt(netCost);
+      document.getElementById('r_marginal_rate').textContent = Math.round(marginalRate * 100) + '%';
+
+      const noteEl = document.getElementById('r_method_note');
+      if (method === 'relief_at_source') {
+        if (extraRelief > 0) {
+          noteEl.textContent = 'Extra relief of £' + fmt(extraRelief) + ' must be claimed via Self Assessment or HMRC tax code adjustment.';
+        } else {
+          noteEl.textContent = 'At your income level, no extra relief beyond the 20% basic rate applies.';
+        }
+      } else {
+        noteEl.textContent = 'Net pay: full relief is applied automatically through payroll. No Self Assessment claim needed for pension relief itself.';
+      }
+
+      // Clawback warning for £100k–£125,140
+      const warnEl = document.getElementById('pa_warning');
+      if (income > 100000 && income <= ADDITIONAL_RATE_THRESHOLD) {
+        warnEl.style.display = 'block';
+      } else {
+        warnEl.style.display = 'none';
+      }
+    }
+    window.onload = calculate;
+</script>
+{% endblock %}

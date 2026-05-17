@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculators</div>
+  <h1>Pension Tax Relief Calculators 2026/27</h1>
+  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:600px;">Free UK pension tax relief calculators for higher-rate taxpayers, relief at source, salary sacrifice and annual allowance checking.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.85rem;">
+    <a href="/" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Pension Tax Relief Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Calculate your pension tax relief, net cost and total benefit for 2026/27.</div>
+    </a>
+    <a href="/higher-rate-pension-relief-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Higher Rate Pension Relief Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate the extra relief available to higher and additional rate taxpayers.</div>
+    </a>
+    <a href="/relief-at-source-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Relief at Source Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">See exactly what your pension provider tops up and what you claim via Self Assessment.</div>
+    </a>
+    <a href="/salary-sacrifice-pension-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Salary Sacrifice Pension Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Estimate tax and NI savings from a salary sacrifice pension arrangement.</div>
+    </a>
+    <a href="/annual-allowance-checker" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Annual Allowance Checker</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Check whether your total pension input exceeds the £60,000 annual allowance.</div>
+    </a>
+  </div>
+
+  <div style="margin-top:2rem;font-size:0.82rem;color:var(--text-tertiary);">
+    All calculators cover the 2026/27 tax year · Estimates only — not financial or tax advice ·
+    <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK pension tax relief</a>
+  </div>
+</section>
+{% endblock %}

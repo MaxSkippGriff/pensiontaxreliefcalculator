@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Salary Sacrifice Pension Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:620px;">Estimate the take-home pay effect and tax savings from a pension salary sacrifice arrangement. Results update instantly.</p>
+
+  <div style="margin-bottom:0.85rem;padding:0.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:0.85rem;color:var(--text-secondary);">
+    For a more detailed salary sacrifice calculator including pension auto-enrolment, employer cost and monthly pay breakdowns, visit <a href="https://www.uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">uksalarysacrificecalculator.co.uk</a>.
+  </div>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Salary Sacrifice Pension</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross annual salary</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="salary" value="50000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual pension sacrifice amount</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="sacrifice_amount" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Employer NI saving passed on (%)</label>
+          <input type="number" id="employer_passthrough_pct" value="50" min="0" max="100" oninput="calculate()">
+          <div class="field-hint">0 if none; 100 if all employer NI saving is passed to your pension</div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Salary before sacrifice</span><span class="results-value">£<span id="r_salary_before">50,000</span></span></div>
+      <div class="results-row"><span class="results-label">Salary after sacrifice</span><span class="results-value">£<span id="r_salary_after">45,000</span></span></div>
+      <div class="results-row"><span class="results-label">Income tax saving</span><span class="results-value">£<span id="r_tax_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employee NI saving</span><span class="results-value">£<span id="r_ni_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employer NI saving</span><span class="results-value">£<span id="r_employer_ni">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employer NI passed on to pension</span><span class="results-value">£<span id="r_passthrough">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total pension value</span><span class="results-value">£<span id="r_pension">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net monthly cost to take-home</span><span class="results-value">£<span id="r_net_cost_m">0.00</span></span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How salary sacrifice works</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Salary sacrifice is a contractual arrangement between you and your employer. You agree to give up part of your salary in exchange for employer pension contributions of the same value. Because your gross salary is reduced, you pay less income tax and employee National Insurance on the sacrificed amount. Your employer also pays less employer NI — and many pass some or all of this saving into your pension.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">Unlike relief at source or net pay, salary sacrifice is not technically "tax relief" — the benefit comes from the reduction in gross salary, meaning both income tax and NI savings are achieved simultaneously.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">What the employer NI saving means for you</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">From April 2025, the employer NI rate is 15% on earnings above £5,000 per year. When you sacrifice £1 of salary, your employer saves 15p in NI contributions. Some employers share this saving with employees by adding it to the pension contribution. A 100% pass-through means your pension receives significantly more than the sacrifice amount.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.88rem;"><strong>Tom</strong> earns £50,000 and sacrifices £5,000 per year into pension. His employer passes on 50% of their NI saving.</p>
+    <ul style="color:var(--text-secondary);line-height:1.9;padding-left:1.25rem;margin:0.4rem 0;font-size:0.88rem;">
+      <li>Income tax saving: approximately £1,000 (20% on £5,000)</li>
+      <li>Employee NI saving: approximately £400 (8% on most of the £5,000)</li>
+      <li>Employer NI saving: £750 (15% × £5,000)</li>
+      <li>50% passed on: £375 extra pension</li>
+      <li>Total pension value: £5,375</li>
+      <li>Net monthly cost to take-home: approximately £300/month</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Does salary sacrifice affect my State Pension?</summary>
+        <div class="faq-answer"><p>If your salary after sacrifice falls below the Lower Earnings Limit (£6,396 in 2026/27), your National Insurance record could be affected, which may reduce your State Pension entitlement. Most employees earning a typical salary are not at risk, but it is worth checking if your post-sacrifice salary is very low.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does it affect mortgage applications?</summary>
+        <div class="faq-answer"><p>Salary sacrifice reduces your gross salary on paper, which can affect mortgage affordability assessments. Some lenders will add the sacrifice amount back when calculating borrowing capacity — always check with your lender.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Can I change or stop my salary sacrifice arrangement?</summary>
+        <div class="faq-answer"><p>The terms depend on your employer's scheme rules. Many schemes allow changes at specific points (e.g., once per year or on a life event). Check your employment contract and scheme documentation.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What happens to the annual allowance under salary sacrifice?</summary>
+        <div class="faq-answer"><p>Salary sacrifice contributions count towards the annual allowance as employer contributions. The £60,000 limit applies to all contributions — yours and your employer's combined. Use the <a href="/annual-allowance-checker" style="color:var(--accent);">Annual Allowance Checker</a> to verify.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.5rem;">More salary sacrifice calculators</strong>
+    <p style="font-size:0.87rem;margin:0 0 0.75rem;">For a comprehensive salary sacrifice analysis including monthly pay breakdowns, auto-enrolment and comparison tools, visit:</p>
+    <a href="https://www.uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">uksalarysacrificecalculator.co.uk</a>
+  </div>
+
+  <div style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-tertiary);">
+    Tax year 2026/27 · Employer NI: 15% from April 2025, secondary threshold £5,000 · Estimates only — not financial or tax advice ·
+    <a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Salary sacrifice and PAYE</a>
+  </div>
+</section>
+
+<script>
+    const PERSONAL_ALLOWANCE = 12570;
+    const BASIC_RATE_LIMIT = 50270;
+    const HIGHER_RATE_THRESHOLD = 50270;
+    const ADDITIONAL_RATE_THRESHOLD = 125140;
+    const BASIC_RATE = 0.20;
+    const HIGHER_RATE = 0.40;
+    const ADDITIONAL_RATE = 0.45;
+    const ANNUAL_ALLOWANCE = 60000;
+    const EMPLOYEE_NI_LOWER = 0.08;
+    const EMPLOYEE_NI_UPPER = 0.02;
+    const EMPLOYER_NI_RATE = 0.15;
+    const EMPLOYER_NI_THRESHOLD = 5000;
+
+    function calcTax(taxableIncome) {
+      if (taxableIncome <= 0) return 0;
+      const abovePA = Math.max(0, taxableIncome - PERSONAL_ALLOWANCE);
+      const basicBand = Math.min(abovePA, BASIC_RATE_LIMIT - PERSONAL_ALLOWANCE);
+      const higherBand = Math.max(0, Math.min(abovePA - basicBand, ADDITIONAL_RATE_THRESHOLD - BASIC_RATE_LIMIT));
+      const additionalBand = Math.max(0, abovePA - basicBand - higherBand);
+      return basicBand * BASIC_RATE + higherBand * HIGHER_RATE + additionalBand * ADDITIONAL_RATE;
+    }
+
+    function calcNI(gross) {
+      const primaryThreshold = 12570;
+      const upperEarningsLimit = 50270;
+      if (gross <= primaryThreshold) return 0;
+      const lower = Math.min(gross, upperEarningsLimit) - primaryThreshold;
+      const upper = Math.max(0, gross - upperEarningsLimit);
+      return lower * EMPLOYEE_NI_LOWER + upper * EMPLOYEE_NI_UPPER;
+    }
+
+    function calcEmployerNI(gross) {
+      return Math.max(0, gross - EMPLOYER_NI_THRESHOLD) * EMPLOYER_NI_RATE;
+    }
+
+    function calculate() {
+      const salary = +document.getElementById('salary').value || 0;
+      const sacrifice = +document.getElementById('sacrifice_amount').value || 0;
+      const employerPct = Math.min(100, Math.max(0, +document.getElementById('employer_passthrough_pct').value || 0)) / 100;
+
+      const salaryAfter = Math.max(0, salary - sacrifice);
+      const taxBefore = calcTax(salary);
+      const taxAfter = calcTax(salaryAfter);
+      const niBefore = calcNI(salary);
+      const niAfter = calcNI(salaryAfter);
+      const employerNIBefore = calcEmployerNI(salary);
+      const employerNIAfter = calcEmployerNI(salaryAfter);
+
+      const incomeTaxSaving = taxBefore - taxAfter;
+      const employeeNISaving = niBefore - niAfter;
+      const employerNISaving = employerNIBefore - employerNIAfter;
+      const employerPassthrough = employerNISaving * employerPct;
+
+      const totalPensionContrib = sacrifice + employerPassthrough;
+      const netCostMonthly = (sacrifice - incomeTaxSaving - employeeNISaving) / 12;
+
+      const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+      const fmt2 = n => n.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2});
+      document.getElementById('r_salary_before').textContent = fmt(salary);
+      document.getElementById('r_salary_after').textContent = fmt(salaryAfter);
+      document.getElementById('r_tax_saving').textContent = fmt(incomeTaxSaving);
+      document.getElementById('r_ni_saving').textContent = fmt(employeeNISaving);
+      document.getElementById('r_employer_ni').textContent = fmt(employerNISaving);
+      document.getElementById('r_passthrough').textContent = fmt(employerPassthrough);
+      document.getElementById('r_pension').textContent = fmt(totalPensionContrib);
+      document.getElementById('r_net_cost_m').textContent = fmt2(netCostMonthly);
+    }
+    window.onload = calculate;
+</script>
+{% endblock %}

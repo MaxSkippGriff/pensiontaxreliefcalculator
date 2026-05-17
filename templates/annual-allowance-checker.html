@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Pension Annual Allowance Checker 2026/27</h1>
+  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:620px;">Check whether your pension contributions are approaching or exceeding the £60,000 annual allowance for 2026/27. Results update instantly.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Annual Allowance Checker</h2>
+      <span class="calc-year-badge">2026/27 · £60,000 AA</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Employee contributions</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="employee_contrib" value="10000" min="0" oninput="calculate()">
+          </div>
+          <div class="field-hint">Your own contributions — use gross amounts (include any provider top-up)</div>
+        </div>
+        <div class="field">
+          <label>Employer contributions</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="employer_contrib" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Salary sacrifice amounts</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="salary_sacrifice" value="0" min="0" oninput="calculate()">
+          </div>
+          <div class="field-hint">Only enter separately if not already included above</div>
+        </div>
+        <div class="field">
+          <label>Gross income</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="gross_income" value="60000" min="0" oninput="calculate()">
+          </div>
+          <div class="field-hint">Used to check whether the taper warning may apply</div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Total pension input</span><span class="results-value">£<span id="r_total_input">15,000</span></span></div>
+      <div class="results-row"><span class="results-label">Standard annual allowance</span><span class="results-value">£<span id="r_allowance">60,000</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Remaining allowance</span><span class="results-value">£<span id="r_remaining">45,000</span></span></div>
+      <div class="results-row"><span class="results-label">Amount over limit</span><span class="results-value">£<span id="r_over">0</span></span></div>
+      <div id="warnings" style="margin-top:0.75rem;padding:0.75rem 1rem;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">What is the annual allowance?</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">The annual allowance is the maximum amount that can be contributed to your pension each year while still receiving tax relief. For 2026/27, the standard annual allowance is <strong>£60,000</strong> (or 100% of your earnings if lower). Exceeding this limit results in the annual allowance charge — extra tax designed to claw back the relief on the excess.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">What counts towards the annual allowance?</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">For defined contribution (money purchase) pensions, the annual allowance covers all contributions made during the tax year:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin:0.4rem 0 0.85rem;">
+      <li>Your own contributions (gross amount, including any provider top-up under relief at source)</li>
+      <li>Your employer's contributions</li>
+      <li>Salary sacrifice contributions (these count as employer contributions)</li>
+      <li>Any third-party contributions (e.g., a contribution from a family member)</li>
+    </ul>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">For defined benefit (final salary) pensions, the "pension input amount" is based on the increase in the value of benefits — typically calculated as 16 × the annual increase in pension entitlement.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Money Purchase Annual Allowance (MPAA)</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">If you have flexibly accessed a defined contribution pension (e.g., by taking income from drawdown or taking an uncrystallised fund pension lump sum), the MPAA of <strong>£10,000</strong> applies to future defined contribution contributions. The MPAA cannot be increased using carry forward. See our full guide: <a href="/money-purchase-annual-allowance" style="color:var(--accent);">Money Purchase Annual Allowance</a>.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Can I carry forward unused allowance?</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Yes — if you have not used your full annual allowance in the previous three tax years, you may be able to carry forward the unused amounts to increase your effective allowance in the current year. You must have been a member of a registered pension scheme in the year you are carrying forward from. See our full guide: <a href="/pension-carry-forward" style="color:var(--accent);">Pension Carry Forward</a>.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the annual allowance charge?</summary>
+        <div class="faq-answer"><p>The annual allowance charge is an income tax charge on contributions above the annual allowance. The excess is added to your taxable income and charged at your marginal rate. You report and pay it through Self Assessment. In some cases you can ask your pension scheme to pay the charge ("scheme pays") in exchange for a reduction in your pension benefits.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What counts as "threshold income" for the taper?</summary>
+        <div class="faq-answer"><p>Threshold income is broadly your income before any pension contributions — roughly your taxable income before adding back employer pension contributions. For 2026/27, if threshold income exceeds £200,000 and adjusted income (which includes employer pension contributions) exceeds £260,000, the tapered annual allowance reduces your allowance by £1 for every £2 of adjusted income above £260,000, down to a minimum of £10,000. See the <a href="/tapered-annual-allowance" style="color:var(--accent);">Tapered Annual Allowance guide</a>.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does the annual allowance apply to the State Pension?</summary>
+        <div class="faq-answer"><p>No. The State Pension is not a registered pension for annual allowance purposes — it does not count towards your annual allowance.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What if I am both employed and self-employed?</summary>
+        <div class="faq-answer"><p>All contributions to all registered pension schemes are aggregated for annual allowance purposes. If you have a workplace pension and also contribute to a SIPP, both count towards the £60,000 limit.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Related guides and calculators</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/pension-carry-forward" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Pension Carry Forward Guide</a>
+      <a href="/tapered-annual-allowance" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Tapered Annual Allowance</a>
+      <a href="/money-purchase-annual-allowance" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">MPAA Guide</a>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-tertiary);">
+    Tax year 2026/27 · Annual allowance £60,000 · MPAA £10,000 · Estimates only — not financial or tax advice ·
+    <a href="https://www.gov.uk/tax-on-your-private-pension/annual-allowance" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Annual allowance</a> ·
+    <a href="https://www.gov.uk/guidance/pension-schemes-work-out-your-tapered-annual-allowance" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Tapered annual allowance</a>
+  </div>
+</section>
+
+<script>
+  const ANNUAL_ALLOWANCE = 60000;
+  const TAPER_ADJUSTED_INCOME_THRESHOLD = 260000;
+  const TAPER_THRESHOLD_INCOME = 200000;
+  const MPAA = 10000;
+
+  function calculate() {
+    const empContrib = +document.getElementById('employee_contrib').value || 0;
+    const emplrContrib = +document.getElementById('employer_contrib').value || 0;
+    const sacrifice = +document.getElementById('salary_sacrifice').value || 0;
+    const income = +document.getElementById('gross_income').value || 0;
+
+    const totalInput = empContrib + emplrContrib + sacrifice;
+    const remaining = Math.max(0, ANNUAL_ALLOWANCE - totalInput);
+    const overLimit = Math.max(0, totalInput - ANNUAL_ALLOWANCE);
+
+    const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+    document.getElementById('r_total_input').textContent = fmt(totalInput);
+    document.getElementById('r_allowance').textContent = fmt(ANNUAL_ALLOWANCE);
+    document.getElementById('r_remaining').textContent = fmt(remaining);
+    document.getElementById('r_over').textContent = fmt(overLimit);
+
+    const warnEl = document.getElementById('warnings');
+    let warnings = [];
+    if (overLimit > 0) {
+      warnings.push('<p style="font-size:0.88rem;margin-bottom:0.4rem;color:#b07000;">&#9888; Your total pension input may exceed the £60,000 annual allowance. The excess is subject to the annual allowance charge. Consider using carry forward from previous years — see the <a href="/pension-carry-forward" style="color:#b07000;">carry forward guide</a>.</p>');
+    }
+    if (income > TAPER_THRESHOLD_INCOME) {
+      warnings.push('<p style="font-size:0.88rem;margin-bottom:0.4rem;color:#b07000;">&#9888; Your income exceeds £200,000. The tapered annual allowance may apply if adjusted income also exceeds £260,000 — your effective allowance could be as low as £10,000. See the <a href="/tapered-annual-allowance" style="color:#b07000;">tapered allowance guide</a>.</p>');
+    }
+    if (warnings.length === 0) {
+      warnings.push('<p style="font-size:0.88rem;margin-bottom:0;color:var(--accent);">&#10003; Based on these figures, your pension input appears within the standard £60,000 annual allowance.</p>');
+    }
+    warnEl.innerHTML = warnings.join('');
+  }
+  window.onload = calculate;
+</script>
+{% endblock %}

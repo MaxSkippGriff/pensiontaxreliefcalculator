@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Pension Tax Relief Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);margin-bottom:1.25rem;">Estimate pension tax relief under relief at source, net pay or salary sacrifice. See the income tax and NI savings and the net cost to your take-home pay.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Pension Tax Relief</h2>
+      <span class="calc-year-badge">2026/27 · £60,000 allowance</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross annual income</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="income" value="50000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Annual pension contribution</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="contribution" value="5000" min="0" oninput="calculate()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Contribution method</label>
+          <select id="method" onchange="calculate()">
+            <option value="sacrifice">Salary sacrifice</option>
+            <option value="ras">Relief at source</option>
+            <option value="netpay">Net pay arrangement</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Basic rate tax relief (20%)</span><span class="results-value">£<span id="r_basic_relief">0</span></span></div>
+      <div class="results-row"><span class="results-label">Higher / additional rate relief</span><span class="results-value">£<span id="r_extra_relief">0</span></span></div>
+      <div class="results-row"><span class="results-label">Employee NI saving</span><span class="results-value">£<span id="r_ni_saving">0</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total tax &amp; NI saving</span><span class="results-value">£<span id="r_total_saving">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net annual cost to take-home</span><span class="results-value">£<span id="r_net_cost">0</span></span></div>
+      <div class="results-row"><span class="results-label">Net monthly cost</span><span class="results-value">£<span id="r_net_monthly">0.00</span></span></div>
+      <div id="r_method_note" style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.55rem;line-height:1.5;"></div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>Comparing the three methods</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0.85rem;">
+      <li><strong>Salary sacrifice</strong> — you give up gross salary and your employer pays into pension. You save income tax <em>and</em> employee NI. Your employer also saves employer NI (15%), and some pass this on as extra pension.</li>
+      <li><strong>Relief at source</strong> — you pay from net pay; your provider claims 20% basic rate relief from HMRC directly. Higher and additional rate taxpayers claim extra relief via Self Assessment. No NI saving.</li>
+      <li><strong>Net pay arrangement</strong> — contributions deduct from gross pay before tax is applied, so you get full income tax relief immediately. No NI saving. Not available from all providers.</li>
+    </ul>
+    <p style="margin-bottom:0;">Salary sacrifice is usually the most tax-efficient because it saves NI as well as income tax. The trade-off is a lower contractual salary, which can affect mortgage affordability and certain state benefits.</p>
+  </article>
+
+  <article class="card">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is the pension annual allowance for 2026/27?</summary>
+        <div class="faq-answer">
+          <p>The annual allowance is £60,000 (or 100% of your earnings, whichever is lower). This covers all pension contributions — yours and your employer's combined. Unused allowance from the previous 3 tax years can be carried forward.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Do basic rate taxpayers get relief at source automatically?</summary>
+        <div class="faq-answer">
+          <p>Yes. With relief at source, your pension provider automatically reclaims 20% basic rate relief from HMRC, topping up your contribution. So a £800 net contribution becomes £1,000 in your pension. Higher and additional rate taxpayers must claim the extra relief (20% or 25%) via Self Assessment.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Which method is best for higher rate taxpayers?</summary>
+        <div class="faq-answer">
+          <p>Salary sacrifice is generally best if your employer offers it — you save both income tax and employee NI (2% above £50,270). If salary sacrifice is not available, net pay and relief at source both provide full income tax relief; the difference is primarily timing and process.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary>Does salary sacrifice affect my State Pension?</summary>
+        <div class="faq-answer">
+          <p>If your post-sacrifice salary falls below the Lower Earnings Limit (£6,396 in 2026/27) your NI record may be affected. Most employees earning a typical salary are not at risk, but it is worth checking if your post-sacrifice salary is very low.</p>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="card">
+    <h2>Official sources</h2>
+    <ul style="padding-left:1.25rem;font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin-top:0.25rem;margin-bottom:0;">
+      <li><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension tax relief</a></li>
+      <li><a href="https://www.gov.uk/tax-on-your-private-pension/annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension annual allowance</a></li>
+      <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and PAYE</a></li>
+    </ul>
+  </article>
+
+  <p style="font-size:0.8rem;color:var(--text-tertiary);margin-top:1.5rem;">This calculator provides estimates only. It does not constitute financial, tax or legal advice. Always check current GOV.UK guidance and consult a qualified adviser before making decisions.</p>
+</section>
+
+<script>
+const PERSONAL_ALLOWANCE = 12570;
+const BASIC_RATE_LIMIT = 50270;
+const ADDITIONAL_RATE_THRESHOLD = 125140;
+const BASIC_RATE = 0.20;
+const HIGHER_RATE = 0.40;
+const ADDITIONAL_RATE = 0.45;
+const EMPLOYEE_NI_PRIMARY_THRESHOLD = 12570;
+const EMPLOYEE_NI_UPPER = 50270;
+const EMPLOYEE_NI_LOWER_RATE = 0.08;
+const EMPLOYEE_NI_UPPER_RATE = 0.02;
+
+function calcIncomeTax(income) {
+  if (income <= 0) return 0;
+  const abovePA = Math.max(0, income - PERSONAL_ALLOWANCE);
+  const basic = Math.min(abovePA, BASIC_RATE_LIMIT - PERSONAL_ALLOWANCE);
+  const higher = Math.max(0, Math.min(abovePA - basic, ADDITIONAL_RATE_THRESHOLD - BASIC_RATE_LIMIT));
+  const additional = Math.max(0, abovePA - basic - higher);
+  return basic * BASIC_RATE + higher * HIGHER_RATE + additional * ADDITIONAL_RATE;
+}
+function calcEmployeeNI(gross) {
+  if (gross <= EMPLOYEE_NI_PRIMARY_THRESHOLD) return 0;
+  const lower = (Math.min(gross, EMPLOYEE_NI_UPPER) - EMPLOYEE_NI_PRIMARY_THRESHOLD) * EMPLOYEE_NI_LOWER_RATE;
+  const upper = Math.max(0, gross - EMPLOYEE_NI_UPPER) * EMPLOYEE_NI_UPPER_RATE;
+  return lower + upper;
+}
+function marginalRate(income) {
+  if (income <= PERSONAL_ALLOWANCE) return 0;
+  if (income <= BASIC_RATE_LIMIT) return BASIC_RATE;
+  if (income <= ADDITIONAL_RATE_THRESHOLD) return HIGHER_RATE;
+  return ADDITIONAL_RATE;
+}
+
+function calculate() {
+  const income = +document.getElementById('income').value || 0;
+  const contribution = Math.min(+document.getElementById('contribution').value || 0, income);
+  const method = document.getElementById('method').value;
+
+  let basicRelief = 0, extraRelief = 0, niSaving = 0, note = '';
+
+  if (method === 'sacrifice') {
+    const incomeAfter = income - contribution;
+    const taxBefore = calcIncomeTax(income);
+    const taxAfter = calcIncomeTax(incomeAfter);
+    const niBefore = calcEmployeeNI(income);
+    const niAfter = calcEmployeeNI(incomeAfter);
+    const taxSaving = taxBefore - taxAfter;
+    niSaving = niBefore - niAfter;
+    const mr = marginalRate(income);
+    basicRelief = contribution * Math.min(mr, BASIC_RATE);
+    extraRelief = taxSaving - basicRelief;
+    note = 'Salary sacrifice: income tax and employee NI saved immediately via reduced gross pay. No Self Assessment claim needed.';
+  } else if (method === 'ras') {
+    // Provider reclaims 20% basic rate; higher/additional rate taxpayers claim extra via SA
+    basicRelief = contribution * BASIC_RATE;
+    const mr = marginalRate(income);
+    extraRelief = mr > BASIC_RATE ? contribution * (mr - BASIC_RATE) : 0;
+    niSaving = 0;
+    note = 'Relief at source: your provider reclaims 20% basic rate relief automatically. Claim any higher/additional rate relief via Self Assessment.';
+  } else {
+    // Net pay: full income tax relief on contribution
+    const taxBefore = calcIncomeTax(income);
+    const taxAfter = calcIncomeTax(income - contribution);
+    const totalRelief = taxBefore - taxAfter;
+    basicRelief = contribution * Math.min(marginalRate(income), BASIC_RATE);
+    extraRelief = totalRelief - basicRelief;
+    niSaving = 0;
+    note = 'Net pay arrangement: contributions deduct from gross pay before tax, so full income tax relief applies immediately. No NI saving.';
+  }
+
+  const totalSaving = basicRelief + extraRelief + niSaving;
+  const netCost = contribution - totalSaving;
+  const netMonthly = netCost / 12;
+
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  const fmt2 = n => n.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2});
+  document.getElementById('r_basic_relief').textContent = fmt(basicRelief);
+  document.getElementById('r_extra_relief').textContent = fmt(extraRelief);
+  document.getElementById('r_ni_saving').textContent = fmt(niSaving);
+  document.getElementById('r_total_saving').textContent = fmt(totalSaving);
+  document.getElementById('r_net_cost').textContent = fmt(netCost);
+  document.getElementById('r_net_monthly').textContent = fmt2(netMonthly);
+  document.getElementById('r_method_note').textContent = note;
+}
+window.onload = calculate;
+</script>
+{% endblock %}

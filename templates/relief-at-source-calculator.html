@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Calculator</div>
+  <h1>Relief at Source Pension Calculator 2026/27</h1>
+  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:620px;">See how much your pension provider tops up and whether you can claim additional relief through Self Assessment. Results update instantly.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Relief at Source</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Your net contribution (what you pay)</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="net_payment" value="800" min="0" oninput="calculate()">
+          </div>
+          <div class="field-hint">The amount you physically transfer — not including the provider top-up</div>
+        </div>
+        <div class="field">
+          <label>Your gross income</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="gross_income" value="55000" min="0" oninput="calculate()">
+          </div>
+          <div class="field-hint">Used to determine whether extra relief is claimable</div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Your net payment</span><span class="results-value">£<span id="r_net">800.00</span></span></div>
+      <div class="results-row"><span class="results-label">Provider top-up (20% basic relief)</span><span class="results-value">£<span id="r_topup">200.00</span></span></div>
+      <div class="results-row"><span class="results-label">Gross pension contribution</span><span class="results-value">£<span id="r_gross">1,000.00</span></span></div>
+      <div class="results-row"><span class="results-label">Extra relief to claim via SA</span><span class="results-value">£<span id="r_extra">200.00</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total effective relief</span><span class="results-value">£<span id="r_total">400.00</span></span></div>
+      <div class="results-row"><span class="results-label">Net cost after all relief</span><span class="results-value">£<span id="r_net_cost">600.00</span></span></div>
+      <div id="r_extra_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How relief at source works</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Relief at source is the most common method for personal pensions and SIPPs. When you make a contribution, you pay the <em>net</em> amount — 80% of the total. Your pension provider then claims the remaining 20% (basic rate tax relief) directly from HMRC, so your pension receives the full gross contribution.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">If you pay income tax at the higher rate (40%) or additional rate (45%), you are entitled to further relief beyond the 20% that your provider claims. You must claim this yourself — either through a Self Assessment tax return or by asking HMRC to adjust your PAYE tax code.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">The maths</h2>
+    <p style="font-size:0.87rem;color:var(--text-secondary);"><strong>Grossing-up formula:</strong> Gross contribution = Net payment ÷ 0.8</p>
+    <p style="font-size:0.87rem;color:var(--text-secondary);margin-top:0.4rem;"><strong>Provider top-up:</strong> = Net payment × 0.25 (= 25% of what you paid, or 20% of the gross)</p>
+    <p style="font-size:0.87rem;color:var(--text-secondary);margin-top:0.4rem;"><strong>Extra relief (40% taxpayer):</strong> = Gross contribution × (0.40 − 0.20) = 20% of gross</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Worked example</h2>
+    <p style="font-size:0.88rem;"><strong>James</strong> earns £55,000 and pays £800 into his SIPP. His income is above £50,270 so he is a higher-rate taxpayer.</p>
+    <ul style="color:var(--text-secondary);line-height:1.9;padding-left:1.25rem;margin:0.4rem 0;font-size:0.88rem;">
+      <li>Gross contribution: £800 ÷ 0.8 = £1,000</li>
+      <li>Provider top-up: £200 (20% of gross)</li>
+      <li>Extra relief via SA: £1,000 × 20% = £200</li>
+      <li>Total relief: £400</li>
+      <li>Net cost to James after all relief: £600</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How does the provider know to claim basic rate relief?</summary>
+        <div class="faq-answer"><p>When you set up a personal pension or SIPP under relief at source, your provider is registered to claim basic rate relief from HMRC. This happens automatically for every contribution you make — you don't need to do anything for the 20% top-up.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>What is "grossing up"?</summary>
+        <div class="faq-answer"><p>Grossing up converts your net payment to the gross contribution. If you pay £800, the gross is £800 ÷ 0.8 = £1,000. The formula works because you've paid 80% of the gross (the after-tax portion), and the provider claims the remaining 20% from HMRC.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Do I have to file Self Assessment to claim extra relief?</summary>
+        <div class="faq-answer"><p>If you already file a Self Assessment return, you simply include your pension contributions in the relevant section. If you don't file one, you can contact HMRC directly and request a PAYE tax code adjustment — relief is then applied to your payslip going forward.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Does this apply to workplace pensions?</summary>
+        <div class="faq-answer"><p>Only workplace pensions that use relief at source (usually NEST, People's Pension and some other modern workplace schemes). Many workplace pensions use the net pay arrangement instead — in that case, contributions are deducted before tax is applied and there is no provider top-up or SA claim involved.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Related calculators and guides</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/higher-rate-pension-relief-calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Higher Rate Relief Calculator</a>
+      <a href="/claim-higher-rate-pension-tax-relief" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Claiming Higher Rate Relief</a>
+      <a href="/pension-tax-relief-self-assessment" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Relief &amp; Self Assessment</a>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-tertiary);">
+    Tax year 2026/27 · Estimates only — not financial or tax advice ·
+    <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Pension tax relief</a> ·
+    <a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Self Assessment</a>
+  </div>
+</section>
+
+<script>
+    const PERSONAL_ALLOWANCE = 12570;
+    const BASIC_RATE_LIMIT = 50270;
+    const ADDITIONAL_RATE_THRESHOLD = 125140;
+    const BASIC_RATE = 0.20;
+    const HIGHER_RATE = 0.40;
+    const ADDITIONAL_RATE = 0.45;
+
+    function getMarginalRate(income) {
+      if (income <= PERSONAL_ALLOWANCE) return 0;
+      if (income <= BASIC_RATE_LIMIT) return BASIC_RATE;
+      if (income <= ADDITIONAL_RATE_THRESHOLD) return HIGHER_RATE;
+      return ADDITIONAL_RATE;
+    }
+
+    function calculate() {
+      const netPayment = +document.getElementById('net_payment').value || 0;
+      const income = +document.getElementById('gross_income').value || 0;
+
+      const grossContrib = netPayment / 0.8;
+      const providerTopUp = grossContrib - netPayment;
+
+      const marginalRate = getMarginalRate(income);
+      const extraRelief = grossContrib * Math.max(0, marginalRate - BASIC_RATE);
+      const totalRelief = providerTopUp + extraRelief;
+      const netCost = netPayment - extraRelief;
+
+      const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:2,maximumFractionDigits:2});
+      document.getElementById('r_net').textContent = fmt(netPayment);
+      document.getElementById('r_topup').textContent = fmt(providerTopUp);
+      document.getElementById('r_gross').textContent = fmt(grossContrib);
+      document.getElementById('r_extra').textContent = fmt(extraRelief);
+      document.getElementById('r_total').textContent = fmt(totalRelief);
+      document.getElementById('r_net_cost').textContent = fmt(netCost);
+
+      const noteEl = document.getElementById('r_extra_note');
+      if (extraRelief > 0) {
+        noteEl.textContent = 'Claim £' + fmt(extraRelief) + ' extra relief via Self Assessment or HMRC tax code adjustment.';
+      } else {
+        noteEl.textContent = 'At this income level, no extra relief beyond the 20% basic rate is available through Self Assessment.';
+      }
+    }
+    window.onload = calculate;
+</script>
+{% endblock %}

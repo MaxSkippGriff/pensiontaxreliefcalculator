@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Pension Tax Relief Over £100k Income 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>If your income exceeds £100,000, pension contributions become even more valuable than they appear. That is because the Personal Allowance — the amount of income you can earn tax-free — starts to taper away above £100,000. A sufficiently large pension contribution can reduce your income below that threshold and restore the allowance, effectively creating a very high rate of tax relief. For some people earning in this range, the effective relief rate can approach 60%.</p>
+
+  <h2>How the Personal Allowance taper works</h2>
+  <p>For 2026/27, the standard Personal Allowance is £12,570. Once your adjusted net income exceeds £100,000, the allowance reduces by £1 for every £2 of income above that threshold. The allowance is fully withdrawn when adjusted net income reaches £125,140.</p>
+  <p>This taper creates an effective marginal tax rate of 60% on income between £100,000 and £125,140:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li>40% income tax on the additional earnings themselves</li>
+    <li>A further 20% effective rate from the loss of the Personal Allowance (each £2 of extra income costs £1 of tax-free allowance, which is then taxed at 40%)</li>
+  </ul>
+  <p>Pension contributions reduce your adjusted net income, which can push it back below £100,000 and restore the full Personal Allowance. The combination of direct tax relief and the restored allowance makes pension saving exceptionally tax-efficient in this income range.</p>
+
+  <h2>Worked example</h2>
+  <p>Alex earns £120,000. After the Personal Allowance taper:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li>Adjusted net income is £20,000 above the £100,000 threshold.</li>
+    <li>Personal Allowance reduces by £10,000 (£20,000 ÷ 2), leaving an effective allowance of only £2,570.</li>
+    <li>The lost £10,000 of allowance is taxed at 40%, costing an additional £4,000 in income tax.</li>
+  </ul>
+  <p>Alex makes a £20,000 gross pension contribution (relief at source). This reduces adjusted net income to £100,000.</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><strong>Direct higher-rate relief:</strong> 40% × £20,000 = £8,000. The basic rate (20% = £4,000) is claimed by the provider; the remaining 20% (£4,000) is claimed via Self Assessment.</li>
+    <li><strong>Personal Allowance restored:</strong> Adjusted net income drops to £100,000, restoring the full £12,570 allowance. The extra tax previously paid on the lost £10,000 of allowance (£4,000) is now saved.</li>
+    <li><strong>Total tax saving:</strong> approximately £8,000 (direct relief) + £4,000 (restored allowance) = £12,000.</li>
+    <li><strong>Net cost of £20,000 gross contribution:</strong> approximately £8,000 after all reliefs.</li>
+  </ul>
+  <p>Note: the exact figures depend on which earnings band the contribution falls in and how other income is structured. Use the calculator for a precise estimate based on your situation.</p>
+
+  <h2>How to use pension contributions to reduce adjusted net income</h2>
+  <p>The most direct way to reduce adjusted net income through pension contributions is via a relief at source personal pension or SIPP. Your gross contribution (including the basic rate top-up from HMRC) reduces your adjusted net income.</p>
+  <p>Salary sacrifice achieves the same effect through a different mechanism — your contractual salary is reduced, which means your adjusted net income is automatically lower. This also saves employee NI on the sacrificed amount.</p>
+  <p>Net pay arrangements reduce taxable pay through payroll and have a similar effect on adjusted net income.</p>
+
+  <h2>Salary sacrifice and the £100k threshold</h2>
+  <p>If your employer offers salary sacrifice, contributing enough to bring your salary below £100,000 restores the Personal Allowance and saves NI simultaneously. This makes salary sacrifice potentially the most efficient method for earnings in this range, though it requires your employer's scheme to support it.</p>
+
+  <h2>Tapered annual allowance warning</h2>
+  <p>For very high earners, a separate taper applies to the annual allowance itself. If your adjusted income (which includes employer pension contributions) exceeds £260,000, the annual allowance tapers downward — reducing by £1 for every £2 of adjusted income above £260,000, to a minimum of £10,000 (the Money Purchase Annual Allowance).</p>
+  <p>This is a separate calculation from the Personal Allowance taper. Most people earning between £100,000 and £260,000 are not affected by the annual allowance taper and can still contribute up to £60,000 gross per year (including employer contributions). If your total income including employer pension contributions may exceed £260,000, seek specialist tax advice.</p>
+
+  <h2>Common mistakes</h2>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><strong>Not realising relief is available at 60%:</strong> Many people earning between £100,000 and £125,140 do not appreciate the true rate of effective tax saving from pension contributions in that band.</li>
+    <li><strong>Confusing adjusted net income with gross salary:</strong> Adjusted net income is not the same as your P60 salary. It includes all income sources and is reduced by certain reliefs including pension contributions and Gift Aid. An accurate figure is essential for calculating the taper.</li>
+    <li><strong>Underestimating the annual allowance:</strong> The £60,000 annual allowance includes employer contributions. If you and your employer together contribute more than £60,000, you may face an annual allowance charge on the excess.</li>
+    <li><strong>Forgetting to claim via Self Assessment:</strong> Higher-rate relief on relief at source contributions must be claimed — it is not automatic. This is especially important for people who may not ordinarily complete Self Assessment but whose income has crossed the £100,000 threshold.</li>
+  </ul>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Model your own figures</strong>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and contribution to see how pension savings interact with the Personal Allowance taper and what effective rate of relief you could receive.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>What is adjusted net income?</summary>
+      <div class="faq-answer">
+        <p>Adjusted net income is your total income from all sources (employment, self-employment, rental income, dividends, savings interest and so on) minus certain deductions. These deductions include gross pension contributions to relief at source schemes, trading losses and Gift Aid payments (grossed up). It is not the same as your taxable income — it is a specific figure used to determine entitlements such as the Personal Allowance and the High Income Child Benefit Charge.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>How much should I contribute to restore my Personal Allowance?</summary>
+      <div class="faq-answer">
+        <p>To restore the full Personal Allowance, your adjusted net income must fall to £100,000 or below. If your income is £110,000, you need to reduce adjusted net income by £10,000 — which means a gross pension contribution of £10,000. If your income is £125,140 or above, you need to contribute enough to bring adjusted net income below £125,140 to restore any allowance, or below £100,000 to restore it fully. Use the calculator to find the exact contribution needed for your income level.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Does salary sacrifice help with the £100k taper?</summary>
+      <div class="faq-answer">
+        <p>Yes. Salary sacrifice reduces your contractual salary before tax, which means your adjusted net income is automatically lower. If your employer offers salary sacrifice and you sacrifice enough to bring your income below £100,000, you restore the Personal Allowance and save NI simultaneously. This makes salary sacrifice particularly powerful for earners just above the £100,000 threshold.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>What is the tapered annual allowance and does it affect me?</summary>
+      <div class="faq-answer">
+        <p>The tapered annual allowance applies to people whose adjusted income (including employer pension contributions) exceeds £260,000. In that case, the standard £60,000 annual allowance reduces by £1 for every £2 of adjusted income above £260,000, down to a minimum of £10,000. Most people earning between £100,000 and £260,000 are unaffected and retain the full £60,000 allowance. If you are close to or above £260,000, specialist tax advice is recommended.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Does this apply to Scottish taxpayers?</summary>
+      <div class="faq-answer">
+        <p>The Personal Allowance taper above £100,000 is a UK-wide rule and applies to Scottish taxpayers in the same way. However, Scottish income tax rates differ, and the interaction between Scottish higher rates (42%, 45%, 48%) and the taper can produce different effective marginal rates. The calculator handles Scottish rates and can show you the correct figures for your region.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Is there a risk of contributing too much?</summary>
+      <div class="faq-answer">
+        <p>Yes. The annual allowance for 2026/27 is £60,000 (including employer contributions). Contributions above this limit are subject to an annual allowance charge, which effectively claws back the tax relief on the excess. You can carry forward unused allowance from the previous three tax years, which may let you contribute more than £60,000 in a single year. If you have already flexibly accessed a pension, the Money Purchase Annual Allowance of £10,000 may apply instead. Always check your remaining allowance before making large contributions.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>Official sources</h2>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-pension-schemes/pension-schemes-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension schemes rates and allowances</a></li>
+    <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and Personal Allowances</a></li>
+    <li><a href="https://www.gov.uk/guidance/pension-annual-allowance-and-tapered-annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension annual allowance and tapered annual allowance</a></li>
+  </ul>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">
+      <strong style="color:var(--text-primary);">Disclaimer:</strong> This guide is for general information only and does not constitute financial or tax advice. Pension tax rules are complex and individual circumstances vary. Figures shown are for England, Wales and Northern Ireland unless stated. Consult a qualified financial adviser or HMRC for personalised guidance.
+    </p>
+  </div>
+</section>
+{% endblock %}

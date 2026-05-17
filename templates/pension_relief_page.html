@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},
+    {"@type":"ListItem","position":2,"name":"Pension relief at £{{ '{:,}'.format(income) }}","item":"{{ canonical_url }}"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumbs">
+  <ol>
+    {% for crumb in breadcrumbs %}
+    <li>{% if not loop.last %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% else %}<span>{{ crumb.name }}</span>{% endif %}</li>
+    {% endfor %}
+  </ol>
+</div>
+
+<section class="section" style="padding-top:1.5rem;padding-bottom:0.75rem;">
+  <div class="badge">2026/27 tax year</div>
+  <h1>Pension Tax Relief on a £{{ '{:,}'.format(income) }} Income 2026/27</h1>
+  <p style="font-size:1rem;color:var(--text-secondary);max-width:640px;margin-bottom:1.25rem;">
+    With a <strong style="color:var(--text-primary);">£{{ '{:,}'.format(contribution) }} gross contribution</strong> under relief at source, total pension tax relief is
+    <strong style="color:var(--accent);">£{{ '{:,.0f}'.format(calc_ras.total_relief) }}</strong>.
+    Net cost to you: <strong style="color:var(--text-primary);">£{{ '{:,.0f}'.format(calc_ras.effective_cost) }}</strong>
+    (£{{ '{:,.0f}'.format(calc_ras.effective_cost / 12) }}/month).
+    Under salary sacrifice, the effective cost drops further to
+    <strong style="color:var(--text-primary);">£{{ '{:,.0f}'.format(calc_ss.effective_cost) }}</strong>.
+  </p>
+  <a href="/calculator" style="display:inline-flex;align-items:center;gap:0.45rem;background:var(--accent);color:white;font-size:0.88rem;font-weight:600;padding:0.6rem 1.3rem;border-radius:999px;text-decoration:none;box-shadow:0 2px 8px rgba(27,107,74,0.25);transition:background var(--transition);" onmouseover="this.style.background='var(--accent-hover)'" onmouseout="this.style.background='var(--accent)'">
+    Use the full calculator
+    <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="width:13px;height:13px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- Result cards -->
+<section class="section" style="padding-top:0.5rem;padding-bottom:0.75rem;">
+  <div class="section-label" style="font-size:0.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;">Results — £{{ '{:,}'.format(income) }} income, £{{ '{:,}'.format(contribution) }} contribution</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.9rem;">
+
+    <!-- Relief at source -->
+    <div class="card" style="padding:1.25rem 1.4rem;border-top:3px solid var(--accent);">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;">Relief at source</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 1rem;margin-bottom:0.9rem;">
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Gross contribution</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--text-primary);">£{{ '{:,.0f}'.format(calc_ras.gross_contribution) }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Total relief</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--accent);">£{{ '{:,.0f}'.format(calc_ras.total_relief) }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Net cost</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--text-primary);">£{{ '{:,.0f}'.format(calc_ras.effective_cost) }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Marginal rate</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--text-primary);">{{ '{:.0f}'.format(calc_ras.marginal_rate) }}%</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:0.7rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:0.2rem 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--text-secondary);">Basic rate relief (20%)</span>
+          <span style="font-weight:600;">£{{ '{:,.0f}'.format(calc_ras.basic_rate_relief) }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:0.2rem 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--text-secondary);">Higher rate extra relief</span>
+          <span style="font-weight:600;">£{{ '{:,.0f}'.format(calc_ras.higher_rate_extra_relief) }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:0.2rem 0;">
+          <span style="color:var(--text-secondary);">Monthly net cost</span>
+          <span style="font-weight:600;">£{{ '{:,.0f}'.format(calc_ras.effective_cost / 12) }}/month</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Salary sacrifice -->
+    <div class="card" style="padding:1.25rem 1.4rem;border-top:3px solid #5B8DB8;">
+      <div style="font-size:0.72rem;font-weight:700;color:#5B8DB8;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;">Salary sacrifice</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 1rem;margin-bottom:0.9rem;">
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Gross contribution</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--text-primary);">£{{ '{:,.0f}'.format(calc_ss.gross_contribution) }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Total tax relief</div>
+          <div style="font-size:1.15rem;font-weight:700;color:#5B8DB8;">£{{ '{:,.0f}'.format(calc_ss.total_relief) }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Net cost (incl. NI)</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--text-primary);">£{{ '{:,.0f}'.format(calc_ss.effective_cost) }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.69rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;margin-bottom:0.1rem;">Marginal rate</div>
+          <div style="font-size:1.15rem;font-weight:700;color:var(--text-primary);">{{ '{:.0f}'.format(calc_ss.marginal_rate) }}%</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:0.7rem;">
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:0.2rem 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--text-secondary);">Tax relief (income tax)</span>
+          <span style="font-weight:600;">£{{ '{:,.0f}'.format(calc_ss.total_relief) }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:0.2rem 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--text-secondary);">Employee NI saving</span>
+          <span style="font-weight:600;">£{{ '{:,.0f}'.format(calc_ss.employee_ni_saving) }}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:0.2rem 0;">
+          <span style="color:var(--text-secondary);">Employer NI saving</span>
+          <span style="font-weight:600;">£{{ '{:,.0f}'.format(calc_ss.employer_ni_saving) }}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Explanation -->
+<section class="section" style="padding-top:0.5rem;padding-bottom:0.75rem;">
+  <div class="section-label" style="font-size:0.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">How relief works at £{{ '{:,}'.format(income) }}</div>
+  <h2 style="font-family:var(--font-display);font-weight:500;font-size:1.35rem;letter-spacing:-0.02em;margin-bottom:0.6rem;">Which tax band applies and what relief you get</h2>
+  <div class="card" style="padding:1.1rem 1.3rem;">
+    {% if calc_ras.marginal_rate >= 45 %}
+    <p>On a <strong>£{{ '{:,}'.format(income) }}</strong> income you are an <strong>additional-rate taxpayer</strong> paying 45% on income above £125,140. Your marginal income tax rate is <strong>{{ '{:.0f}'.format(calc_ras.marginal_rate) }}%</strong>.</p>
+    <p>Under <strong>relief at source</strong>, your provider claims 20% basic rate relief automatically. You claim the remaining {{ '{:.0f}'.format(calc_ras.marginal_rate - 20) }}% extra relief via Self Assessment — totalling <strong>£{{ '{:,.0f}'.format(calc_ras.total_relief) }}</strong> on a £{{ '{:,}'.format(contribution) }} contribution.</p>
+    {% elif calc_ras.marginal_rate >= 40 %}
+    <p>On a <strong>£{{ '{:,}'.format(income) }}</strong> income you are a <strong>higher-rate taxpayer</strong> paying 40% on income above £50,270{% if income > 100000 %} — your personal allowance is also reduced by the £100k taper{% endif %}. Your marginal income tax rate is <strong>{{ '{:.0f}'.format(calc_ras.marginal_rate) }}%</strong>.</p>
+    <p>Under <strong>relief at source</strong>, your provider claims 20% basic rate relief automatically from HMRC. You claim the additional 20% extra relief via Self Assessment — totalling <strong>£{{ '{:,.0f}'.format(calc_ras.total_relief) }}</strong> on a £{{ '{:,}'.format(contribution) }} contribution.</p>
+    {% else %}
+    <p>On a <strong>£{{ '{:,}'.format(income) }}</strong> income you are a <strong>basic-rate taxpayer</strong> paying 20% income tax. Your marginal income tax rate is <strong>{{ '{:.0f}'.format(calc_ras.marginal_rate) }}%</strong>.</p>
+    <p>Under <strong>relief at source</strong>, your provider claims the full 20% basic rate relief automatically from HMRC — no Self Assessment needed. Total relief on a £{{ '{:,}'.format(contribution) }} contribution is <strong>£{{ '{:,.0f}'.format(calc_ras.total_relief) }}</strong>.</p>
+    {% endif %}
+    <p style="margin-bottom:0;">Under <strong>salary sacrifice</strong>, your gross salary is reduced by £{{ '{:,}'.format(contribution) }} before income tax and National Insurance are calculated. This saves you income tax <em>and</em> employee NI (saving an additional <strong>£{{ '{:,.0f}'.format(calc_ss.employee_ni_saving) }}</strong>), bringing your effective net cost down to <strong>£{{ '{:,.0f}'.format(calc_ss.effective_cost) }}</strong>. Your employer also saves NI of <strong>£{{ '{:,.0f}'.format(calc_ss.employer_ni_saving) }}</strong> — some employers pass this saving into your pension.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cross-link" style="padding-bottom:0.75rem;">
+  <div class="cross-link-inner">
+    <p><strong>Model your own figures</strong> — change income, contribution amount, method or region in the full calculator.</p>
+    <a href="/calculator">Open calculator</a>
+  </div>
+</div>
+
+<!-- Income pills -->
+<section class="section" style="padding-top:0.5rem;padding-bottom:1.5rem;">
+  <div class="section-label" style="font-size:0.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem;">Other income levels</div>
+  <div class="pill-grid">
+    {% for inc in all_incomes %}
+    <a href="/pension-relief/{{ inc }}" class="pill{% if inc == income %} pill-active{% endif %}" {% if inc == income %}style="border-color:var(--accent);color:var(--accent);background:var(--accent-light);font-weight:600;"{% endif %}>£{{ '{:,}'.format(inc) }}</a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="section" style="padding-top:0;padding-bottom:1.5rem;">
+  <div style="font-size:0.78rem;color:var(--text-tertiary);border-top:1px solid var(--border);padding-top:0.85rem;line-height:1.6;">
+    Figures are estimates for the 2026/27 tax year, England/Wales/NI, using a 5% contribution scenario. Results are not financial or tax advice. Consult a qualified adviser for personal guidance.
+    <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK pension tax relief</a> ·
+    <a href="/methodology" style="color:var(--text-tertiary);">Methodology</a>
+  </div>
+</section>
+{% endblock %}

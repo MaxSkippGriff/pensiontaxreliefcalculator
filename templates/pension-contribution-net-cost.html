@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Pension Contribution Net Cost 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>When you contribute to a pension, the government tops up your savings through tax relief. This means the real cost to you — the amount you actually have to pay out of your take-home income — is always less than the gross amount going into the pension. How much less depends on whether you pay tax at 20%, 40% or 45%, and which contribution method your pension uses.</p>
+
+  <h2>Net cost by contribution method</h2>
+
+  <h3>Relief at source — basic-rate taxpayer</h3>
+  <p>You pay 80% of the gross contribution. The provider claims the remaining 20% from HMRC. For every £100 that goes into your pension, you pay £80. No further claim is needed.</p>
+
+  <h3>Relief at source — higher-rate taxpayer</h3>
+  <p>You pay £80 per £100 gross, the provider claims £20. You then claim a further £20 back via Self Assessment (the difference between 40% and the 20% already claimed). Net cost after the SA claim: £60 per £100 gross in the pension.</p>
+
+  <h3>Relief at source — additional-rate taxpayer</h3>
+  <p>Same as above, but the extra SA claim is 25% (45% − 20%). Net cost: £55 per £100 gross in the pension.</p>
+
+  <h3>Net pay — any marginal rate</h3>
+  <p>Your contribution is deducted pre-tax, so you automatically save at your marginal rate. A basic-rate taxpayer pays £80 per £100; a higher-rate taxpayer pays £60 per £100; an additional-rate taxpayer pays £55 per £100. No SA claim needed.</p>
+
+  <h3>Salary sacrifice</h3>
+  <p>Salary sacrifice reduces your gross salary, saving both income tax and employee National Insurance. For a higher-rate taxpayer paying 40% income tax and 2% NI (on earnings above £50,270), the combined saving is 42% — so net cost is £58 per £100. On earnings between £12,570 and £50,270, employee NI is 8%, so a basic-rate taxpayer saves 28% and pays £72 per £100. On top of this, many employers pass on their NI saving (15% of the sacrificed amount) to the pension, reducing your effective cost further still.</p>
+
+  <h2>Worked example: £5,000 gross contribution</h2>
+  <p>The table below shows the estimated net cost of a £5,000 gross pension contribution under different methods and tax positions (England, Wales and Northern Ireland rates for 2026/27).</p>
+
+  <div style="overflow-x:auto;margin-bottom:1rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;color:var(--text-secondary);">
+      <thead>
+        <tr style="background:var(--surface-alt);color:var(--text-primary);text-align:left;">
+          <th style="padding:0.7rem 1rem;border-bottom:2px solid var(--border);">Scenario</th>
+          <th style="padding:0.7rem 1rem;border-bottom:2px solid var(--border);">Gross into pension</th>
+          <th style="padding:0.7rem 1rem;border-bottom:2px solid var(--border);">Total relief</th>
+          <th style="padding:0.7rem 1rem;border-bottom:2px solid var(--border);">Net cost to you</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.65rem 1rem;">Basic-rate, relief at source</td>
+          <td style="padding:0.65rem 1rem;">£5,000</td>
+          <td style="padding:0.65rem 1rem;">£1,000 (20%)</td>
+          <td style="padding:0.65rem 1rem;font-weight:600;color:var(--text-primary);">£4,000</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);background:var(--surface-alt);">
+          <td style="padding:0.65rem 1rem;">Higher-rate, relief at source (after SA claim)</td>
+          <td style="padding:0.65rem 1rem;">£5,000</td>
+          <td style="padding:0.65rem 1rem;">£2,000 (40%)</td>
+          <td style="padding:0.65rem 1rem;font-weight:600;color:var(--text-primary);">£3,000</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.65rem 1rem;">Higher-rate, net pay</td>
+          <td style="padding:0.65rem 1rem;">£5,000</td>
+          <td style="padding:0.65rem 1rem;">£2,000 (40%)</td>
+          <td style="padding:0.65rem 1rem;font-weight:600;color:var(--text-primary);">£3,000</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);background:var(--surface-alt);">
+          <td style="padding:0.65rem 1rem;">Higher-rate, salary sacrifice (earnings above £50,270)</td>
+          <td style="padding:0.65rem 1rem;">£5,000</td>
+          <td style="padding:0.65rem 1rem;">£2,000 tax + £100 NI</td>
+          <td style="padding:0.65rem 1rem;font-weight:600;color:var(--text-primary);">£2,900</td>
+        </tr>
+        <tr>
+          <td style="padding:0.65rem 1rem;">Higher-rate, salary sacrifice (earnings between £12,570–£50,270)</td>
+          <td style="padding:0.65rem 1rem;">£5,000</td>
+          <td style="padding:0.65rem 1rem;">£2,000 tax + £400 NI</td>
+          <td style="padding:0.65rem 1rem;font-weight:600;color:var(--text-primary);">£2,600</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.82rem;">The salary sacrifice NI saving depends on which earnings band the contribution falls in. The NI rates used are 8% (on earnings £12,570–£50,270) and 2% (above £50,270) for 2026/27. Employer NI savings of 15% are not included in the figures above as they are a separate saving for the employer, though many pass this on to the employee's pension.</p>
+
+  <h2>Does the gross or net contribution go into the pension?</h2>
+  <p>This is one of the most common points of confusion. The answer depends on the scheme type:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><strong>Relief at source:</strong> The gross amount goes into the pension. You pay the net (80%), the provider tops it up to 100%.</li>
+    <li><strong>Net pay:</strong> The gross contribution is deducted from your salary. The full gross amount goes into the pension.</li>
+    <li><strong>Salary sacrifice:</strong> Your employer pays the full gross amount into the pension as an employer contribution. The full gross amount goes in — and because it is technically an employer contribution, it is free of NI as well as income tax.</li>
+  </ul>
+
+  <h2>Scottish taxpayers</h2>
+  <p>Scottish income tax rates differ from the rest of the UK. For relief at source schemes, Scottish providers still claim 20% from HMRC, but the extra relief to claim via Self Assessment may be different — Scottish intermediate-rate taxpayers (21%) would claim only 1% extra, while Scottish higher-rate (42%) taxpayers claim 22%. The net cost calculations in the table above apply to England, Wales and Northern Ireland. The calculator handles Scottish rates correctly.</p>
+
+  <h2>Common confusion</h2>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><strong>Relief at source and net pay are not always the same cost:</strong> For basic-rate taxpayers in England, the net cost is generally the same. But for Scottish taxpayers at intermediate or higher rates, net pay automatically gives the correct marginal rate, while relief at source requires a Self Assessment claim for the extra. Failing to claim means you pay more than you should.</li>
+    <li><strong>Forgetting the SA claim means paying more:</strong> Higher-rate taxpayers in relief at source schemes who do not file a Self Assessment return effectively overpay. The relief does not come automatically — you have to claim it.</li>
+    <li><strong>Salary sacrifice NI savings vary with earnings band:</strong> The NI saving from salary sacrifice is larger on earnings in the 8% band (£12,570–£50,270) than on the 2% band above £50,270.</li>
+  </ul>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">See your net cost instantly</strong>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and contribution to get a full breakdown of your net cost under each scheme type — including NI savings for salary sacrifice.</p>
+    <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>What is the cheapest way to contribute to a pension?</summary>
+      <div class="faq-answer">
+        <p>Salary sacrifice is typically the lowest net cost method because it saves both income tax and employee National Insurance. For a higher-rate taxpayer earning between £12,570 and £50,270, the combined saving is 48% (40% tax + 8% NI), meaning an effective net cost of £52 per £100 gross contributed. Above £50,270 the NI saving drops to 2%, so the net cost rises to £58 per £100. Whether salary sacrifice is available depends on your employer — not all schemes offer it.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Does the gross or net contribution go into my pension?</summary>
+      <div class="faq-answer">
+        <p>The gross amount always goes into your pension, regardless of the scheme type. With relief at source you pay the net (80%) and the provider tops it up; with net pay and salary sacrifice the gross amount is deducted from salary before reaching you, and the full amount goes straight into the pension. The difference is in how tax relief is delivered — not in how much ends up in your pension fund.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Are pension contributions worth it even at basic rate?</summary>
+      <div class="faq-answer">
+        <p>Yes. For every £80 a basic-rate taxpayer contributes under relief at source, £100 goes into the pension — an immediate 25% uplift. Under net pay or salary sacrifice, the equivalent saving applies through reduced tax. Beyond the immediate relief, pension savings grow free of income tax and capital gains tax within the fund, and you can typically take 25% tax-free on retirement. These benefits make pensions highly tax-efficient for most earners.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Does salary sacrifice affect my State Pension entitlement?</summary>
+      <div class="faq-answer">
+        <p>Salary sacrifice reduces your gross salary for NI purposes, which means lower NI contributions. If your sacrificed salary falls below the Lower Earnings Limit (£6,396 for 2026/27), it could affect your National Insurance record and State Pension entitlement. Most employers using salary sacrifice structures the arrangement to avoid this, but it is worth checking with your employer if you have any concerns.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Will salary sacrifice NI savings change in future?</summary>
+      <div class="faq-answer">
+        <p>Legislation has been passed to change how National Insurance applies to salary sacrifice pension contributions from April 2029. Under those future rules, some of the current NI advantages of salary sacrifice for pension contributions will be reduced. Current calculations for 2026/27 are not affected. The calculator applies 2026/27 rates and will be updated when rules change.</p>
+      </div>
+    </details>
+  </div>
+
+  <h2>Official sources</h2>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-pension-schemes/pension-schemes-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension schemes rates and allowances</a></li>
+    <li><a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Income Tax rates and Personal Allowances</a></li>
+    <li><a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Salary sacrifice and the effects on PAYE</a></li>
+  </ul>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">
+      <strong style="color:var(--text-primary);">Disclaimer:</strong> This guide is for general information only and does not constitute financial or tax advice. Pension tax rules are complex and individual circumstances vary. Figures shown are for England, Wales and Northern Ireland unless stated. Consult a qualified financial adviser or HMRC for personalised guidance.
+    </p>
+  </div>
+</section>
+{% endblock %}

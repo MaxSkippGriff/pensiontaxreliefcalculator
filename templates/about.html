@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">About</div>
+  <h1>About PensionTaxReliefCalculator.co.uk</h1>
+  <p>PensionTaxReliefCalculator.co.uk is a free, independent tool for estimating UK pension tax relief for the {{ tax_year }} tax year.</p>
+  <p>The calculator helps UK taxpayers understand how much pension tax relief they are entitled to under relief at source, net pay arrangements and salary sacrifice — and what the real net cost of their pension contribution is after relief.</p>
+
+  <h2>What it does</h2>
+  <p>Enter your gross income, pension contribution amount and contribution method. The calculator estimates:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li>Basic rate relief (20%)</li>
+    <li>Extra higher rate relief (40% or 45%) for eligible taxpayers</li>
+    <li>Employee and employer NI savings for salary sacrifice</li>
+    <li>Effective net cost and monthly cost of your contribution</li>
+  </ul>
+  <p>Scottish taxpayers can select their region to apply the correct Scottish income tax rates.</p>
+
+  <h2>Part of the UK Money Calculators network</h2>
+  <p>This tool is part of a network of free UK tax and finance calculators, including:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><a href="https://aftertaxsalary.co.uk" target="_blank" rel="noopener" style="color:var(--accent);">AfterTaxSalary.co.uk</a> — take-home pay calculator</li>
+    <li><a href="https://uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener" style="color:var(--accent);">UKSalarySacrificeCalculator.co.uk</a> — salary sacrifice savings</li>
+    <li><a href="https://employercalculator.co.uk" target="_blank" rel="noopener" style="color:var(--accent);">EmployerCalculator.co.uk</a> — total employer cost</li>
+    <li><a href="https://ukcapitalgainstaxcalculator.co.uk" target="_blank" rel="noopener" style="color:var(--accent);">UKCapitalGainsTaxCalculator.co.uk</a> — CGT estimates</li>
+  </ul>
+
+  <h2>Disclaimer</h2>
+  <p>All results are estimates based on published HMRC rates and thresholds. This tool is not financial or tax advice. Always consult a qualified financial adviser or HMRC for personalised guidance.</p>
+
+  <h2>Editorial ownership and contact</h2>
+  <p>Editorial owner: <strong>James Whitfield</strong>, a UK personal finance writer with a background in pension taxation, relief at source and salary sacrifice. James writes about pension tax relief, Annual Allowance and contribution methods against HMRC guidance.</p>
+  <p>For corrections or data-quality feedback: <a href="mailto:editorial@pensiontaxreliefcalculator.co.uk" style="color:var(--accent);font-weight:600;">editorial@pensiontaxreliefcalculator.co.uk</a>.</p>
+  <p style="font-size:0.82rem;color:var(--text-tertiary);">Last reviewed: May 2026.</p>
+</section>
+{% endblock %}

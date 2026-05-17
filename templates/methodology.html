@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Methodology</div>
+  <h1>How we calculate pension tax relief</h1>
+  <p>This page explains the rules and assumptions behind PensionTaxReliefCalculator.co.uk for the {{ tax_year }} tax year.</p>
+
+  <h2>Relief at source</h2>
+  <p>Relief at source is used by most personal pensions and SIPPs. The member pays the net contribution (80% of gross) and the provider automatically reclaims basic rate relief (20%) from HMRC, grossing up the contribution. A basic-rate taxpayer therefore pays £800 to achieve a £1,000 gross contribution.</p>
+  <p>Higher-rate taxpayers (40%) and additional-rate taxpayers (45%) can claim extra relief through Self Assessment. The extra relief is the difference between the marginal rate and the basic 20% rate, applied to the gross contribution. For a 40% taxpayer, this is an additional 20%; for a 45% taxpayer, an additional 25%.</p>
+
+  <h2>Net pay arrangement</h2>
+  <p>Net pay arrangements are common in occupational pension schemes. The employer deducts the pension contribution from the employee's gross salary before calculating income tax. This means the employee automatically receives relief at their full marginal income tax rate — no Self Assessment claim is required. Basic-rate taxpayers therefore pay slightly less under net pay than relief at source (they get 20% automatically rather than needing to claim back nothing extra).</p>
+
+  <h2>Salary sacrifice</h2>
+  <p>Salary sacrifice is a contractual reduction in gross salary in exchange for employer pension contributions. Because gross salary is reduced, the employee pays less income tax and less National Insurance. The calculator models employee NI savings based on the 2026/27 rates: 8% on earnings between £12,570 and £50,270, and 2% on earnings above £50,270. The employer also saves employer NI at 15% of the sacrificed amount — this saving is shown separately in the breakdown.</p>
+
+  <h2>Scottish income tax rates</h2>
+  <p>Scottish taxpayers pay different income tax rates. For {{ tax_year }}, the thresholds and rates used are:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li>Starter rate: 19% on income up to £16,537</li>
+    <li>Basic rate: 20% on income £16,538–£29,526</li>
+    <li>Intermediate rate: 21% on income £29,527–£43,662</li>
+    <li>Higher rate: 42% on income £43,663–£75,000</li>
+    <li>Advanced rate: 45% on income £75,001–£125,140</li>
+    <li>Top rate: 48% on income above £125,140</li>
+  </ul>
+  <p>For relief at source, Scottish pension providers still claim 20% basic rate relief from HMRC (not the Scottish rate). Scottish taxpayers at 21%, 42%, 45% or 48% must claim additional relief through Self Assessment.</p>
+
+  <h2>Annual allowance</h2>
+  <p>For {{ tax_year }}, the annual allowance is £60,000. This is the maximum amount that can be contributed to all pension schemes combined (employer plus employee) while still qualifying for tax relief. Unused allowance from the previous three tax years can be carried forward.</p>
+
+  <h2>Money Purchase Annual Allowance (MPAA)</h2>
+  <p>Once you have flexibly accessed a defined contribution pension (for example taken a flexi-access drawdown), the MPAA of £10,000 applies to further money purchase contributions. This calculator does not model the MPAA — it assumes the full £60,000 annual allowance applies.</p>
+
+  <h2>Personal Allowance taper</h2>
+  <p>For England, Wales and NI taxpayers, the Personal Allowance of £12,570 tapers at a rate of £1 for every £2 of income above £100,000. This creates a 60% effective marginal tax rate between £100,000 and £125,140. The calculator factors in this taper when determining marginal rate, including for salary sacrifice where reducing income below £100,000 can restore the full Personal Allowance.</p>
+
+  <h2>What this calculator does not cover</h2>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li>Carry forward of unused annual allowance</li>
+    <li>Tapered annual allowance (for high earners above £260,000 adjusted income)</li>
+    <li>Defined benefit pension schemes and their annual allowance valuation</li>
+    <li>Lifetime allowance (abolished from April 2024)</li>
+    <li>Non-UK residents or cross-border pension arrangements</li>
+    <li>Relief for non-employment income contributions above 100% of earnings</li>
+  </ul>
+
+  <h2>Data sources</h2>
+  <p>Tax rates and thresholds are sourced from:</p>
+  <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+    <li><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension tax relief</a></li>
+    <li><a href="https://www.gov.uk/pension-annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Annual allowance</a></li>
+    <li><a href="https://www.gov.uk/scottish-rate-income-tax" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Scottish income tax</a></li>
+  </ul>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--accent-light);border-radius:var(--radius);border:1px solid rgba(27,107,74,0.2);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">
+      <strong style="color:var(--text-primary);">Disclaimer:</strong> All results are estimates only and are not financial or tax advice. Pension tax rules are complex and individual circumstances vary. Consult a qualified financial adviser or HMRC for personalised guidance.
+    </p>
+  </div>
+</section>
+{% endblock %}
