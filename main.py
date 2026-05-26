@@ -153,7 +153,7 @@ def sitemap():
         (f"{SITE_URL}/annual-allowance-checker","0.7","monthly"),
         (f"{SITE_URL}/blog","0.6","weekly"),
     ] + [(f"{SITE_URL}/blog/{p['slug']}","0.6","monthly") for p in BLOG_POSTS] \
-      + [(f"{SITE_URL}/pension-relief/{inc}","0.5","monthly") for inc in [20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 75000, 100000, 120000, 150000]]
+      + [(f"{SITE_URL}/pension-relief/{inc}","0.5","monthly") for inc in PENSION_INCOME_AMOUNTS]
     r = make_response(render_template("sitemap.xml", url_entries=entries, now=now))
     r.content_type = "application/xml"
     return r
@@ -370,7 +370,7 @@ def annual_allowance_checker():
         canonical_url=SITE_URL + "/annual-allowance-checker",
     ))
 
-PENSION_INCOME_AMOUNTS = [20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 75000, 100000, 120000, 150000]
+PENSION_INCOME_AMOUNTS = [20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 75000, 80000, 100000, 120000, 125000, 150000]
 
 @app.route("/pension-relief/<int:income>")
 def pension_relief_page(income: int):
@@ -395,6 +395,241 @@ def pension_relief_page(income: int):
 
 
 BLOG_POSTS = [
+    {
+        "slug": "pension-annual-allowance-2026",
+        "title": "Pension Annual Allowance 2026/27 — £60,000 Limit Explained",
+        "description": "How the £60,000 pension annual allowance works, what counts towards it, the money purchase annual allowance, tapering for high earners and how employer contributions interact.",
+        "date": "26 May 2026",
+        "date_iso": "2026-05-26",
+        "reading_time": "7 min read",
+        "sections": [
+            {
+                "heading": "What the Annual Allowance Is",
+                "paragraphs": [
+                    "The pension annual allowance for 2026/27 is £60,000. This is the maximum total pension input — across all your registered pension schemes combined — in a single tax year for which you can receive tax relief. The allowance was increased from £40,000 to £60,000 in April 2023 and has remained at £60,000 since. It covers employee contributions, employer contributions and DB accrual all added together.",
+                    "There is a secondary constraint: you cannot contribute more than 100% of your relevant UK earnings (salary, trading income) in the year, even if your unused allowance would otherwise permit it. If you earn £35,000, the effective cap is £35,000 — not £60,000. This earnings cap applies to personal contributions only; employer contributions are not limited by the earnings cap, though they still count towards the £60,000 overall limit. If you exceed the annual allowance, the excess is added to your taxable income for the year, generating an annual allowance charge at your marginal rate. You can ask your scheme to pay the charge directly from your pension pot if the excess exceeds £2,000 — this is called 'scheme pays'.",
+                ],
+            },
+            {
+                "heading": "Money Purchase Annual Allowance (MPAA)",
+                "paragraphs": [
+                    "Once you flexibly access a defined contribution (money purchase) pension, the MPAA replaces the standard £60,000 allowance for future DC contributions. The MPAA is £10,000 — dramatically lower. Flexible access means taking income via flexi-access drawdown, receiving an uncrystallised funds pension lump sum (UFPLS), or purchasing a flexible annuity that includes an income guarantee with a cashback option.",
+                    "Taking a tax-free lump sum (pension commencement lump sum) without entering drawdown does not trigger the MPAA. Nor does taking a small pot under £10,000, or commencing a lifetime annuity with no income flexibility. Once triggered, the MPAA cannot be reversed — it applies for the rest of your life. This makes the timing of accessing a pension pot critically important for anyone still working and wishing to continue making large pension contributions. The MPAA does not affect defined benefit accrual — only DC contributions.",
+                ],
+            },
+            {
+                "heading": "Tapering for High Earners",
+                "paragraphs": [
+                    "For high earners, the standard £60,000 allowance is tapered downwards. The taper applies when two conditions are both met: threshold income exceeds £200,000 AND adjusted income exceeds £260,000. Threshold income is broadly your taxable income excluding employer pension contributions. Adjusted income is threshold income plus employer pension contributions.",
+                    "Where both conditions are met, the allowance reduces by £1 for every £2 of adjusted income above £260,000. The minimum tapered allowance is £10,000, reached at adjusted income of £360,000. An individual with adjusted income of £280,000 faces a reduced allowance of £60,000 − (£280,000 − £260,000) / 2 = £60,000 − £10,000 = £50,000. Carry forward from earlier years can be used against the tapered allowance, but it is particularly complex to calculate — professional advice is worthwhile for anyone near the taper thresholds.",
+                ],
+            },
+            {
+                "heading": "How Employer Contributions Interact",
+                "paragraphs": [
+                    "Employer pension contributions count fully towards the annual allowance. If your employer contributes £15,000 and you contribute £10,000 in the same year, your total pension input is £25,000 — well within the £60,000 limit. But if your employer makes a very large contribution — for example a one-off employer contribution to a SIPP of £50,000 — and you also contribute £15,000 personally, the total is £65,000, exceeding the allowance by £5,000 and triggering a charge.",
+                    "For salary sacrifice arrangements, the sacrifice converts employee contributions into employer contributions — the employer makes the pension payment instead of the employee. This has no adverse effect on the annual allowance calculation: salary sacrifice employer contributions count the same as any other employer contribution. What salary sacrifice does do is reduce the employee's pensionable pay, which can affect certain defined benefit scheme calculations — an important point to check with your scheme if you participate in a DB arrangement.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "What is the pension annual allowance for 2026/27?", "a": "£60,000, or 100% of your relevant UK earnings if lower. Exceeding this triggers an annual allowance charge at your marginal tax rate."},
+            {"q": "What triggers the money purchase annual allowance?", "a": "Flexibly accessing a defined contribution pension — by entering flexi-access drawdown, taking a UFPLS, or certain flexible annuity purchases. The MPAA is £10,000 and cannot be reversed."},
+            {"q": "Does the annual allowance include my employer's contributions?", "a": "Yes. Total pension inputs include employee contributions, employer contributions and defined benefit accrual. All count against the £60,000 limit."},
+        ],
+        "sources": [
+            {"label": "HMRC: Pension annual allowance", "url": "https://www.gov.uk/pension-annual-allowance"},
+            {"label": "HMRC: Money Purchase Annual Allowance", "url": "https://www.gov.uk/money-purchase-annual-allowance"},
+        ],
+    },
+    {
+        "slug": "carry-forward-pension-allowance",
+        "title": "Carry Forward Pension Allowance — Three-Year Rule",
+        "description": "Carry forward lets you use unused annual allowance from the previous three tax years to make larger pension contributions. Most valuable in bonus years, business sale years and for self-employed income spikes.",
+        "date": "26 May 2026",
+        "date_iso": "2026-05-26",
+        "reading_time": "6 min read",
+        "sections": [
+            {
+                "heading": "How Carry Forward Works",
+                "paragraphs": [
+                    "Carry forward allows you to use unused pension annual allowance from the three previous tax years when your contributions in the current year exceed the standard £60,000. To use carry forward: first, use the current year's full £60,000 allowance; then apply unused allowance from the earliest of the three prior years (2023/24), then 2024/25, then 2025/26. The unused allowance from each year is that year's annual allowance minus the total pension inputs in that year.",
+                    "There are two essential conditions. First, you must have been a member of a registered UK pension scheme in each year whose allowance you wish to use — not necessarily making contributions, just enrolled. A basic workplace pension auto-enrolment counts. Second, your total contributions in the carry-forward year are still limited to 100% of your relevant UK earnings in that year. So if you earn £80,000, you cannot contribute more than £80,000 even if you have £180,000 of carry-forward available, unless the excess comes from employer contributions (which are not earnings-capped).",
+                ],
+            },
+            {
+                "heading": "Calculating Your Available Carry Forward",
+                "paragraphs": [
+                    "The annual allowance was £40,000 for 2022/23 and earlier years, then £60,000 from 2023/24 onwards. For carry forward in 2026/27, the three relevant prior years are 2023/24 (£60,000), 2024/25 (£60,000) and 2025/26 (£60,000). Available carry forward from each year = allowance for that year minus total pension inputs in that year (minimum zero).",
+                    "Worked example: in 2023/24 you contributed £8,000 total (you and your employer); in 2024/25 £10,000; in 2025/26 £12,000. Available carry forward = (£60,000 − £8,000) + (£60,000 − £10,000) + (£60,000 − £12,000) = £52,000 + £50,000 + £48,000 = £150,000. Adding the current year's £60,000, you can contribute up to £210,000 in 2026/27 — subject to earning at least £60,000 in 2026/27 for the personal element, with employer contributions making up any difference.",
+                ],
+            },
+            {
+                "heading": "When Carry Forward Is Most Valuable",
+                "paragraphs": [
+                    "The highest-value applications are where a large income event occurs in a single year. An employee receiving a £100,000 bonus, a business owner taking significant dividends or salary in a profitable year, or a professional selling a business — all might have accumulated three years of minimal pension inputs combined with substantial carry-forward allowance. The tax saving from contributing a large sum in that year (at 40% or 45% income tax) is very substantial.",
+                    "For self-employed or company-director individuals, carry forward enables front-loading pension contributions in good income years without breaching the annual allowance. A sole director who has had three quiet years with minimal company pension contributions might have £150,000+ of carry-forward available, all of which can be deployed in a single profitable year as employer pension contributions — reducing corporation tax and personal income simultaneously.",
+                ],
+            },
+            {
+                "heading": "The Constraints",
+                "paragraphs": [
+                    "Carry forward does not help if your earnings in the current year are low. If you have zero or minimal relevant UK earnings, the 100% earnings cap prevents personal contributions above that level — carry-forward allowance cannot override this. An individual on career break earning nothing cannot make a personal pension contribution above £3,600 (the minimum HMRC permits without earnings) even with substantial carry-forward available.",
+                    "Carry forward is also unavailable for the money purchase annual allowance (MPAA). If you have triggered the MPAA by flexibly accessing a pension, your DC contribution limit is fixed at £10,000 per year with no carry-forward ability. If there is any possibility you will want to make large DC contributions in future, think carefully before taking flexible income from a pension pot.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "How many years of pension allowance can I carry forward?", "a": "Three years. You can carry forward unused allowance from the three previous tax years only. Earlier years are lost permanently."},
+            {"q": "Do I need to have contributed to a pension to carry forward?", "a": "No, but you must have been a member of a registered pension scheme in each year whose unused allowance you wish to use. Auto-enrolment membership counts even with zero contributions."},
+            {"q": "Does carry forward work with the MPAA?", "a": "No. If you have triggered the money purchase annual allowance, carry forward cannot increase your DC contribution limit above £10,000."},
+        ],
+        "sources": [
+            {"label": "HMRC: Carry forward of unused annual allowance", "url": "https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm055400"},
+            {"label": "HMRC: Annual allowance for pension savings", "url": "https://www.gov.uk/pension-annual-allowance"},
+        ],
+    },
+    {
+        "slug": "pension-relief-above-100k",
+        "title": "Pension Tax Relief Over £100,000 — Restore Your Personal Allowance",
+        "description": "Income between £100,000 and £125,140 attracts an effective 60% marginal tax rate. Pension contributions reduce adjusted net income, restoring the personal allowance and generating exceptional tax savings.",
+        "date": "26 May 2026",
+        "date_iso": "2026-05-26",
+        "reading_time": "7 min read",
+        "sections": [
+            {
+                "heading": "The £100k Trap",
+                "paragraphs": [
+                    "The personal allowance (£12,570 for 2026/27) is gradually withdrawn for individuals whose adjusted net income (ANI) exceeds £100,000. The allowance reduces by £1 for every £2 of ANI above £100,000. It reaches zero at £125,140. While the allowance is being withdrawn, every £2 of additional income triggers £1 of lost personal allowance, meaning that £2 of income is taxed twice — once normally and once because the allowance reduction exposes previously exempt income to tax at 40%. The effective marginal tax rate in the £100,000–£125,140 band is therefore 60%, not 40%.",
+                    "This is sometimes called the '60% trap' or the '£100k tax trap'. An employee earning exactly £100,000 who receives a £1,000 pay rise pays 40% income tax on the £1,000 (£400) plus an effective additional 20% on the lost allowance (£500 of previously allowance-sheltered income becomes taxable at 40% = £200). Total extra tax: £600 on a £1,000 income increase — a 60% effective rate.",
+                ],
+            },
+            {
+                "heading": "How Pension Contributions Reduce Adjusted Net Income",
+                "paragraphs": [
+                    "Pension contributions — whether under relief at source, net pay arrangement, or salary sacrifice — reduce adjusted net income. Under relief at source, the gross contribution reduces ANI directly. Under salary sacrifice, the sacrificed salary never enters ANI in the first place. Either way, a £10,000 pension contribution for someone with £110,000 ANI reduces ANI to £100,000, restoring the full personal allowance.",
+                    "The ANI reduction is the key mechanism. HMRC uses ANI to calculate the personal allowance, the High Income Child Benefit Charge, and 30-hour free childcare eligibility. Pension contributions are one of the few reliefs that reduce ANI — gift aid donations are another. Other expenses and deductions do not reduce ANI in the same way.",
+                ],
+            },
+            {
+                "heading": "Worked Example: £115,000 Income, £15,000 Pension Contribution",
+                "paragraphs": [
+                    "Consider someone with £115,000 salary and no pension contributions. Their ANI is £115,000. Personal allowance tapered to: £12,570 − (£115,000 − £100,000) / 2 = £12,570 − £7,500 = £5,070. Taxable income: £115,000 − £5,070 = £109,930. Income tax at 40% on the portion above the basic-rate band (£50,270): 40% × (£109,930 − £37,700) = 40% × £72,230 = £28,892 (plus basic-rate tax on the £37,700).",
+                    "Now add a £15,000 gross pension contribution (relief at source). ANI drops to £100,000. Personal allowance restored to full £12,570 — saving 40% × (£12,570 − £5,070) = 40% × £7,500 = £3,000. Additionally, the £15,000 that falls within the 40% band saves 40% × £15,000 = £6,000 in income tax directly. Part of this falls within the PA-withdrawal zone (the 60% effective rate zone), so the actual saving is greater. Total income tax saving from the £15,000 contribution: approximately £9,000. Net cost of a £15,000 pension contribution: approximately £6,000. That is a 60% effective subsidy from the tax system.",
+                ],
+            },
+            {
+                "heading": "The Annual Allowance Cap",
+                "paragraphs": [
+                    "You cannot make unlimited pension contributions to escape the £100k trap. The pension annual allowance of £60,000 (or 100% of earnings if lower) applies. For someone with persistent income between £100,000 and £125,140, the maximum annual contribution in the current year is £60,000. Carry-forward allowance from prior years can increase this if unused allowance is available — potentially allowing a one-off very large contribution in a year when income is particularly high.",
+                    "For regular earners consistently in the £100,000–£125,140 range, the strategy is straightforward: contribute enough to pension each year to bring ANI to exactly £100,000, restoring the full personal allowance. This is often a contribution of between £5,000 and £25,140 depending on exact income. Any contribution above that amount still saves at the standard 40% rate on the excess, which is still highly efficient.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "What is the effective tax rate on income between £100,000 and £125,140?", "a": "60%. Each extra £2 of income triggers 40p income tax on that £2, plus 40p tax on the £1 of personal allowance lost — a combined 60p on every £2, or 60% effective marginal rate."},
+            {"q": "How much pension contribution do I need to restore my personal allowance?", "a": "Enough to bring your adjusted net income (ANI) to £100,000. If your income is £110,000, you need a £10,000 pension contribution. If it is £115,000, you need £15,000. The contribution can be salary sacrifice, relief at source or net pay."},
+            {"q": "Does the annual allowance limit how much I can contribute?", "a": "Yes. The maximum is £60,000 (or 100% of earnings) per year, plus any carry-forward from the previous three years. You cannot make unlimited contributions even to avoid the personal allowance taper."},
+        ],
+        "sources": [
+            {"label": "HMRC: Adjusted net income", "url": "https://www.gov.uk/guidance/adjusted-net-income"},
+            {"label": "HMRC: Personal Allowance tapering", "url": "https://www.gov.uk/income-tax-rates/income-over-100000"},
+        ],
+    },
+    {
+        "slug": "sipp-tax-relief-explained",
+        "title": "SIPP Tax Relief Explained — Self-Invested Personal Pensions",
+        "description": "How relief at source works in a SIPP, how higher-rate taxpayers claim additional relief via Self Assessment, key differences from workplace pensions, and how drawdown is taxed.",
+        "date": "26 May 2026",
+        "date_iso": "2026-05-26",
+        "reading_time": "7 min read",
+        "sections": [
+            {
+                "heading": "How Relief at Source Works in a SIPP",
+                "paragraphs": [
+                    "All SIPPs operate under the relief at source (RaS) method. When you contribute to your SIPP, you pay 80% of the gross amount — the provider automatically claims 20% basic-rate tax relief from HMRC and adds it to your pension pot. So if you pay £800, your SIPP receives £1,000. The provider handles this claim on your behalf; you do not need to do anything to receive the 20% basic-rate top-up.",
+                    "This automatic 20% top-up applies to all SIPP contributions, regardless of whether you actually pay income tax. A non-taxpayer or low earner below the personal allowance still receives the 20% top-up on contributions up to £3,600 gross per year (£2,880 net). For contributions above that level, relevant UK earnings are required. HMRC has the right to reclaim relief if your earnings are insufficient, but in practice this is rarely pursued for modest contributions.",
+                ],
+            },
+            {
+                "heading": "SIPP vs Workplace Pension",
+                "paragraphs": [
+                    "A SIPP is a personal pension — you set it up directly with a provider, you choose the investments (from the provider's available range), and you pay all charges. The investment universe in a SIPP is typically much broader than a workplace scheme: you can hold listed shares, ETFs, bonds, commercial property (in some SIPPs) and a wide range of funds. Charges vary significantly between providers, from flat fees (better for large pots) to percentage-based fees (cheaper initially but expensive as the pot grows).",
+                    "Workplace pensions are operated by your employer. Under auto-enrolment, employers must contribute at least 3% of qualifying earnings (employees at least 5%) — a minimum 8% total. Many employers offer additional matching. Workplace pensions may use net pay arrangement or salary sacrifice rather than relief at source, which affects the administration. The investment options in workplace schemes are typically more limited than in a SIPP, but the employer contribution is a significant and often irreplaceable benefit that a self-directed SIPP cannot replicate.",
+                ],
+            },
+            {
+                "heading": "Higher-Rate Additional Relief Claim",
+                "paragraphs": [
+                    "If you pay income tax at 40% (higher rate) or 45% (additional rate), you are entitled to relief above the automatic 20% that the provider claims. To get this additional relief, you must file a Self Assessment tax return and enter your gross SIPP contributions for the year. HMRC then extends the basic-rate band by the gross contribution amount — effectively taxing less of your income at 40% or 45% — and refunds or reduces your tax liability accordingly.",
+                    "For a higher-rate taxpayer who contributes £10,000 net to a SIPP: the provider claims £2,500 basic-rate relief, giving £12,500 gross in the pension. The higher-rate taxpayer then claims an additional 20% on £12,500 via Self Assessment = £2,500. Total relief: £5,000 (40% of £12,500). Net cost: £10,000 − £2,500 = £7,500. For an additional-rate (45%) taxpayer: additional claim is 25% on £12,500 = £3,125. Total relief: £5,625 (45%). Net cost: £10,000 − £3,125 = £6,875.",
+                ],
+            },
+            {
+                "heading": "Drawdown from a SIPP",
+                "paragraphs": [
+                    "When you access your SIPP in retirement, you are entitled to take 25% of the fund as a tax-free pension commencement lump sum (PCLS), subject to the lump sum allowance (£268,275 since the lifetime allowance was abolished in April 2024). The remaining 75% is drawn as taxable income — charged at your marginal rate when withdrawn. You can choose how much to draw each year, giving flexibility to manage your tax position in retirement.",
+                    "Most people draw from their SIPP gradually in drawdown, taking enough to use up the personal allowance each year tax-free and drawing modest additional amounts at basic rate. Timing drawdown thoughtfully — avoiding taking large sums in years when other income is high — can reduce the overall tax paid in retirement substantially. For those with defined benefit pensions and state pension that already fill or approach the personal allowance, SIPP drawdown in excess of this will be fully taxable at the relevant rate.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "How much do I actually pay into my SIPP per pound of contribution?", "a": "You pay 80p and your SIPP receives £1 (the provider claims 20% from HMRC). A higher-rate taxpayer who then claims additional relief via Self Assessment effectively pays 60p per £1 in the pension."},
+            {"q": "Can I have both a SIPP and a workplace pension?", "a": "Yes. Contributions to both count towards your combined annual allowance of £60,000. Many people contribute to both — using the workplace pension for employer matching and the SIPP for additional contributions with wider investment choice."},
+            {"q": "Is there a minimum I can contribute to a SIPP?", "a": "Most providers have a minimum, often £50–£100 per month or a lump sum minimum. There is no HMRC minimum — though you need relevant UK earnings to contribute more than £3,600 gross per year."},
+        ],
+        "sources": [
+            {"label": "HMRC: Tax on your private pension contributions", "url": "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief"},
+            {"label": "HMRC: Self-invested personal pensions", "url": "https://www.gov.uk/self-invested-personal-pensions"},
+        ],
+    },
+    {
+        "slug": "salary-sacrifice-vs-relief-at-source",
+        "title": "Salary Sacrifice vs Relief at Source — Which Saves More?",
+        "description": "Salary sacrifice saves income tax and National Insurance. Relief at source saves income tax only. The difference is the NI saving — plus some important edge cases where the comparison changes.",
+        "date": "26 May 2026",
+        "date_iso": "2026-05-26",
+        "reading_time": "7 min read",
+        "sections": [
+            {
+                "heading": "The Key Difference",
+                "paragraphs": [
+                    "The fundamental distinction between salary sacrifice and relief at source (or net pay arrangement) is National Insurance. Under salary sacrifice, your gross salary is formally reduced — income tax and employee NI are both calculated on the lower figure. You save tax and NI on every pound sacrificed. Under relief at source or net pay arrangement, your gross salary is unchanged — you pay NI on the full salary and only receive tax relief on the pension contribution. No NI saving arises.",
+                    "For most employed people who have access to salary sacrifice, this makes salary sacrifice strictly more efficient than RaS or NPA for pension contributions. The NI saving is not trivial: at the main employee rate of 8%, a £5,000 salary sacrifice saves £400 in employee NI in addition to the income tax saving. Over a working lifetime at that contribution level, this amounts to substantial additional pension contributions at no extra cost to the employee.",
+                ],
+            },
+            {
+                "heading": "The NI Saving in Salary Sacrifice",
+                "paragraphs": [
+                    "Employee NI for 2026/27 is 8% on earnings between the primary threshold (£12,570) and the upper earnings limit (£50,270), and 2% on earnings above the upper limit. A salary sacrifice of £5,000 for someone earning £35,000 saves 8% × £5,000 = £400 in employee NI and 20% × £5,000 = £1,000 in income tax — a total personal saving of £1,400, compared to a £1,000 saving under a RaS or NPA pension contribution.",
+                    "Employers save 15% secondary NI on the sacrificed amount. On a £5,000 sacrifice, the employer saves £750. Many employers share this saving back into the employee's pension — known as NI matching or passthrough. Where available, this can add a further £375–£750 to the pension contribution at no cost to the employee, making salary sacrifice with employer NI passthrough markedly more valuable than any other contribution method.",
+                ],
+            },
+            {
+                "heading": "When Relief at Source May Be Preferable",
+                "paragraphs": [
+                    "There are specific situations where RaS or NPA is more appropriate than salary sacrifice despite the NI cost. Student loan repayments under Plans 1, 2, 4 and 5 are calculated on gross employment income above the relevant threshold. Under salary sacrifice, the sacrificed salary is removed from the gross pay figure, reducing student loan repayments. This may or may not be desirable depending on whether the borrower is on track to repay the full loan before the write-off date. For those who will repay in full, reducing repayments extends the repayment period and increases total interest — a worse outcome.",
+                    "Benefits in kind and certain employment rights are sometimes calculated on contractual salary. Income protection insurance, death-in-service cover, enhanced redundancy payments and statutory maternity pay may all be based on contractual salary rather than gross pay. Salary sacrifice reduces contractual salary, potentially reducing these benefits. If your employer calculates these benefits on the post-sacrifice figure, you need to weigh the NI saving against the reduction in insurance cover or SMP. Check your employment contract carefully.",
+                ],
+            },
+            {
+                "heading": "Practical Guidance on Which to Choose",
+                "paragraphs": [
+                    "For most employees with access to salary sacrifice: choose salary sacrifice. The NI saving alone justifies it for the vast majority of workers, and the employer NI passthrough (where available) adds further value. The exceptions — student loan edge cases, SMP calculations near threshold — affect a minority of workers and should be modelled individually.",
+                    "For self-employed and company directors who cannot use salary sacrifice: use a SIPP under relief at source. Ensure you file Self Assessment to claim higher-rate additional relief if your income is above £50,270. Company directors can also use employer pension contributions paid directly from the company, which provide the equivalent of salary sacrifice efficiency — the company pays into the pension instead of paying a taxable salary or dividend.",
+                ],
+            },
+        ],
+        "faqs": [
+            {"q": "Why is salary sacrifice better than relief at source for most employees?", "a": "Because salary sacrifice also saves National Insurance (8% at main rate), in addition to the income tax saving. Under relief at source, no NI saving applies — only the income tax relief."},
+            {"q": "Does salary sacrifice affect student loan repayments?", "a": "Yes, it reduces them — because repayments are calculated on gross pay, and salary sacrifice reduces gross pay. Whether this is beneficial depends on your repayment plan and whether you expect to repay the full loan before write-off."},
+            {"q": "Can I use both salary sacrifice and a SIPP?", "a": "Yes. Contributions to both count towards the annual allowance (£60,000 combined). Many people use salary sacrifice for their workplace pension and a SIPP for additional contributions and wider investment choice."},
+        ],
+        "sources": [
+            {"label": "HMRC: Salary sacrifice for employees", "url": "https://www.gov.uk/salary-sacrifice-and-the-effects-on-pensions"},
+            {"label": "HMRC: Tax on private pension contributions", "url": "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief"},
+        ],
+    },
     {
         "slug": "pension-tax-relief-scotland-2026",
         "title": "Pension Tax Relief in Scotland 2026/27: Scottish Income Tax Rates and Relief Explained",
@@ -450,7 +685,7 @@ BLOG_POSTS = [
         ],
     },
     {
-        "slug": "pension-annual-allowance-2026",
+        "slug": "pension-annual-allowance-charge-explained",
         "title": "Pension Annual Allowance 2026/27: £60,000 Limit, What Counts and How to Avoid a Charge",
         "description": "The annual allowance for 2026/27 is £60,000, or 100% of your earnings — whichever is lower. Exceeding it triggers an annual allowance charge. Here is what counts towards it and how to plan around it.",
         "date": "22 May 2026",
