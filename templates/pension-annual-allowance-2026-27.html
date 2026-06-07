@@ -1,0 +1,107 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Pension Annual Allowance 2026/27, £60,000 Limit Explained","description":"The pension annual allowance for 2026/27 is £60,000. What counts, how tapering works above £260k adjusted income, and what triggers the MPAA.","url":"{{ site_url }}/pension-annual-allowance-2026-27","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Annual Allowance 2026/27","item":"{{ site_url }}/pension-annual-allowance-2026-27"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Pension Annual Allowance 2026/27, £60,000 Limit Explained</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>The pension annual allowance for 2026/27 is <strong>£60,000</strong>. That is the maximum total pension input across all your registered schemes in the tax year. This guide covers what counts, how the taper works for high earners, the £10,000 MPAA, and when carry forward lets you go above £60,000.</p>
+
+    <h2>The standard annual allowance: £60,000</h2>
+    <p>The annual allowance (AA) covers <em>all</em> pension inputs: your own contributions, employer contributions (including salary sacrifice), and for defined benefit schemes, the imputed accrual value (16 × the increase in your annual pension entitlement). Exceed £60,000 and the excess is taxed at your marginal rate. That is the annual allowance charge.</p>
+    <p>There is a second constraint. Your personal contributions are capped at <strong>100% of your relevant UK earnings</strong>, broadly employment income and trading profits. Earn £35,000 and you can only put in £35,000 of personal contributions with tax relief, not £60,000. Employer contributions are not subject to this cap, but they still count towards the £60,000 total.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Quick reference, annual allowance 2026/27:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Standard annual allowance: <strong>£60,000</strong></li>
+        <li>Money Purchase Annual Allowance (if triggered): <strong>£10,000</strong></li>
+        <li>Tapered minimum allowance (highest earners): <strong>£10,000</strong></li>
+        <li>Taper kicks in when adjusted income exceeds: <strong>£260,000</strong></li>
+        <li>Maximum carry forward from prior 3 years: <strong>up to £180,000</strong></li>
+      </ul>
+    </div>
+
+    <h2>What counts towards the annual allowance</h2>
+    <p>For <strong>defined contribution (DC) schemes</strong>, all contributions in the pension input period count: employee contributions, employer contributions and salary sacrifice amounts. A salary sacrifice of £8,000 counts as an employer contribution of £8,000 and goes against the AA.</p>
+    <p>For <strong>defined benefit (DB) schemes</strong>, the pension input is: 16 × (closing accrued pension − opening accrued pension adjusted for inflation). A public sector worker whose annual pension entitlement rises by £2,000 has a pension input of 16 × £2,000 = £32,000. That can interact significantly with any DC contributions in the same year.</p>
+    <p>If you have both a DB workplace scheme and a private SIPP, both count against the same £60,000 limit. Get the DB pension input amount from your administrator before making large SIPP contributions.</p>
+
+    <h2>Money Purchase Annual Allowance (MPAA): £10,000</h2>
+    <p>Once you flexibly access a defined contribution pension, the MPAA of <strong>£10,000</strong> replaces the standard £60,000 AA for future DC contributions. Flexible access means:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Taking income from flexi-access drawdown</li>
+      <li>Receiving an uncrystallised funds pension lump sum (UFPLS)</li>
+      <li>Purchasing a flexible annuity with an income guarantee and cashback</li>
+    </ul>
+    <p>What does <strong>not</strong> trigger the MPAA: taking only a tax-free cash lump sum (without entering drawdown), taking a small pot under £10,000, commencing a DB pension, or starting a guaranteed lifetime annuity with no flexibility. The MPAA cannot be reversed. Carry forward cannot increase it. Once triggered, £10,000 per year is your DC limit permanently.</p>
+
+    <h2>Tapered annual allowance for high earners</h2>
+    <p>The taper applies when both of these conditions are met in the same year:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.5rem;">
+      <li><strong>Threshold income &gt; £200,000</strong> (income excluding employer pension contributions)</li>
+      <li><strong>Adjusted income &gt; £260,000</strong> (threshold income plus employer pension contributions)</li>
+    </ul>
+    <p>When both conditions are met, the AA falls by £1 for every £2 of adjusted income above £260,000. The minimum is £10,000. You hit that at £360,000 adjusted income.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Taper example:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Adjusted income: <strong>£300,000</strong></li>
+        <li>Taper: (£300,000 − £260,000) / 2 = <strong>£20,000</strong></li>
+        <li>Reduced AA: £60,000 − £20,000 = <strong>£40,000</strong></li>
+      </ul>
+    </div>
+
+    <h2>Carry forward: contributing more than £60,000</h2>
+    <p>Carry forward lets you use unused annual allowance from the previous three tax years. For 2026/27 that means 2023/24, 2024/25 and 2025/26, each with a £60,000 AA. You use the earliest year's unused allowance first. You must have been a member of a registered pension scheme in each year you carry forward from.</p>
+    <p>The theoretical maximum is 3 × £60,000 = £180,000. Add the current year's £60,000 and up to £240,000 in total contributions is possible, subject to the 100% earnings cap on personal contributions.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Check your annual allowance</strong>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Check whether your 2026/27 contributions are on track to breach the £60,000 limit.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+      <a href="/annual-allowance-checker" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Annual Allowance Checker</a>
+      <a href="/pension-carry-forward-calculator" style="display:inline-block;background:var(--surface);color:var(--accent);border:1.5px solid var(--accent);font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Carry Forward Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Do employer contributions count towards my £60,000 limit?</summary>
+      <div class="faq-answer"><p>Yes. All pension inputs count: your contributions, your employer's contributions (including salary sacrifice), and any third-party contributions. For DB schemes, the accrual value also counts.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What is the annual allowance charge?</summary>
+      <div class="faq-answer"><p>If your total pension inputs exceed your annual allowance, the excess is added to your taxable income and charged at your marginal rate. On a £10,000 excess for a 40% taxpayer: £4,000 charge. You can ask your pension scheme to pay the charge from your pension pot ('scheme pays') if the excess is over £2,000.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>I flexibly accessed a pension 3 years ago. Am I affected?</summary>
+      <div class="faq-answer"><p>If you triggered the MPAA by taking flexible income (drawdown or UFPLS), your DC contribution limit is £10,000 per year. Check whether what you did qualifies, taking only a tax-free lump sum without entering drawdown does not trigger the MPAA.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I use carry forward if I have the MPAA?</summary>
+      <div class="faq-answer"><p>No. Carry forward cannot increase the MPAA above £10,000. Once triggered, the £10,000 limit is fixed permanently for DC contributions.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Related:</strong>
+      <a href="/pension-carry-forward" style="color:var(--accent);">Pension carry forward guide</a> ·
+      <a href="/tapered-annual-allowance" style="color:var(--accent);">Tapered annual allowance</a> ·
+      <a href="/money-purchase-annual-allowance" style="color:var(--accent);">Money purchase annual allowance</a>
+    </p>
+  </div>
+
+  <div style="margin-top:0.75rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> This guide is for general information only. Consult a qualified financial adviser for personalised advice. Sources: <a href="https://www.gov.uk/pension-annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK: Pension annual allowance</a>.</p>
+  </div>
+</section>
+{% endblock %}

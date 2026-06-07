@@ -1,0 +1,96 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Pension Tax Relief Basic Rate: How 20% Relief Works 2026/27","description":"How basic-rate pension tax relief works in 2026/27: your provider claims 20% automatically under relief at source. Who gets it, worked examples and limits.","url":"{{ site_url }}/pension-tax-relief-basic-rate-claim","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Basic Rate Pension Tax Relief","item":"{{ site_url }}/pension-tax-relief-basic-rate-claim"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Pension Tax Relief Basic Rate: How 20% Relief Works 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Basic-rate pension tax relief of 20% is the foundation of the UK pension system. For most people using a personal pension or SIPP, the provider applies it automatically. You do not need to claim it. This guide covers how it works, who qualifies and what the limits are.</p>
+
+    <h2>How relief at source delivers 20% basic rate relief</h2>
+    <p>Under relief at source, used by all SIPPs and most personal pensions, you pay 80% of the gross contribution and your provider claims the remaining 20% from HMRC. Automatically. No form, no claim.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>The mechanics in numbers:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>You pay £80 net → pension receives <strong>£100 gross</strong> (20% claimed by provider)</li>
+        <li>Monthly: pay £240 → pension receives <strong>£300/month</strong></li>
+        <li>Annual: pay £4,800 → pension receives <strong>£6,000/year</strong></li>
+        <li>Lump sum: pay £16,000 → pension receives <strong>£20,000</strong></li>
+      </ul>
+    </div>
+    <p>Providers typically claim from HMRC quarterly. The 20% top-up appears in your pension within a few weeks. It works for all contribution sizes from a few hundred pounds upwards.</p>
+
+    <h2>Who qualifies for basic-rate relief</h2>
+    <p>The 20% basic-rate top-up under relief at source applies to:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>UK residents who are members of a registered pension scheme or SIPP</li>
+      <li>Those with relevant UK earnings, limited to 100% of earnings (or £60,000 annual allowance, whichever is lower)</li>
+      <li>Even non-taxpayers and those below the personal allowance, for contributions up to £2,880 net (£3,600 gross) per year</li>
+    </ul>
+    <p>The non-taxpayer top-up is worth knowing about. A child, a non-working partner, or someone drawing a pension with no other income can contribute up to £2,880/year and get £720 from HMRC as a top-up. Zero income tax paid. It is a genuine government subsidy worth considering for family members with spare capital.</p>
+
+    <h2>Net pay arrangement: a different delivery mechanism</h2>
+    <p>If your workplace pension uses a <strong>net pay arrangement</strong>, the provider does not claim the 20%. Instead, your contribution is deducted from gross salary before income tax is calculated. You automatically get relief at your marginal rate. For a basic-rate taxpayer that is 20%. The pension receives the gross amount from the start.</p>
+    <p>But there is a catch for low earners. Under net pay, someone earning below the personal allowance gets no tax relief at all. There is no income tax to offset. Under relief at source they would still get the 20% top-up. The government introduced a compensatory top-up for NPA scheme members below the basic rate threshold from 2024/25. Check with your employer whether this applies to you.</p>
+
+    <h2>Basic-rate relief: worked examples 2026/27</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin-top:0.5rem;">
+      {% for (monthly_net, monthly_gross, annual_gross, annual_relief) in [
+        (100, 125, 1500, 300),
+        (200, 250, 3000, 600),
+        (400, 500, 6000, 1200),
+        (600, 750, 9000, 1800),
+        (800, 1000, 12000, 2400),
+      ] %}
+      <div style="background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius);padding:0.85rem;">
+        <div style="font-size:1.25rem;font-weight:700;color:var(--accent);margin-bottom:0.2rem;">£{{ monthly_net }}/month</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);">Net payment</div>
+        <div style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-primary);">Pension receives: <strong>£{{ monthly_gross }}/month</strong></div>
+        <div style="font-size:0.85rem;color:var(--text-primary);">Annual gross: <strong>£{{ annual_gross }}</strong></div>
+        <div style="font-size:0.85rem;color:var(--accent);">Annual relief: <strong>£{{ annual_relief }}</strong></div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h2>Are you entitled to more than 20%?</h2>
+    <p>If your income exceeds £50,270 in 2026/27, you pay 40% on the higher-rate portion. You are entitled to 40% relief on contributions. But the provider only claims 20%. You need to claim the extra 20% via Self Assessment or a PAYE code adjustment.</p>
+    <p>Above £125,140, the additional rate is 45%. The extra 25% must be claimed via Self Assessment.</p>
+    <p>See the <a href="/pension-tax-relief-40-percent-taxpayer" style="color:var(--accent);">40% taxpayer guide</a> or <a href="/claim-higher-rate-pension-tax-relief" style="color:var(--accent);">how to claim higher rate relief</a>.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your exact relief</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Pension Relief Calculator</a>
+      <a href="/relief-at-source-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Relief at Source Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How quickly does the 20% top-up appear in my pension?</summary>
+      <div class="faq-answer"><p>Providers typically claim from HMRC quarterly and the top-up appears in your pension within 6–10 weeks of your contribution. For regular monthly contributions, you will see the periodic top-up appearing as a separate credit in your pension statement.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What if I have no income, can I still get the 20% top-up?</summary>
+      <div class="faq-answer"><p>Yes, for contributions up to £2,880 net (£3,600 gross) per year. This is available to UK residents with no earnings, including children, non-working partners and retirees. HMRC still provides the top-up even though no income tax was paid.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Does the 20% relief reduce my take-home pay?</summary>
+      <div class="faq-answer"><p>Under relief at source, you pay the net amount (80% of gross) from your bank account. Your take-home pay is not directly involved, you transfer money from a bank account into your pension, and the provider adds the top-up. Under net pay arrangement, the contribution reduces your gross pay, slightly lowering your take-home by less than the gross contribution.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> General information only, not financial or tax advice. 2026/27 UK rates. See <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK: Pension tax relief</a>.</p>
+  </div>
+</section>
+{% endblock %}

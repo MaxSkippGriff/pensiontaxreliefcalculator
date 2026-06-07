@@ -1,0 +1,177 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Net Pay Arrangement Pension Calculator 2026/27","description":"How net pay arrangement pension relief works in 2026/27: contributions are deducted before tax so full relief is automatic. Calculator, examples and comparison with relief at source.","url":"{{ site_url }}/net-pay-arrangement-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Net Pay Arrangement Calculator","item":"{{ site_url }}/net-pay-arrangement-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Calculator + Guide</div>
+  <h1>Net Pay Arrangement Pension Calculator 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>A net pay arrangement (NPA) pension deducts contributions before income tax is calculated. Full marginal-rate relief is applied automatically through payroll. No Self Assessment claim needed. This calculator shows your net cost, take-home impact and how NPA compares to relief at source.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Net Pay Arrangement Calculator</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross annual salary</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="npa_income" value="55000" min="0" oninput="npaCalc()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Gross pension contribution</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="npa_contrib" value="5000" min="0" oninput="npaCalc()">
+          </div>
+          <div class="field-hint">Full gross amount going into pension</div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Your marginal income tax rate</span><span class="results-value"><span id="npa_rate">,</span></span></div>
+      <div class="results-row"><span class="results-label">Tax relief (auto, via payroll)</span><span class="results-value">£<span id="npa_relief">,</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Your net cost (NPA)</span><span class="results-value">£<span id="npa_net">,</span></span></div>
+      <div class="results-row"><span class="results-label">Net cost under relief at source</span><span class="results-value">£<span id="ras_net">,</span></span></div>
+      <div class="results-row"><span class="results-label">Extra to claim via SA if using RaS</span><span class="results-value">£<span id="ras_extra">,</span></span></div>
+      <div id="npa_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+    </div>
+  </div>
+
+    <h2>How net pay arrangement works</h2>
+    <p>Under a net pay arrangement, your pension contribution is deducted from gross salary before income tax is calculated. Taxable income is reduced by the full contribution. Income tax is charged on a lower figure.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Example, Fiona, salary £55,000, £5,000 pension contribution:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Gross salary: £55,000</li>
+        <li>Contribution deducted before tax: £5,000</li>
+        <li>Taxable income: £50,000</li>
+        <li>Income tax is calculated on £50,000, not £55,000</li>
+        <li>Tax saving: 40% on £4,730 (above basic rate at £50,270) + 20% on £270 = £1,892 + £54 = <strong>£1,946</strong></li>
+        <li>Net cost of £5,000 pension contribution: £5,000 − £1,946 = <strong>£3,054</strong></li>
+        <li>No Self Assessment claim needed</li>
+      </ul>
+    </div>
+
+    <h2>NPA vs relief at source: key differences</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Feature</th>
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Net Pay</th>
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Relief at Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in [
+            ("Basic-rate relief", "Automatic through payroll", "Automatic via provider claim"),
+            ("Higher-rate relief", "Automatic through payroll", "Must claim via SA or PAYE code"),
+            ("Scottish rates", "Correct rate automatically", "Always 20%; claim difference via SA"),
+            ("Low earners (below PA)", "No relief, no tax to offset", "20% top-up still given (up to £3,600 gross)"),
+            ("Self-employed", "Not available", "Standard method for SIPPs"),
+            ("Self Assessment needed?", "No (for pension element)", "Only if higher/additional rate taxpayer"),
+          ] %}
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;font-weight:500;">{{ row[0] }}</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">{{ row[1] }}</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">{{ row[2] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Scottish taxpayers and net pay</h2>
+    <p>NPA is the cleanest arrangement for Scottish taxpayers paying above 20%. Contributions come off salary before Scottish income tax is calculated, so the correct Scottish rate (19%, 20%, 21%, 42% or 45%) applies automatically. Under relief at source, providers always claim 20%, so Scottish intermediate (21%) taxpayers must claim the extra 1% via Self Assessment. Scottish higher (42%) taxpayers must claim 22% extra.</p>
+    <p>Take a Scottish worker in an NPA scheme at 42%: a £5,000 contribution saves £2,100 in tax, leaving a net cost of £2,900. No SA needed. Under relief at source, only £1,000 (20%) is claimed automatically. The £1,100 extra has to be claimed separately.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Compare with other methods</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/salary-sacrifice-pension-calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Salary Sacrifice Calculator</a>
+      <a href="/relief-at-source-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Relief at Source Calculator</a>
+      <a href="/workplace-pension-tax-relief-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Workplace Pension Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How do I know if my pension is a net pay arrangement?</summary>
+      <div class="faq-answer"><p>Check your payslip. Under NPA, the pension contribution appears as a deduction that reduces your taxable pay, your income tax is calculated on the lower figure. If your taxable pay equals your gross salary (with a pension deduction after tax), you are in a relief at source scheme instead.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What if I earn below the personal allowance, do I get any relief?</summary>
+      <div class="faq-answer"><p>Under NPA, no, there is no income tax to offset against, so no relief is applied. The government introduced a compensatory top-up from 2024/25 for NPA low earners, but delivery has been inconsistent. Under relief at source, low earners still receive the 20% top-up (up to £3,600 gross/year), making RaS more beneficial for lower earners. If you earn below the personal allowance and your scheme is NPA, speak to your employer about options.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Does NPA affect salary sacrifice?</summary>
+      <div class="faq-answer"><p>They are separate mechanisms. Net pay arrangement is a tax relief method; salary sacrifice is a contractual pay reduction. Salary sacrifice is generally superior to NPA because it also saves National Insurance. Some employers operate salary sacrifice for some contributions and NPA for additional voluntary contributions, ask your payroll team for the breakdown.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> Estimates only, not financial or tax advice. 2026/27 rates.</p>
+  </div>
+</section>
+
+<script>
+const PA = 12570, HRT = 50270, ART = 125140;
+const BASIC = 0.20, HIGHER = 0.40, ADDITIONAL = 0.45;
+function getMR(income) {
+  if (income <= PA) return 0;
+  if (income <= HRT) return BASIC;
+  if (income <= ART) return HIGHER;
+  return ADDITIONAL;
+}
+function calcTaxNPA(income, contrib) {
+  // NPA: contribution reduces taxable income
+  const taxable = Math.max(0, income - contrib);
+  return calcTax(income) - calcTax(taxable);
+}
+function calcTax(inc) {
+  const taxable = Math.max(0, inc - PA);
+  if (taxable <= 0) return 0;
+  const br = Math.min(taxable, HRT - PA);
+  const hr = Math.min(Math.max(0, taxable - (HRT - PA)), ART - HRT);
+  const ar = Math.max(0, taxable - (HRT - PA) - (ART - HRT));
+  return br * BASIC + hr * HIGHER + ar * ADDITIONAL;
+}
+function npaCalc() {
+  const income = +document.getElementById('npa_income').value || 0;
+  const contrib = +document.getElementById('npa_contrib').value || 0;
+  const mr = getMR(income);
+  const npaRelief = calcTaxNPA(income, contrib);
+  const npaNet = contrib - npaRelief;
+  // RaS comparison
+  const rasBasicRelief = contrib * BASIC;
+  const rasExtraRelief = Math.max(0, (mr - BASIC) * contrib);
+  const rasNet = contrib - rasBasicRelief - rasExtraRelief;
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('npa_rate').textContent = Math.round(mr * 100) + '%';
+  document.getElementById('npa_relief').textContent = fmt(npaRelief);
+  document.getElementById('npa_net').textContent = fmt(npaNet);
+  document.getElementById('ras_net').textContent = fmt(rasNet);
+  document.getElementById('ras_extra').textContent = fmt(rasExtraRelief);
+  const note = document.getElementById('npa_note');
+  if (mr > BASIC) {
+    note.textContent = 'NPA delivers ' + Math.round(mr*100) + '% relief automatically. Under RaS you would need to claim £' + fmt(rasExtraRelief) + ' extra via Self Assessment.';
+  } else {
+    note.textContent = 'At 20% basic rate, NPA and relief at source produce the same net cost. No Self Assessment claim needed under either method.';
+  }
+}
+window.onload = npaCalc;
+</script>
+{% endblock %}

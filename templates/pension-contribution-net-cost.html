@@ -1,31 +1,31 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Pension Contribution Net Cost 2026/27</h1>
   <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>When you contribute to a pension, the government tops up your savings through tax relief. This means the real cost to you — the amount you actually have to pay out of your take-home income — is always less than the gross amount going into the pension. How much less depends on whether you pay tax at 20%, 40% or 45%, and which contribution method your pension uses.</p>
+  <p>When you contribute to a pension, the government tops up your savings through tax relief. The real cost to you is always less than the gross amount going in. How much less depends on your tax rate (20%, 40% or 45%) and which contribution method your pension uses.</p>
 
   <h2>Net cost by contribution method</h2>
 
   <h3>Relief at source — basic-rate taxpayer</h3>
-  <p>You pay 80% of the gross contribution. The provider claims the remaining 20% from HMRC. For every £100 that goes into your pension, you pay £80. No further claim is needed.</p>
+  <p>You pay 80% of the gross contribution. The provider claims the remaining 20% from HMRC. For every £100 in your pension, you pay £80. No further claim needed.</p>
 
   <h3>Relief at source — higher-rate taxpayer</h3>
-  <p>You pay £80 per £100 gross, the provider claims £20. You then claim a further £20 back via Self Assessment (the difference between 40% and the 20% already claimed). Net cost after the SA claim: £60 per £100 gross in the pension.</p>
+  <p>You pay £80 per £100 gross. The provider claims £20. You then claim a further £20 back via Self Assessment, the difference between 40% and the 20% already claimed. Net cost after the SA claim: £60 per £100 gross in the pension.</p>
 
   <h3>Relief at source — additional-rate taxpayer</h3>
-  <p>Same as above, but the extra SA claim is 25% (45% − 20%). Net cost: £55 per £100 gross in the pension.</p>
+  <p>Same as above, but the extra SA claim is 25% (45% − 20% = 25%). Net cost: £55 per £100 gross in the pension.</p>
 
   <h3>Net pay — any marginal rate</h3>
-  <p>Your contribution is deducted pre-tax, so you automatically save at your marginal rate. A basic-rate taxpayer pays £80 per £100; a higher-rate taxpayer pays £60 per £100; an additional-rate taxpayer pays £55 per £100. No SA claim needed.</p>
+  <p>Contributions are deducted pre-tax. You save at your marginal rate automatically. Basic-rate: £80 per £100. Higher-rate: £60 per £100. Additional-rate: £55 per £100. No SA claim needed.</p>
 
   <h3>Salary sacrifice</h3>
-  <p>Salary sacrifice reduces your gross salary, saving both income tax and employee National Insurance. For a higher-rate taxpayer paying 40% income tax and 2% NI (on earnings above £50,270), the combined saving is 42% — so net cost is £58 per £100. On earnings between £12,570 and £50,270, employee NI is 8%, so a basic-rate taxpayer saves 28% and pays £72 per £100. On top of this, many employers pass on their NI saving (15% of the sacrificed amount) to the pension, reducing your effective cost further still.</p>
+  <p>Salary sacrifice reduces your gross salary, saving both income tax and employee NI. A higher-rate taxpayer with earnings above £50,270 saves 40% tax + 2% NI = 42%, so net cost is £58 per £100. On earnings between £12,570 and £50,270, NI is 8%, so a basic-rate taxpayer saves 28% and pays £72 per £100. Many employers also pass on their NI saving (15% of the sacrificed amount) to your pension, which cuts the effective cost further.</p>
 
   <h2>Worked example: £5,000 gross contribution</h2>
-  <p>The table below shows the estimated net cost of a £5,000 gross pension contribution under different methods and tax positions (England, Wales and Northern Ireland rates for 2026/27).</p>
+  <p>The table below shows the net cost of a £5,000 gross contribution under different methods and tax positions (England, Wales and Northern Ireland, 2026/27).</p>
 
   <div style="overflow-x:auto;margin-bottom:1rem;">
     <table style="width:100%;border-collapse:collapse;font-size:0.9rem;color:var(--text-secondary);">
@@ -71,10 +71,10 @@
       </tbody>
     </table>
   </div>
-  <p style="font-size:0.82rem;">The salary sacrifice NI saving depends on which earnings band the contribution falls in. The NI rates used are 8% (on earnings £12,570–£50,270) and 2% (above £50,270) for 2026/27. Employer NI savings of 15% are not included in the figures above as they are a separate saving for the employer, though many pass this on to the employee's pension.</p>
+  <p style="font-size:0.82rem;">The salary sacrifice NI saving depends on which earnings band the contribution falls in. NI rates: 8% on earnings £12,570–£50,270, 2% above £50,270. Employer NI savings of 15% are not included in the table. They are a separate saving for the employer, though many pass them on to your pension.</p>
 
   <h2>Does the gross or net contribution go into the pension?</h2>
-  <p>This is one of the most common points of confusion. The answer depends on the scheme type:</p>
+  <p>The answer depends on the scheme type:</p>
   <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
     <li><strong>Relief at source:</strong> The gross amount goes into the pension. You pay the net (80%), the provider tops it up to 100%.</li>
     <li><strong>Net pay:</strong> The gross contribution is deducted from your salary. The full gross amount goes into the pension.</li>
@@ -82,7 +82,7 @@
   </ul>
 
   <h2>Scottish taxpayers</h2>
-  <p>Scottish income tax rates differ from the rest of the UK. For relief at source schemes, Scottish providers still claim 20% from HMRC, but the extra relief to claim via Self Assessment may be different — Scottish intermediate-rate taxpayers (21%) would claim only 1% extra, while Scottish higher-rate (42%) taxpayers claim 22%. The net cost calculations in the table above apply to England, Wales and Northern Ireland. The calculator handles Scottish rates correctly.</p>
+  <p>Scottish income tax rates differ from the rest of the UK. For relief at source schemes, providers still claim 20% from HMRC. But the extra to claim via Self Assessment varies. Scottish intermediate-rate (21%) taxpayers claim 1% extra. Scottish higher-rate (42%) taxpayers claim 22%. The table above applies to England, Wales and Northern Ireland. The calculator handles Scottish rates correctly.</p>
 
   <h2>Common confusion</h2>
   <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
@@ -93,7 +93,7 @@
 
   <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">See your net cost instantly</strong>
-    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and contribution to get a full breakdown of your net cost under each scheme type — including NI savings for salary sacrifice.</p>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and contribution to get a full breakdown of net cost under each scheme type, including NI savings for salary sacrifice.</p>
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
   </div>
 

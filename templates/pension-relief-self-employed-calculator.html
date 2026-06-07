@@ -1,0 +1,164 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Self-Employed Pension Relief Calculator 2026/27","description":"Calculate pension tax relief for self-employed people in 2026/27. Relief at source, annual contribution limits and how to claim higher-rate relief via Self Assessment.","url":"{{ site_url }}/pension-relief-self-employed-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Self-Employed Pension Relief Calculator","item":"{{ site_url }}/pension-relief-self-employed-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Calculator + Guide</div>
+  <h1>Self-Employed Pension Relief Calculator 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Self-employed people get the same pension tax relief rates as employees: 20%, 40% or 45%. But the delivery is different. You use a SIPP or personal pension under <strong>relief at source</strong>, and you claim any higher-rate relief yourself via Self Assessment. Use this calculator to estimate your relief and net cost.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Self-Employed Pension Relief Calculator</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Trading profit / income</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="se_income" value="50000" min="0" oninput="seCalc()">
+          </div>
+          <div class="field-hint">Your net relevant UK earnings (not dividends)</div>
+        </div>
+        <div class="field">
+          <label>Net SIPP contribution you pay</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="se_net_contrib" value="8000" min="0" oninput="seCalc()">
+          </div>
+          <div class="field-hint">Amount you actually pay, provider adds 20% on top</div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross into pension (after provider top-up)</span><span class="results-value">£<span id="se_r_gross">10,000</span></span></div>
+      <div class="results-row"><span class="results-label">Basic-rate relief (provider claims automatically)</span><span class="results-value">£<span id="se_r_basic">2,000</span></span></div>
+      <div class="results-row"><span class="results-label">Extra relief to claim via Self Assessment</span><span class="results-value">£<span id="se_r_extra">2,000</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total relief</span><span class="results-value">£<span id="se_r_total">4,000</span></span></div>
+      <div class="results-row"><span class="results-label">Net cost after all relief</span><span class="results-value">£<span id="se_r_net">6,000</span></span></div>
+      <div class="results-row"><span class="results-label">Your marginal rate</span><span class="results-value"><span id="se_r_rate">40%</span></span></div>
+      <div id="se_r_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+      <div id="se_earnings_warning" style="display:none;margin-top:0.6rem;font-size:0.78rem;color:#b07000;font-weight:600;"></div>
+    </div>
+  </div>
+
+    <h2>Self-employed pension limits 2026/27</h2>
+    <p>Two limits apply. The lower one is binding:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li><strong>Annual allowance: £60,000</strong>, total pension input limit across all pensions</li>
+      <li><strong>100% of relevant UK earnings</strong>, personal contributions limited to your trading profit (or salary if a director). Dividends do not count as relevant earnings.</li>
+    </ul>
+    <p>You can contribute up to £2,880 net (£3,600 gross) per year and still get the 20% top-up even with zero income. That is a unique feature of relief at source.</p>
+    <p><strong>Carry forward:</strong> Use unused annual allowance from the previous three tax years to make larger contributions in a high-profit year. Available carry forward is (£60,000 − prior year inputs) for each of 2023/24, 2024/25 and 2025/26. See the <a href="/pension-carry-forward-calculator" style="color:var(--accent);">carry forward calculator</a>.</p>
+
+    <h2>Basic-rate taxpayer: £240/month example</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:0.5rem 0;font-size:0.9rem;">
+      <strong>Amy, sole trader, trading profit £38,000:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Pays £240/month net into SIPP</li>
+        <li>Provider adds 20%: pension receives <strong>£300/month gross</strong></li>
+        <li>Annual net paid: £2,880 / Annual gross in pension: <strong>£3,600</strong></li>
+        <li>Total annual relief: <strong>£720 (20%)</strong>, no SA claim needed</li>
+        <li>Net cost: £2,880 for £3,600 in pension</li>
+      </ul>
+    </div>
+
+    <h2>Higher-rate taxpayer: claiming the extra 20%</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:0.5rem 0;font-size:0.9rem;">
+      <strong>Ben, sole trader, trading profit £65,000:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Pays £10,000 net to SIPP</li>
+        <li>Provider tops up to £12,500 gross</li>
+        <li>Via Self Assessment: claims extra 20% = <strong>£2,500</strong></li>
+        <li>Total relief: £5,000 (40%)</li>
+        <li>Net cost of £12,500 in pension: <strong>£7,500</strong></li>
+      </ul>
+    </div>
+    <p style="font-size:0.9rem;color:var(--text-secondary);margin-top:0.75rem;">File your SA return by <strong>31 January 2028</strong> for 2026/27. Enter the gross contribution (what is in the pension, not what you paid).</p>
+
+    <h2>Class 4 NI: no saving, but ANI matters</h2>
+    <p>Unlike employees on salary sacrifice, self-employed pension contributions do <strong>not</strong> reduce Class 4 NI (6% on profits £12,570–£50,270, 2% above). Class 4 is calculated on trading profits before pension contributions.</p>
+    <p>But SIPP contributions <strong>do</strong> reduce adjusted net income (ANI), which matters for:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li><strong>£100k–£125,140:</strong> Restoring personal allowance, effective 60% relief in this band</li>
+      <li><strong>£60k–£80k:</strong> Reducing or eliminating the High Income Child Benefit Charge</li>
+      <li><strong>Near £100k:</strong> Preserving 30-hour free childcare eligibility</li>
+    </ul>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Also see the full self-employed guide</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/pension-tax-relief-self-employed" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Self-Employed Pension Guide</a>
+      <a href="/sipp-tax-relief-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">SIPP Tax Relief Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Can I contribute to a pension if I had a loss this year?</summary>
+      <div class="faq-answer"><p>You can contribute up to £2,880 net (£3,600 gross) and still receive the 20% top-up regardless of income. Above that, personal contributions need relevant UK earnings to attract tax relief. If you have a loss year, defer larger contributions to a profit year where possible.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Do dividends count towards my contribution limit?</summary>
+      <div class="faq-answer"><p>No. Dividends from a limited company do not count as relevant UK earnings for personal pension contributions. A director drawing £10,000 salary and £80,000 dividends can only contribute £10,000 in personal contributions with tax relief. The company can make employer contributions up to the £60,000 AA without the earnings cap (subject to 'wholly and exclusively' test).</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>How do I enter my pension contributions on my SA return?</summary>
+      <div class="faq-answer"><p>In the SA100, look for 'Paying into registered pension schemes and overseas pension schemes'. Under 'Payments to registered pension schemes where basic rate tax relief will be claimed by your pension provider (also known as relief at source)', enter the gross contribution (the amount in the pension, including the provider's top-up).</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> Estimates only, not financial or tax advice. Consult a qualified adviser for personalised guidance. Sources: <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK: Pension tax relief</a>.</p>
+  </div>
+</section>
+
+<script>
+const PA = 12570, HRT = 50270, ART = 125140, AA = 60000;
+function seCalc() {
+  const income = +document.getElementById('se_income').value || 0;
+  const netC = +document.getElementById('se_net_contrib').value || 0;
+  const gross = netC / 0.8;
+  const basicRelief = gross * 0.2;
+  let marginalRate = 0;
+  if (income > ART) marginalRate = 0.45;
+  else if (income > HRT) marginalRate = 0.40;
+  else if (income > PA) marginalRate = 0.20;
+  const extraRelief = Math.max(0, (marginalRate - 0.2) * gross);
+  const totalRelief = basicRelief + extraRelief;
+  const netCost = gross - totalRelief;
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('se_r_gross').textContent = fmt(gross);
+  document.getElementById('se_r_basic').textContent = fmt(basicRelief);
+  document.getElementById('se_r_extra').textContent = fmt(extraRelief);
+  document.getElementById('se_r_total').textContent = fmt(totalRelief);
+  document.getElementById('se_r_net').textContent = fmt(netCost);
+  document.getElementById('se_r_rate').textContent = Math.round(marginalRate * 100) + '%';
+  const note = document.getElementById('se_r_note');
+  if (extraRelief > 0) {
+    note.textContent = 'Claim £' + fmt(extraRelief) + ' extra via Self Assessment by 31 Jan following the tax year end.';
+  } else {
+    note.textContent = 'No extra relief to claim, 20% basic rate is your full entitlement at this income level.';
+  }
+  const warn = document.getElementById('se_earnings_warning');
+  if (gross > income && income > 0) {
+    warn.style.display = 'block';
+    warn.textContent = 'Warning: gross contribution (£' + fmt(gross) + ') exceeds trading profit (£' + fmt(income) + '). Relief is only available on contributions up to 100% of your UK earnings.';
+  } else {
+    warn.style.display = 'none';
+  }
+}
+window.onload = seCalc;
+</script>
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Loss of Personal Allowance: Pension Calculator 2026/27","description":"Income above £100,000 loses the personal allowance, creating a 60% effective tax rate. Calculate how much pension you need to contribute to restore it in 2026/27.","url":"{{ site_url }}/loss-of-personal-allowance-pension-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Loss of Personal Allowance Pension Calculator","item":"{{ site_url }}/loss-of-personal-allowance-pension-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Calculator + Guide</div>
+  <h1>Loss of Personal Allowance: Pension Calculator 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Income between £100,000 and £125,140 creates an effective 60% marginal tax rate. The personal allowance is gradually withdrawn across this range. Pension contributions reduce adjusted net income and can restore the allowance, making contributions here exceptionally tax-efficient.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Personal Allowance Restoration Calculator</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Your gross income / ANI</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="lpa_income" value="115000" min="0" oninput="lpaCalc()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Gross pension contribution</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="lpa_contrib" value="15000" min="0" oninput="lpaCalc()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Personal allowance without contribution</span><span class="results-value">£<span id="lpa_pa_before">,</span></span></div>
+      <div class="results-row"><span class="results-label">ANI after pension contribution</span><span class="results-value">£<span id="lpa_ani_after">,</span></span></div>
+      <div class="results-row"><span class="results-label">Personal allowance after contribution</span><span class="results-value">£<span id="lpa_pa_after">,</span></span></div>
+      <div class="results-row"><span class="results-label">Extra personal allowance restored</span><span class="results-value">£<span id="lpa_pa_restored">,</span></span></div>
+      <div class="results-row"><span class="results-label">Tax saving from restored PA</span><span class="results-value">£<span id="lpa_pa_saving">,</span></span></div>
+      <div class="results-row"><span class="results-label">Income tax relief on contribution</span><span class="results-value">£<span id="lpa_income_tax_relief">,</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Total tax saving</span><span class="results-value">£<span id="lpa_total_saving">,</span></span></div>
+      <div class="results-row"><span class="results-label">Net cost of contribution</span><span class="results-value">£<span id="lpa_net_cost">,</span></span></div>
+      <div class="results-row"><span class="results-label">Effective relief rate</span><span class="results-value"><span id="lpa_eff_rate">,</span></span></div>
+      <div id="lpa_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+    </div>
+  </div>
+
+    <h2>The 60% trap explained</h2>
+    <p>The personal allowance of £12,570 is withdrawn at £1 for every £2 of adjusted net income above £100,000. It hits zero at £125,140. What does that mean in practice?</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Every extra £2 of income is taxed at 40% = 80p tax</li>
+      <li>That same extra £2 causes £1 of personal allowance to be lost, exposing £1 of previously allowance-sheltered income to 40% = 40p extra tax</li>
+      <li>Total: £1.20 tax on a £2 increase in income, an effective rate of <strong>60%</strong></li>
+    </ul>
+    <p>Pension contributions reduce ANI and reverse this. A £10,000 gross contribution for someone with ANI of £110,000 reduces ANI to £100,000, restoring £5,000 of personal allowance and saving £6,000 in income tax.</p>
+
+    <h2>How much pension contribution to restore the personal allowance?</h2>
+    <p>To restore the full personal allowance, contribute enough to reduce ANI to £100,000. Required gross contribution = current ANI − £100,000. Simple as that.</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Income (ANI)</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Contribution needed</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">PA restored</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Total tax saving</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Net cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for (income, contrib, pa_restored, saving, net) in [
+            (102000, 2000, 1000, 1200, 800),
+            (105000, 5000, 2500, 3000, 2000),
+            (110000, 10000, 5000, 6000, 4000),
+            (115000, 15000, 7500, 9000, 6000),
+            (120000, 20000, 10000, 12000, 8000),
+            (125140, 25140, 12570, 15084, 10056),
+          ] %}
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;">£{{ "{:,}".format(income) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:600;">£{{ "{:,}".format(contrib) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);">£{{ "{:,}".format(pa_restored) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:600;color:var(--accent);">£{{ "{:,}".format(saving) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,}".format(net) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.5rem;">Assumes contribution fully within the £100k–£125,140 band. Tax savings are approximate (60% effective rate in this range).</p>
+
+    <h2>30-hour childcare and the HICBC</h2>
+    <p>Pension contributions that reduce ANI below £100,000 also protect <strong>30-hour free childcare</strong> eligibility, potentially worth £5,000–£12,000/year. The effective return on contributions near the £100,000 threshold can be well above 60% once childcare is factored in.</p>
+    <p>Above £60,000, the <strong>High Income Child Benefit Charge</strong> applies. Contributions that bring ANI below £80,000 reduce the HICBC proportionally. Below £60,000 it disappears entirely. For families with children, targeting ANI below £60,000 stacks child benefit savings on top of income tax relief.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Related guides</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/pension-relief-over-100k" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Over £100k Full Guide</a>
+      <a href="/how-much-pension-contribution-to-reduce-tax" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">How Much to Reduce Tax?</a>
+      <a href="/pension-tax-relief-additional-rate" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Additional Rate Guide</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Does the 60% effective rate apply to all income above £100,000?</summary>
+      <div class="faq-answer"><p>Only to income (or ANI) between £100,000 and £125,140, where the personal allowance is being withdrawn. Above £125,140, the allowance is gone entirely and the effective rate drops to 45% (additional rate). Below £100,000, the normal 40% higher rate applies (or lower for those fully in the basic rate band).</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What is the best pension contribution method for the 60% trap?</summary>
+      <div class="faq-answer"><p>All three methods reduce ANI, salary sacrifice, net pay arrangement and relief at source. Salary sacrifice is usually most efficient as it also saves employee NI. Under RaS, the gross contribution (including provider's top-up) reduces ANI. Under salary sacrifice and NPA, the gross salary reduction reduces ANI from the outset.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I make a very large contribution to avoid the 60% trap entirely?</summary>
+      <div class="faq-answer"><p>Yes, up to the annual allowance (£60,000 or 100% of earnings). Anyone with income consistently in the £100,000–£125,140 range should ideally contribute enough each year to bring ANI to £100,000 exactly. Carry forward from prior years can allow a larger one-off contribution in a high-income year.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> Estimates only, not financial or tax advice. Individual circumstances vary. Consult a qualified adviser.</p>
+  </div>
+</section>
+
+<script>
+const PA_STANDARD = 12570, PA_TAPER_START = 100000, PA_TAPER_END = 125140;
+const HIGHER_RATE = 0.40;
+function calcPA(income) {
+  if (income <= PA_TAPER_START) return PA_STANDARD;
+  if (income >= PA_TAPER_END) return 0;
+  return Math.max(0, PA_STANDARD - (income - PA_TAPER_START) / 2);
+}
+function lpaCalc() {
+  const income = +document.getElementById('lpa_income').value || 0;
+  const contrib = +document.getElementById('lpa_contrib').value || 0;
+  const paBefore = calcPA(income);
+  const aniAfter = Math.max(0, income - contrib);
+  const paAfter = calcPA(aniAfter);
+  const paRestored = paAfter - paBefore;
+  const paSaving = paRestored * HIGHER_RATE;
+  // Standard income tax relief on the contribution (at 40% in this band, approximately)
+  const incomeRelief = contrib * HIGHER_RATE;
+  const totalSaving = paSaving + incomeRelief;
+  const netCost = contrib - totalSaving;
+  const effRate = contrib > 0 ? totalSaving / contrib : 0;
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('lpa_pa_before').textContent = '£' + fmt(paBefore);
+  document.getElementById('lpa_ani_after').textContent = '£' + fmt(aniAfter);
+  document.getElementById('lpa_pa_after').textContent = '£' + fmt(paAfter);
+  document.getElementById('lpa_pa_restored').textContent = '£' + fmt(paRestored);
+  document.getElementById('lpa_pa_saving').textContent = '£' + fmt(paSaving);
+  document.getElementById('lpa_income_tax_relief').textContent = '£' + fmt(incomeRelief);
+  document.getElementById('lpa_total_saving').textContent = '£' + fmt(totalSaving);
+  document.getElementById('lpa_net_cost').textContent = '£' + fmt(Math.max(0, netCost));
+  document.getElementById('lpa_eff_rate').textContent = Math.round(effRate * 100) + '%';
+  const note = document.getElementById('lpa_note');
+  if (income <= PA_TAPER_START) {
+    note.textContent = 'Income is at or below £100,000, no personal allowance taper applies. Standard income tax relief applies.';
+  } else if (income >= PA_TAPER_END && aniAfter >= PA_TAPER_END) {
+    note.textContent = 'Contribution does not bring ANI into the taper zone, standard additional rate applies.';
+  } else if (aniAfter <= PA_TAPER_START) {
+    note.textContent = 'Contribution fully restores the personal allowance. 60% effective relief applies throughout the £100k–£125,140 band.';
+  } else {
+    note.textContent = 'Contribution partially restores the personal allowance. Effective rate approximate, actual relief depends on exact income split.';
+  }
+}
+window.onload = lpaCalc;
+</script>
+{% endblock %}

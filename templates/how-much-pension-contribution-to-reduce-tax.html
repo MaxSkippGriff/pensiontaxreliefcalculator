@@ -1,0 +1,154 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How Much Pension Contribution to Reduce Tax? 2026/27 Guide","description":"How to use pension contributions to reduce your tax bill in 2026/27. Restore your personal allowance, eliminate the child benefit charge and reduce adjusted net income.","url":"{{ site_url }}/how-much-pension-contribution-to-reduce-tax","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Pension Contributions to Reduce Tax","item":"{{ site_url }}/how-much-pension-contribution-to-reduce-tax"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Planning Guide</div>
+  <h1>How Much Pension Contribution to Reduce Tax? 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Pension contributions reduce your adjusted net income (ANI). ANI controls some of the most valuable tax thresholds in the UK. Depending on your income, getting ANI below a key threshold can save far more than the headline tax rate suggests.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Contribution Needed to Reach Target ANI</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross income / ANI</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="ani_income" value="110000" min="0" oninput="aniCalc()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Target ANI threshold</label>
+          <select id="ani_target" oninput="aniCalc()">
+            <option value="100000">£100,000, restore personal allowance</option>
+            <option value="80000">£80,000, eliminate child benefit clawback</option>
+            <option value="60000">£60,000, reduce HICBC to zero</option>
+            <option value="50270">£50,270, stay in basic rate band</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div class="results-row"><span class="results-label">Gross pension contribution needed</span><span class="results-value">£<span id="ani_contrib">,</span></span></div>
+      <div class="results-row"><span class="results-label">Approx net cost (after tax relief)</span><span class="results-value">£<span id="ani_net_cost">,</span></span></div>
+      <div class="results-row results-total"><span class="results-label">Effective tax relief rate</span><span class="results-value"><span id="ani_relief_rate">,</span></span></div>
+      <div id="ani_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+    </div>
+  </div>
+
+    <h2>The key ANI thresholds in 2026/27</h2>
+    <div style="overflow-x:auto;margin-top:0.5rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">ANI threshold</th>
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">What changes below this level</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Effective saving</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;font-weight:600;">£100,000</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">Personal allowance restored in full; 30-hour childcare preserved</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);font-weight:600;">Up to 60%</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;font-weight:600;">£80,000</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">High Income Child Benefit Charge eliminated</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);font-weight:600;">40% + HICBC saved</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;font-weight:600;">£60,000</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">HICBC starts to reduce (completely gone below £60k)</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);font-weight:600;">40% + partial HICBC</td>
+          </tr>
+          <tr>
+            <td style="padding:0.5rem 0.6rem;font-weight:600;">£50,270</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">Fully in basic-rate band; personal savings allowance increases from £500 to £1,000</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);font-weight:600;">40% on excess</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>The personal allowance trap: 60% at £100k–£125,140</h2>
+    <p>Between £100,000 and £125,140, the personal allowance (£12,570) is withdrawn at 50p per £1 of extra ANI. The effective marginal tax rate is 60%, not 40%. Each £2 extra ANI costs 40p tax on that £2, plus 40p tax on the £1 of allowance lost.</p>
+    <p>Take ANI of £105,000. The personal allowance is reduced by £2,500 (£5,000 excess × 50%). A £5,000 gross pension contribution reduces ANI to £100,000 and restores the full allowance. Tax saving: 60% × £5,000 = £3,000. Net cost of the £5,000 contribution: just £2,000. The pension contribution pays for 60% of itself.</p>
+
+    <h2>The child benefit trap: £60,000–£80,000</h2>
+    <p>The High Income Child Benefit Charge (HICBC) claws back child benefit when the highest earner in the household has ANI above £60,000. The rate: 1% of benefit per £200 of ANI above £60,000. Full clawback at £80,000.</p>
+    <p>Child benefit rates 2026/27: approx £1,331/year for the first child, £881/year for each additional child. For two children that is ~£2,212/year. A contribution that drops ANI from £65,000 to below £60,000 saves the full HICBC on top of 40% income tax relief. For two children, that is potentially £2,212 + ~£1,200 (40% relief on £3,000) = £3,400+ in total annual benefit from a £3,000 contribution.</p>
+
+    <h2>30-hour childcare: the £100,000 cliff</h2>
+    <p>Both partners must have ANI below £100,000 to access 30 hours free childcare for 3–4 year olds. Exceed £100,000 by £1 and the extra 15 hours are gone entirely. That cliff is worth £5,000–£12,000/year depending on local childcare costs. A pension contribution to bring ANI below £100,000 is potentially the highest-return financial decision available.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your pension relief</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Open Full Calculator</a>
+      <a href="/pension-relief-over-100k" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Over £100k Guide</a>
+      <a href="/loss-of-personal-allowance-pension-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">PA Loss Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Does salary sacrifice also reduce ANI?</summary>
+      <div class="faq-answer"><p>Yes, but via a different route. Salary sacrifice reduces contractual pay before it is counted as income, so the sacrificed amount never enters ANI. The effect on all ANI-related thresholds is the same as a gross relief-at-source contribution of equivalent size.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I time pension contributions across tax years to manage ANI?</summary>
+      <div class="faq-answer"><p>Yes. Under relief at source, contributions made up to 5 April are counted in the 2026/27 tax year. Under salary sacrifice, the timing of contributions is determined by when salary is reduced. Planning a large contribution in the tax year you are in the relevant ANI band maximises the threshold benefit.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Do dividends count toward ANI?</summary>
+      <div class="faq-answer"><p>Yes, dividends above the dividend allowance (£500 for 2026/27) count toward ANI. This is why company directors drawing dividends can unexpectedly find themselves in HICBC or PA-taper territory, their salary alone may be below the threshold but dividends push ANI above it.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> General information only, not financial or tax advice. Individual circumstances vary significantly. Consult a qualified adviser.</p>
+  </div>
+</section>
+
+<script>
+function aniCalc() {
+  const income = +document.getElementById('ani_income').value || 0;
+  const target = +document.getElementById('ani_target').value;
+  const needed = Math.max(0, income - target);
+  let mr = 0.20;
+  if (income > 125140) mr = 0.45;
+  else if (income > 100000) mr = 0.60; // effective rate in PA taper band
+  else if (income > 50270) mr = 0.40;
+  const netCost = needed * (1 - mr);
+  const fmt = n => n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('ani_contrib').textContent = fmt(needed);
+  document.getElementById('ani_net_cost').textContent = fmt(netCost);
+  document.getElementById('ani_relief_rate').textContent = Math.round(mr * 100) + '%';
+  const note = document.getElementById('ani_note');
+  if (income <= target) {
+    note.textContent = 'Your income is already at or below this threshold, no contribution needed.';
+  } else if (target === 100000 && income > 100000 && income <= 125140) {
+    note.textContent = 'In the personal allowance taper zone, effective 60% relief applies on the contribution reducing ANI to £100,000.';
+  } else if (target === 60000 || target === 80000) {
+    note.textContent = 'Contribution reduces ANI to threshold, saving income tax relief plus any remaining High Income Child Benefit Charge.';
+  } else {
+    note.textContent = 'Estimated net cost after income tax relief at your marginal rate. Figures are approximations.';
+  }
+}
+window.onload = aniCalc;
+</script>
+{% endblock %}

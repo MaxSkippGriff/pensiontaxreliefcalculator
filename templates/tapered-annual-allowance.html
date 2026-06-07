@@ -1,37 +1,32 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Tapered Annual Allowance 2026/27</h1>
   <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>High earners may find their pension annual allowance reduced below the standard £60,000 — down to a minimum of £10,000. This is the tapered annual allowance. Whether it applies to you depends on two income tests, and understanding the calculations is essential to avoid an unexpected annual allowance tax charge.</p>
+  <p>High earners can find their pension annual allowance cut below the standard £60,000, down to a minimum of £10,000. That is the tapered annual allowance. Whether it applies depends on two income tests. Getting the calculation wrong can lead to an unexpected tax charge.</p>
 
-  <article class="card">
     <h2>The two income tests</h2>
-    <p>HMRC applies two separate income tests to determine whether the taper applies. Both must be exceeded for the taper to kick in.</p>
+    <p>HMRC applies two income tests. Both must be exceeded for the taper to kick in.</p>
 
     <h3>Test 1 — Threshold income</h3>
-    <p>Threshold income is broadly your net income for the year, <em>excluding</em> employer pension contributions. If your threshold income is £200,000 or below, the tapered annual allowance does not apply regardless of your adjusted income. This protects people who have very high employer pension contributions pushing their adjusted income above the limit, but whose own earnings are modest.</p>
+    <p>Threshold income is broadly your net income for the year, <em>excluding</em> employer pension contributions. If your threshold income is £200,000 or below, the taper does not apply regardless of adjusted income. This protects people with large employer contributions pushing adjusted income above the limit, but whose own earnings are more modest.</p>
 
     <h3>Test 2 — Adjusted income</h3>
-    <p>Adjusted income adds employer pension contributions back onto your net income (along with some other adjustments). If your adjusted income is £260,000 or below, no taper applies. Only when <em>both</em> threshold income exceeds £200,000 <strong>and</strong> adjusted income exceeds £260,000 does the taper begin.</p>
-  </article>
+    <p>Adjusted income adds employer pension contributions back onto your net income. If your adjusted income is £260,000 or below, no taper applies. The taper only starts when <em>both</em> threshold income exceeds £200,000 <strong>and</strong> adjusted income exceeds £260,000.</p>
 
-  <article class="card">
     <h2>How the taper works</h2>
-    <p>For every £2 of adjusted income above £260,000, your annual allowance reduces by £1. The minimum tapered annual allowance is £10,000, which is reached when adjusted income hits £360,000 or above.</p>
+    <p>For every £2 of adjusted income above £260,000, your annual allowance falls by £1. The minimum is £10,000. You hit that at £360,000.</p>
     <p>In summary:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
       <li>Adjusted income ≤ £260,000: full £60,000 annual allowance</li>
       <li>Adjusted income £260,001–£360,000: taper applies — AA reduces by £1 per £2 excess</li>
       <li>Adjusted income ≥ £360,000: minimum £10,000 annual allowance</li>
     </ul>
-  </article>
 
-  <article class="card">
     <h2>Worked example</h2>
-    <p>Jordan earns a salary of £280,000. Their employer contributes £30,000 to their pension. Jordan makes no employee contributions.</p>
+    <p>Jordan earns £280,000. Their employer contributes £30,000 to the pension. Jordan makes no employee contributions.</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
       <li>Threshold income: £280,000 (salary, excluding employer pension) — exceeds £200,000, so taper may apply.</li>
       <li>Adjusted income: £280,000 + £30,000 employer contribution = £310,000 — exceeds £260,000, so taper applies.</li>
@@ -39,18 +34,15 @@
       <li>Taper reduction: £50,000 ÷ 2 = £25,000.</li>
       <li>Tapered annual allowance: £60,000 − £25,000 = <strong>£35,000</strong>.</li>
     </ul>
-    <p>Jordan's total pension inputs (employer + employee contributions) must not exceed £35,000 to avoid an annual allowance charge.</p>
-  </article>
+    <p>Jordan's total pension inputs must not exceed £35,000 to avoid an annual allowance charge.</p>
 
-  <article class="card">
     <h2>Salary sacrifice and the tapered allowance</h2>
-    <p>Salary sacrifice can affect adjusted income. When you sacrifice salary, your employer pays higher pension contributions instead of you. This reduces your gross salary — but those employer contributions are added back when calculating adjusted income. The net effect on adjusted income is often neutral, because the salary reduction and the employer contribution increase cancel out.</p>
-    <p>However, salary sacrifice does reduce threshold income (since your salary is lower). If sacrificing salary brings your threshold income to £200,000 or below, the taper cannot apply regardless of adjusted income — which can be a significant planning opportunity for those close to the threshold income limit.</p>
-  </article>
+    <p>Salary sacrifice can affect adjusted income. When you sacrifice salary, your employer pays higher pension contributions in its place. Your gross salary falls. But those employer contributions are added back when calculating adjusted income. The net effect on adjusted income is often neutral: the salary reduction and the contribution increase cancel out.</p>
+    <p>But salary sacrifice does reduce threshold income. If it brings your threshold income to £200,000 or below, the taper cannot apply regardless of adjusted income. For people close to the threshold income limit, that is a real planning opportunity.</p>
 
   <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">See your pension relief numbers</strong>
-    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Use our calculator to estimate your pension tax relief based on your income and contribution method.</p>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Estimate your pension tax relief based on your income and contribution method.</p>
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
   </div>
 

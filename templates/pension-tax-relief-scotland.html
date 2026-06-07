@@ -1,0 +1,129 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Pension Tax Relief in Scotland 2026/27","description":"How pension tax relief works for Scottish taxpayers in 2026/27 with Scotland's six income tax bands. Relief at source, net pay, Self Assessment claims and worked examples.","url":"{{ site_url }}/pension-tax-relief-scotland","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Pension Tax Relief Scotland","item":"{{ site_url }}/pension-tax-relief-scotland"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Pension Tax Relief in Scotland 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Scottish taxpayers pay income tax under six bands, not the three that apply in the rest of the UK. This changes how much pension tax relief you are entitled to, and whether you need to claim extra relief via Self Assessment. Here is how it works for 2026/27.</p>
+
+    <h2>Scottish income tax bands 2026/27</h2>
+    <div style="overflow-x:auto;margin-top:0.5rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Band</th>
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Gross income range</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for (band, low, high, rate) in [
+            ("Starter", "£12,571", "£16,537", "19%"),
+            ("Basic", "£16,538", "£29,526", "20%"),
+            ("Intermediate", "£29,527", "£43,662", "21%"),
+            ("Higher", "£43,663", "£75,000", "42%"),
+            ("Advanced", "£75,001", "£125,140", "45%"),
+            ("Top", "£125,141+", ",", "48%"),
+          ] %}
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;font-weight:500;">{{ band }}</td>
+            <td style="padding:0.5rem 0.6rem;color:var(--text-secondary);">{{ low }}–{{ high }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:600;color:var(--accent);">{{ rate }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-tertiary);margin-top:0.5rem;">Personal allowance £12,570 applies to all Scottish taxpayers. NI rates are set at Westminster and are the same across the UK.</p>
+
+    <h2>Relief at source: the Scottish complication</h2>
+    <p>Pension providers under relief at source always claim <strong>20% basic-rate relief</strong> from HMRC. It does not matter where in the UK you live. That works fine if you are in the 20% basic-rate band (£16,538–£29,526). But for other Scottish bands:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li><strong>Starter rate (19%):</strong> Provider claims 20%, 1% over-credited. HMRC generally does not pursue reclaim from individuals. No action needed.</li>
+      <li><strong>Intermediate rate (21%):</strong> Provider claims 20%, extra 1% (21% − 20%) must be claimed via Self Assessment.</li>
+      <li><strong>Higher rate (42%):</strong> Provider claims 20%, extra 22% (42% − 20%) must be claimed via SA.</li>
+      <li><strong>Advanced rate (45%):</strong> Provider claims 20%, extra 25% must be claimed via SA.</li>
+      <li><strong>Top rate (48%):</strong> Provider claims 20%, extra 28% must be claimed via SA.</li>
+    </ul>
+
+    <h2>Net pay arrangement: correct Scottish relief automatically</h2>
+    <p>If your workplace pension uses a net pay arrangement, contributions are deducted before Scottish income tax is calculated. The correct Scottish marginal rate is applied automatically. No Self Assessment needed for the pension relief element. For Scottish taxpayers in the 21%, 42%, 45% or 48% bands, NPA is the simplest approach.</p>
+    <p>Salary sacrifice also delivers the full Scottish marginal rate automatically, plus the NI saving that applies UK-wide.</p>
+
+    <h2>Worked examples 2026/27</h2>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:0.75rem 0;font-size:0.9rem;">
+      <strong>Catriona, Scottish intermediate-rate taxpayer, income £32,000:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Pays £4,000 net to SIPP → provider tops to £5,000 gross</li>
+        <li>21% entitlement: £1,050 total relief on £5,000</li>
+        <li>Provider claims: £1,000 (20%)</li>
+        <li>Extra to claim via SA: £50 (1% × £5,000)</li>
+        <li>Net cost: £4,000 − £50 = <strong>£3,950</strong></li>
+      </ul>
+    </div>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:0.75rem 0;font-size:0.9rem;">
+      <strong>Alistair, Scottish higher-rate taxpayer, income £55,000:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Pays £8,000 net to SIPP → provider tops to £10,000 gross</li>
+        <li>42% entitlement: £4,200 total relief on £10,000</li>
+        <li>Provider claims: £2,000 (20%)</li>
+        <li>Extra to claim via SA: £2,200 (22% × £10,000)</li>
+        <li>Net cost: £8,000 − £2,200 = <strong>£5,800</strong></li>
+      </ul>
+    </div>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:0.75rem 0;font-size:0.9rem;">
+      <strong>Morag, Scottish top-rate taxpayer, income £140,000:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Pays £12,000 net to SIPP → provider tops to £15,000 gross</li>
+        <li>48% entitlement: £7,200 total relief on £15,000</li>
+        <li>Provider claims: £3,000 (20%)</li>
+        <li>Extra to claim via SA: £4,200 (28% × £15,000)</li>
+        <li>Net cost: £12,000 − £4,200 = <strong>£7,800</strong></li>
+      </ul>
+    </div>
+
+    <h2>Personal allowance taper: same as rest of UK</h2>
+    <p>The personal allowance taper above £100,000 applies to Scottish taxpayers the same way it does in England and Wales. ANI between £100,000 and £125,140 carries an effective additional 20% marginal rate from the allowance loss. For a Scottish advanced-rate (45%) taxpayer, the effective rate in this band is 65%, higher than the 60% for rUK taxpayers. Pension contributions are among the most efficient ways to reduce ANI in this range.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate Scottish pension relief</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Calculator (Scotland option)</a>
+      <a href="/higher-rate-pension-relief-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Higher Rate Relief Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Does my SIPP provider know I am a Scottish taxpayer?</summary>
+      <div class="faq-answer"><p>No, SIPP providers always claim 20% from HMRC regardless of where in the UK you live. It is your responsibility to claim the additional relief via Self Assessment if you pay Scottish rates above 20%.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>At the 19% starter rate, does HMRC reclaim the over-credited 1%?</summary>
+      <div class="faq-answer"><p>In practice, no. HMRC does not pursue reclaims from individuals for the 1% over-credit at the starter rate. The administrative cost would outweigh the amount. You do not need to worry about this.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Are NI rates in Scotland different?</summary>
+      <div class="faq-answer"><p>No. National Insurance is set at Westminster and applies uniformly across the UK. Scottish income tax rates apply to income tax only. NI savings from salary sacrifice are the same for Scottish workers as for the rest of the UK.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What is the Scottish pension relief rate on salary sacrifice?</summary>
+      <div class="faq-answer"><p>Salary sacrifice saves income tax at your full Scottish marginal rate (automatically, since your gross salary is lower) plus employee NI at the UK rate (8% main, 2% above upper earnings limit). A Scottish higher-rate (42%) taxpayer using salary sacrifice saves 42% income tax + 8% NI = 50% on contributions within the higher-rate band, a significant return.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> General information only, not financial or tax advice. Scottish income tax rates 2026/27. Sources: <a href="https://www.gov.uk/scottish-income-tax" target="_blank" rel="noopener" style="color:var(--accent);">HMRC: Scottish Income Tax</a>, <a href="https://www.gov.scot/policies/taxes/income-tax/" target="_blank" rel="noopener" style="color:var(--accent);">Scottish Government: Income Tax</a>.</p>
+  </div>
+</section>
+{% endblock %}

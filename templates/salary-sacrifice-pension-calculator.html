@@ -1,9 +1,17 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Salary Sacrifice Pension Calculator 2026/27","description":"Calculate pension salary sacrifice tax savings in 2026/27. See how much NI and income tax you save, your post-sacrifice take-home and employer NI saving.","url":"{{ site_url }}/salary-sacrifice-pension-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Salary Sacrifice Pension Calculator","item":"{{ site_url }}/salary-sacrifice-pension-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Calculator</div>
   <h1>Salary Sacrifice Pension Calculator 2026/27</h1>
-  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:620px;">Estimate the take-home pay effect and tax savings from a pension salary sacrifice arrangement. Results update instantly.</p>
+  <p style="color:var(--text-secondary);font-size:0.92rem;margin-bottom:1.5rem;max-width:640px;">Enter your salary and sacrifice amount to see your income tax saving, employee NI saving, employer NI saving and total pension value.</p>
 
   <div style="margin-bottom:0.85rem;padding:0.75rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:0.85rem;color:var(--text-secondary);">
     For a more detailed salary sacrifice calculator including pension auto-enrolment, employer cost and monthly pay breakdowns, visit <a href="https://www.uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">uksalarysacrificecalculator.co.uk</a>.
@@ -51,13 +59,13 @@
 
   <div class="card">
     <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">How salary sacrifice works</h2>
-    <p style="color:var(--text-secondary);font-size:0.9rem;">Salary sacrifice is a contractual arrangement between you and your employer. You agree to give up part of your salary in exchange for employer pension contributions of the same value. Because your gross salary is reduced, you pay less income tax and employee National Insurance on the sacrificed amount. Your employer also pays less employer NI — and many pass some or all of this saving into your pension.</p>
-    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">Unlike relief at source or net pay, salary sacrifice is not technically "tax relief" — the benefit comes from the reduction in gross salary, meaning both income tax and NI savings are achieved simultaneously.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Salary sacrifice is a contractual arrangement between you and your employer. You give up part of your salary in exchange for employer pension contributions of the same value. Your gross salary is lower, so you pay less income tax and employee NI. Your employer also saves employer NI, and many pass some or all of that saving into your pension.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">Unlike relief at source or net pay, salary sacrifice is not technically "tax relief". The saving comes from the reduced gross salary, so income tax and NI savings happen at the same time.</p>
   </div>
 
   <div class="card">
     <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">What the employer NI saving means for you</h2>
-    <p style="color:var(--text-secondary);font-size:0.9rem;">From April 2025, the employer NI rate is 15% on earnings above £5,000 per year. When you sacrifice £1 of salary, your employer saves 15p in NI contributions. Some employers share this saving with employees by adding it to the pension contribution. A 100% pass-through means your pension receives significantly more than the sacrifice amount.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">From April 2025, the employer NI rate is 15% on earnings above £5,000 per year. Sacrifice £1 of salary and your employer saves 15p in NI. Some employers add that saving to your pension. A 100% pass-through means your pension receives significantly more than the sacrifice amount alone.</p>
   </div>
 
   <div class="card">
@@ -74,6 +82,23 @@
   </div>
 
   <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Salary sacrifice vs relief at source: which saves more?</h2>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Both methods save income tax at your marginal rate. Salary sacrifice also saves employee NI. Relief at source does not. A basic-rate taxpayer sacrificing £5,000 in the main NI band (£12,570–£50,270) saves 28% combined (20% tax + 8% NI), versus 20% under relief at source. A higher-rate taxpayer above £50,270 saves 42% (40% tax + 2% NI), versus 40% under relief at source.</p>
+    <p style="color:var(--text-secondary);font-size:0.9rem;margin-top:0.6rem;">And there is another difference. Salary sacrifice counts as an employer contribution, not a personal one. That means it does not eat into the 100% earnings cap on personal contributions, though it does count towards the £60,000 annual allowance.</p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">2026/27 rates used in this calculator</h2>
+    <ul style="color:var(--text-secondary);font-size:0.88rem;line-height:1.9;padding-left:1.25rem;margin:0;">
+      <li>Income tax: 20% basic rate (£12,570–£50,270), 40% higher rate (£50,270–£125,140), 45% additional rate (above £125,140)</li>
+      <li>Employee NI: 8% on earnings £12,570–£50,270, 2% above £50,270</li>
+      <li>Employer NI: 15% on earnings above £5,000 (secondary threshold)</li>
+      <li>Annual allowance: £60,000 (employer + employee contributions combined)</li>
+      <li>Personal allowance: £12,570 (tapers for income above £100,000)</li>
+    </ul>
+  </div>
+
+  <div class="card">
     <h2 style="font-size:1.05rem;margin-bottom:0.75rem;">Frequently asked questions</h2>
     <div class="faq-list">
       <details class="faq-item">
@@ -82,7 +107,7 @@
       </details>
       <details class="faq-item">
         <summary>Does it affect mortgage applications?</summary>
-        <div class="faq-answer"><p>Salary sacrifice reduces your gross salary on paper, which can affect mortgage affordability assessments. Some lenders will add the sacrifice amount back when calculating borrowing capacity — always check with your lender.</p></div>
+        <div class="faq-answer"><p>Salary sacrifice reduces your gross salary on paper, which can affect mortgage affordability assessments. Some lenders will add the sacrifice amount back when calculating borrowing capacity, always check with your lender.</p></div>
       </details>
       <details class="faq-item">
         <summary>Can I change or stop my salary sacrifice arrangement?</summary>
@@ -90,19 +115,19 @@
       </details>
       <details class="faq-item">
         <summary>What happens to the annual allowance under salary sacrifice?</summary>
-        <div class="faq-answer"><p>Salary sacrifice contributions count towards the annual allowance as employer contributions. The £60,000 limit applies to all contributions — yours and your employer's combined. Use the <a href="/annual-allowance-checker" style="color:var(--accent);">Annual Allowance Checker</a> to verify.</p></div>
+        <div class="faq-answer"><p>Salary sacrifice contributions count towards the annual allowance as employer contributions. The £60,000 limit applies to all contributions, yours and your employer's combined. Use the <a href="/annual-allowance-checker" style="color:var(--accent);">Annual Allowance Checker</a> to verify.</p></div>
       </details>
     </div>
   </div>
 
   <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.5rem;">More salary sacrifice calculators</strong>
-    <p style="font-size:0.87rem;margin:0 0 0.75rem;">For a comprehensive salary sacrifice analysis including monthly pay breakdowns, auto-enrolment and comparison tools, visit:</p>
+    <p style="font-size:0.87rem;margin:0 0 0.75rem;">For a full salary sacrifice analysis with monthly pay breakdowns, auto-enrolment and comparison tools, visit:</p>
     <a href="https://www.uksalarysacrificecalculator.co.uk" target="_blank" rel="noopener" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">uksalarysacrificecalculator.co.uk</a>
   </div>
 
   <div style="margin-top:1.5rem;font-size:0.8rem;color:var(--text-tertiary);">
-    Tax year 2026/27 · Employer NI: 15% from April 2025, secondary threshold £5,000 · Estimates only — not financial or tax advice ·
+    Tax year 2026/27 · Employer NI: 15% from April 2025, secondary threshold £5,000 · Estimates only, not financial or tax advice ·
     <a href="https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" target="_blank" rel="noopener" style="color:var(--text-tertiary);">GOV.UK: Salary sacrifice and PAYE</a>
   </div>
 </section>

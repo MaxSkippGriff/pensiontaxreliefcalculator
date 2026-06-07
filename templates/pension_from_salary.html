@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <div class="badge">Salary Guide</div>
+  <h1>Pension Contributions on a £{{ "{:,}".format(salary) }} Salary 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>On a £{{ "{:,}".format(salary) }} salary, your pension tax relief depends on your marginal income tax rate and how your employer's scheme works. Below we show the relief and net cost for a £{{ "{:,}".format(contribution_5pct) }} gross contribution (approximately 5% of salary) under each of the three main methods.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin-bottom:1.5rem;">
+    <div class="card" style="margin:0;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-tertiary);margin-bottom:0.4rem;">Relief at Source</div>
+      <div style="font-size:1.6rem;font-weight:700;color:var(--accent);">£{{ "{:,.0f}".format(calc_ras.total_relief) }}</div>
+      <div style="font-size:0.85rem;color:var(--text-secondary);">total relief</div>
+      <div style="font-size:0.85rem;margin-top:0.4rem;color:var(--text-primary);">Net cost: <strong>£{{ "{:,.0f}".format(calc_ras.net_cost_actual) }}</strong></div>
+      {% if calc_ras.higher_rate_extra_relief > 0 %}
+      <div style="font-size:0.78rem;color:var(--accent-warm);margin-top:0.3rem;">Claim £{{ "{:,.0f}".format(calc_ras.higher_rate_extra_relief) }} extra via SA</div>
+      {% endif %}
+    </div>
+    <div class="card" style="margin:0;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-tertiary);margin-bottom:0.4rem;">Net Pay Arrangement</div>
+      <div style="font-size:1.6rem;font-weight:700;color:var(--accent);">£{{ "{:,.0f}".format(calc_np.total_relief) }}</div>
+      <div style="font-size:0.85rem;color:var(--text-secondary);">total relief</div>
+      <div style="font-size:0.85rem;margin-top:0.4rem;color:var(--text-primary);">Net cost: <strong>£{{ "{:,.0f}".format(calc_np.net_cost_actual) }}</strong></div>
+      <div style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.3rem;">Relief automatic — no SA claim</div>
+    </div>
+    <div class="card" style="margin:0;">
+      <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-tertiary);margin-bottom:0.4rem;">Salary Sacrifice</div>
+      <div style="font-size:1.6rem;font-weight:700;color:var(--accent);">£{{ "{:,.0f}".format(calc_ss.effective_cost) }}</div>
+      <div style="font-size:0.85rem;color:var(--text-secondary);">net cost (inc. NI saving)</div>
+      <div style="font-size:0.85rem;margin-top:0.4rem;color:var(--text-primary);">Employee NI saved: <strong>£{{ "{:,.0f}".format(calc_ss.employee_ni_saving) }}</strong></div>
+      <div style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.3rem;">Most efficient if available</div>
+    </div>
+  </div>
+
+  <article class="card">
+    <h2>£{{ "{:,}".format(salary) }} salary: income tax rate and pension context</h2>
+    <p>At £{{ "{:,}".format(salary) }}, your marginal income tax rate is <strong>{{ "{:.0f}".format(calc_ras.marginal_rate) }}%</strong> (England, Wales and NI, 2026/27).
+    {% if salary > 125140 %}
+    You pay 45% additional rate on income above £125,140. Pension contributions reduce your adjusted net income, and any contributions within the 40% band reduce your higher-rate liability.
+    {% elif salary > 100000 %}
+    Your income is within the personal allowance tapering zone (£100,000–£125,140). Every £2 of pension contribution reduces adjusted net income by £2, potentially restoring personal allowance at an effective 60% marginal relief rate.
+    {% elif salary > 50270 %}
+    You pay 40% income tax on earnings above £50,270. For relief at source pensions, you must claim the extra 20% relief (beyond the provider's automatic 20%) via Self Assessment.
+    {% else %}
+    You pay 20% income tax on your earnings above the personal allowance (£12,570). Your pension provider claims this 20% automatically under relief at source — no Self Assessment claim needed.
+    {% endif %}
+    </p>
+  </article>
+
+  <article class="card">
+    <h2>Detailed breakdown for a £{{ "{:,}".format(contribution_5pct) }} gross contribution</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Item</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Relief at Source</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Net Pay</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Salary Sacrifice</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;">Gross into pension</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,.0f}".format(calc_ras.gross_contribution) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,.0f}".format(calc_np.gross_contribution) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,.0f}".format(calc_ss.gross_contribution) }}</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;">Income tax relief</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,.0f}".format(calc_ras.total_relief) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,.0f}".format(calc_np.total_relief) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,.0f}".format(calc_ss.total_relief) }}</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;">Employee NI saving</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">—</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">—</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);">£{{ "{:,.0f}".format(calc_ss.employee_ni_saving) }}</td>
+          </tr>
+          <tr style="background:var(--surface-alt);">
+            <td style="padding:0.5rem 0.6rem;font-weight:700;">Net cost to you</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:700;">£{{ "{:,.0f}".format(calc_ras.net_cost_actual) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:700;">£{{ "{:,.0f}".format(calc_np.net_cost_actual) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:700;color:var(--accent);">£{{ "{:,.0f}".format(calc_ss.effective_cost) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% if calc_ras.higher_rate_extra_relief > 0 %}
+    <p style="font-size:0.82rem;color:var(--accent-warm);margin-top:0.5rem;">Relief at source net cost assumes you claim the extra £{{ "{:,.0f}".format(calc_ras.higher_rate_extra_relief) }} higher-rate relief via Self Assessment. Without claiming, your net cost is £{{ "{:,.0f}".format(calc_ras.net_cost_basic_taxpayer) }}.</p>
+    {% endif %}
+  </article>
+
+  <article class="card">
+    <h2>Annual contribution limits at this salary</h2>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Annual allowance (all pensions combined): <strong>£60,000</strong></li>
+      <li>Personal contribution limit (100% of earnings): <strong>£{{ "{:,}".format(salary) }}</strong></li>
+      <li>5% of salary (approx): <strong>£{{ "{:,}".format(contribution_5pct) }}</strong></li>
+      <li>10% of salary (approx): <strong>£{{ "{:,}".format(contribution_10pct) }}</strong></li>
+    </ul>
+  </article>
+
+  <div style="margin:1.5rem 0;">
+    <h2 style="margin-bottom:0.75rem;">Compare with other salary levels</h2>
+    <div class="pill-grid">
+      {% for s in all_salaries %}
+        {% if s == salary %}
+        <span class="pill" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent);">£{{ "{:,}".format(s) }}</span>
+        {% else %}
+        <a href="/pension-contribution-from-salary/{{ s }}" class="pill">£{{ "{:,}".format(s) }}</a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Use the full calculator</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Full Pension Calculator</a>
+      <a href="/salary-sacrifice-pension-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Salary Sacrifice Calculator</a>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> Estimates only — 2026/27 England, Wales and NI rates. Not financial advice. Actual relief depends on total income, contribution method and any other reliefs.</p>
+  </div>
+</section>
+{% endblock %}

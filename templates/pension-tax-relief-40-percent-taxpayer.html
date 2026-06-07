@@ -1,0 +1,122 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Pension Tax Relief for 40% Taxpayers 2026/27","description":"Higher-rate taxpayers get 40% pension relief: provider claims 20% automatically, you claim the extra 20% via Self Assessment. Worked examples and how to claim.","url":"{{ site_url }}/pension-tax-relief-40-percent-taxpayer","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"40% Taxpayer Pension Relief","item":"{{ site_url }}/pension-tax-relief-40-percent-taxpayer"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Pension Tax Relief for 40% Taxpayers 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>If you pay tax at 40%, you get 40% pension relief. But your provider only claims 20% automatically. The extra 20% is yours to claim. Here is how to get it.</p>
+
+    <h2>How 40% pension relief works: the two-step process</h2>
+    <p>Under <strong>relief at source</strong>, used by all SIPPs, most personal pensions and many workplace schemes, your provider claims 20% basic-rate relief from HMRC automatically. Every £800 you pay in becomes £1,000 in your pension. That is step one. It happens without you doing anything.</p>
+    <p>Step two: if you pay 40% tax on any part of your income, you are owed an extra 20% on your contributions. HMRC does not pay it automatically. You must claim it through your Self Assessment return or a PAYE code adjustment.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Example, David earns £70,000, contributes £10,000 gross to SIPP:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Net payment: £8,000 (80% of gross)</li>
+        <li>Provider claims 20% basic-rate relief → pension receives £10,000</li>
+        <li>David's 40% entitlement: £4,000 total relief</li>
+        <li>Extra to claim via Self Assessment: £2,000 (20% × £10,000)</li>
+        <li>Net cost of £10,000 in pension: <strong>£6,000</strong></li>
+      </ul>
+    </div>
+
+    <h2>The 2026/27 higher-rate threshold</h2>
+    <p>You pay 40% tax on earnings above <strong>£50,270</strong> in 2026/27 (England, Wales and Northern Ireland). The higher-rate band runs to £125,140. Above that, the additional rate of 45% applies.</p>
+    <p>Only the part of your contributions that falls against higher-rate income gets 40% relief. If your income is £55,000 and you contribute £10,000 gross, only £4,730 is in the 40% band. The remaining £5,270 gets 20%. Total relief: (40% × £4,730) + (20% × £5,270) = £1,892 + £1,054 = £2,946.</p>
+    <p>In practice, you just enter the full gross contribution on your SA return. HMRC calculates the split.</p>
+
+    <h2>Claiming the extra 20%: step by step</h2>
+    <ol style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li><strong>Get your gross contribution figure</strong>, your SIPP or pension provider's annual statement shows this. It is the total in the pension including their top-up (not the net amount you paid).</li>
+      <li><strong>File a Self Assessment return</strong> for 2026/27 (deadline: 31 January 2028 online). In the pensions section, enter the gross relief-at-source contributions.</li>
+      <li><strong>HMRC extends your basic-rate band</strong> by the gross contribution, taxing less of your income at 40% and reducing your tax bill accordingly.</li>
+      <li>Alternatively, <strong>call HMRC</strong> (0300 200 3300) to request a PAYE code adjustment, relief is then delivered via your monthly payslip.</li>
+    </ol>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">You can back-claim up to <strong>four previous tax years</strong>. As of May 2026, that means 2022/23 through 2025/26.</p>
+
+    <h2>What if your scheme uses net pay arrangement?</h2>
+    <p>Net pay arrangement (NPA) workplace pensions deduct contributions before income tax is calculated. That delivers 40% relief automatically through payroll. If you are in an NPA scheme, there is nothing to claim. Check your payslip: if the pension contribution reduces your taxable pay, it is NPA.</p>
+    <p>Salary sacrifice also delivers relief at your marginal rate automatically, plus saves employee National Insurance. Neither NPA nor salary sacrifice needs a Self Assessment claim for the pension element.</p>
+
+    <h2>Contribution amounts and relief at different income levels</h2>
+    <div style="overflow-x:auto;margin-top:0.5rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Gross contribution</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Basic relief (provider)</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Extra to claim (40%)</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Total relief</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Net cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in [
+            (3000, 600, 600, 1200, 1800),
+            (5000, 1000, 1000, 2000, 3000),
+            (10000, 2000, 2000, 4000, 6000),
+            (15000, 3000, 3000, 6000, 9000),
+            (20000, 4000, 4000, 8000, 12000),
+          ] %}
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;">£{{ "{:,}".format(row[0]) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,}".format(row[1]) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);font-weight:600;">£{{ "{:,}".format(row[2]) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:600;">£{{ "{:,}".format(row[3]) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,}".format(row[4]) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.5rem;">Assumes full higher-rate (40%) taxpayer with sufficient income above £50,270 to absorb the full contribution.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your higher-rate relief</strong>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and contribution to see the exact relief you are owed.</p>
+    <a href="/higher-rate-pension-relief-calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator →</a>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Does my pension provider claim any relief for me automatically?</summary>
+      <div class="faq-answer"><p>Under relief at source, yes, 20% basic-rate relief is claimed automatically and added to your pension pot. You only need to claim the extra 20% (or 25% for 45% taxpayers) yourself.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>I haven't claimed in previous years, can I back-claim?</summary>
+      <div class="faq-answer"><p>Yes. You can claim for the four most recent tax years. As of 2026, this means 2022/23, 2023/24, 2024/25 and 2025/26. File late SA returns or write to HMRC with the gross contribution figures for each year.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What if my income is above £100,000?</summary>
+      <div class="faq-answer"><p>Between £100,000 and £125,140, the personal allowance is withdrawn, creating an effective 60% marginal rate. Pension contributions reduce adjusted net income, potentially restoring your personal allowance, making contributions in this band exceptionally tax-efficient. See our <a href="/pension-relief-over-100k" style="color:var(--accent);">over £100k guide</a>.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Does salary sacrifice also give 40% relief?</summary>
+      <div class="faq-answer"><p>Yes, and more, because it also saves employee National Insurance (8% main rate). Under salary sacrifice, a 40% taxpayer saves 40% income tax plus 8% NI on the sacrificed amount, versus just 40% income tax under relief at source. Salary sacrifice is available from employers who operate it; it cannot be used with a personal SIPP.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Related guides:</strong>
+      <a href="/claim-higher-rate-pension-tax-relief" style="color:var(--accent);">How to claim higher rate relief</a> ·
+      <a href="/pension-tax-relief-self-assessment" style="color:var(--accent);">Pension relief and Self Assessment</a> ·
+      <a href="/pension-relief-over-100k" style="color:var(--accent);">Pension relief over £100k</a> ·
+      <a href="/pension-tax-relief-additional-rate" style="color:var(--accent);">45% additional rate relief</a>
+    </p>
+  </div>
+
+  <div style="margin-top:1rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> This guide is for general information only and does not constitute financial or tax advice. Figures are for 2026/27 England, Wales and Northern Ireland rates. Consult a qualified financial adviser or HMRC for personalised guidance.</p>
+  </div>
+</section>
+{% endblock %}

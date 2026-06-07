@@ -1,26 +1,23 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Pension Carry Forward 2026/27 — Contribute More Than the Annual Allowance</h1>
   <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>The pension carry forward rule allows you to use unused annual allowance from the previous three tax years, on top of the current year's £60,000 annual allowance. This can be valuable if you have had a windfall, sold a business, or simply want to make a large one-off pension contribution. There are conditions to meet, and carry forward must be used in the right order.</p>
+  <p>Carry forward lets you use unused annual allowance from the previous three tax years, on top of the current year's £60,000. If you have had a windfall, sold a business, or want to make a large one-off contribution, this is the rule to know. There are conditions, and carry forward must be used in a set order.</p>
 
-  <article class="card">
     <h2>What is pension carry forward?</h2>
-    <p>The annual allowance for 2026/27 is £60,000 — the maximum amount you (and your employer) can contribute to registered pension schemes in a tax year while still receiving tax relief. Carry forward lets you top this up with unused allowance from the three previous tax years, meaning your effective limit for a single year can be considerably higher.</p>
+    <p>The annual allowance for 2026/27 is £60,000. That is the maximum total contributions to registered pension schemes in a tax year while still getting tax relief. Carry forward lets you add unused allowance from the three previous years on top. Your effective limit for a single year can be well above £60,000.</p>
     <p>To use carry forward you must:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
       <li>Have been a member of a UK-registered pension scheme in each year you wish to carry forward from — even a basic workplace pension qualifies.</li>
       <li>Use the current year's full annual allowance first, before dipping into carry forward years.</li>
       <li>Carry forward from the oldest eligible year first.</li>
     </ul>
-  </article>
 
-  <article class="card">
     <h2>How unused allowance is calculated</h2>
-    <p>Your unused allowance for each past year is the difference between that year's annual allowance and your total pension input amount (all contributions, including employer contributions, to all registered pension schemes) in that year.</p>
+    <p>Your unused allowance for each past year is that year's annual allowance minus your total pension input amount. Total pension inputs include all contributions, employer and employee, to all registered schemes.</p>
     <p>Annual allowances for recent years:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
       <li>2023/24 — £60,000</li>
@@ -28,32 +25,27 @@
       <li>2025/26 — £60,000</li>
       <li>2026/27 — £60,000 (current year)</li>
     </ul>
-    <p>If you were a member of a pension scheme but contributed nothing in a past year, you carry forward the full allowance for that year. If you contributed some but not all of the allowance, only the unused portion carries forward.</p>
-  </article>
+    <p>If you were a member but contributed nothing in a past year, the full allowance for that year carries forward. Contributed something but not everything? Only the unused portion carries.</p>
 
-  <article class="card">
     <h2>Important restriction: the MPAA</h2>
-    <p>Carry forward does <strong>not</strong> apply to the Money Purchase Annual Allowance (MPAA). If you have flexibly accessed a defined contribution pension (for example, started taking income from flexi-access drawdown), the MPAA of £10,000 applies to your money purchase contributions. You cannot use carry forward to exceed £10,000 for defined contribution schemes.</p>
-    <p>However, carry forward <strong>is</strong> available for defined benefit (final salary) pension accrual, even if the MPAA has been triggered. The alternative annual allowance for defined benefit inputs remains available alongside the MPAA. If you have any doubt whether the MPAA applies to you, check with your pension provider.</p>
-  </article>
+    <p>Carry forward does <strong>not</strong> apply to the Money Purchase Annual Allowance (MPAA). If you have flexibly accessed a DC pension, such as taking income from flexi-access drawdown, the £10,000 MPAA applies to your money purchase contributions. You cannot use carry forward to exceed £10,000 for DC schemes.</p>
+    <p>But carry forward <strong>is</strong> available for defined benefit pension accrual, even if the MPAA has been triggered. The alternative annual allowance for DB inputs remains available alongside the MPAA. If you are unsure whether the MPAA applies to you, check with your pension provider.</p>
 
-  <article class="card">
     <h2>Worked example</h2>
-    <p>Sarah wants to make a large pension contribution of £80,000 in 2026/27. Her pension inputs in recent years were:</p>
+    <p>Sarah wants to contribute £80,000 in 2026/27. Her pension inputs in recent years were:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
       <li>2023/24: contributed £20,000 against a £60,000 allowance — unused: <strong>£40,000</strong></li>
       <li>2024/25: contributed £35,000 against a £60,000 allowance — unused: <strong>£25,000</strong></li>
       <li>2025/26: contributed £0 against a £60,000 allowance — unused: <strong>£60,000</strong></li>
       <li>2026/27: current year allowance <strong>£60,000</strong></li>
     </ul>
-    <p>Sarah must use the current year's allowance first: £60,000. She then needs a further £20,000. She carries forward from the oldest year first — 2023/24 has £40,000 available, more than enough to cover the remaining £20,000.</p>
-    <p>Total available if she used all carry forward: £60,000 + £40,000 + £25,000 + £60,000 = <strong>£185,000</strong>. For the £80,000 contribution she only needs to use £20,000 from 2023/24 carry forward.</p>
-    <p>Sarah must have been a member of a registered pension scheme in each of the three carry forward years — in this case she was a member throughout, so she qualifies.</p>
-  </article>
+    <p>Sarah uses the current year first: £60,000. She then needs £20,000 more. Carry forward comes from the oldest year first, so she draws from 2023/24, which has £40,000 available. More than enough.</p>
+    <p>If she used all available carry forward: £60,000 + £40,000 + £25,000 + £60,000 = <strong>£185,000</strong>. For the £80,000 contribution, only £20,000 of 2023/24 carry forward is needed.</p>
+    <p>Sarah was a member of a registered scheme in each carry forward year, so she qualifies.</p>
 
   <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your pension tax relief</strong>
-    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Use our pension tax relief calculator to see how much relief you could receive on your contributions — at basic, higher or additional rate.</p>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">See how much relief you could receive on your contributions at basic, higher or additional rate.</p>
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
   </div>
 

@@ -1,70 +1,83 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
-  <h1>Pension Tax Relief for the Self-Employed 2026/27</h1>
+  <h1>Self-Employed Pension Tax Relief 2026/27</h1>
   <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>Self-employed people are entitled to full pension tax relief, but without an employer pension scheme they must set up their own arrangement and claim relief themselves. The most common vehicle is a SIPP (Self-Invested Personal Pension). Understanding the rules around contribution limits, relief methods and how pension contributions interact with other taxes is essential to make the most of your retirement savings.</p>
+  <p>Self-employed people get the same pension tax relief rates as employees: 20%, 40% or 45% depending on income. But the delivery is different. Without an employer, salary sacrifice and net pay are not options. You contribute to a SIPP or personal pension under <strong>relief at source</strong>: your provider claims 20% basic-rate relief from HMRC automatically, and you claim any higher-rate relief via Self Assessment.</p>
 
-  <article class="card">
-    <h2>How self-employed pension tax relief works</h2>
-    <p>Most SIPPs and personal pensions for the self-employed use the <strong>relief at source</strong> method. You contribute the net amount (80% of the gross contribution) and your provider automatically claims 20% basic-rate relief from HMRC and adds it to your pension pot.</p>
-    <p>For example: you pay £800 into your SIPP, your provider claims £200 from HMRC, and £1,000 gross is credited to your pension.</p>
-    <p>If your profits put you in the higher-rate (40%) or additional-rate (45%) income tax band, the automatic 20% top-up is not the full relief you are entitled to. You claim the extra relief via your <strong>Self Assessment tax return</strong>:</p>
+    <h2>How self-employed pension tax relief works: relief at source</h2>
+    <p>Every contribution you make to a SIPP is a <em>net</em> payment. Your provider claims 20% basic-rate relief from HMRC and adds it to your pot within a few weeks. No action needed from you. It is automatic.</p>
+    <p>Divide your net payment by 0.8 to get the gross amount credited to your pension.</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
-      <li><strong>Higher-rate taxpayer:</strong> claim an extra 20% on the gross contribution via Self Assessment.</li>
-      <li><strong>Additional-rate taxpayer:</strong> claim an extra 25% on the gross contribution via Self Assessment.</li>
+      <li>Pay £240/month net → pension receives <strong>£300/month gross</strong></li>
+      <li>Pay £800 lump sum → pension receives <strong>£1,000 gross</strong></li>
+      <li>Pay £16,000 net → pension receives <strong>£20,000 gross</strong></li>
     </ul>
-  </article>
+    <p>This is how all SIPPs and personal pensions work. There is no employer to run a net pay or salary sacrifice scheme. So relief at source is the only option for self-employed people.</p>
 
-  <article class="card">
-    <h2>How much can you contribute? The annual allowance</h2>
-    <p>The annual allowance for 2026/27 is £60,000 — but your pension contributions that attract tax relief cannot exceed 100% of your UK relevant earnings in the same tax year, if that is lower.</p>
-    <p>For sole traders and partnerships, your <strong>net relevant earnings</strong> are broadly your taxable trading profit for the year (before personal allowances). This is the figure you report on your Self Assessment return as self-employment income.</p>
-    <p>If you have a low-profit year, your pension relief is capped at your earnings — you cannot contribute more than you earn and claim tax relief on it. However, you can still make contributions above your earnings; they just will not attract income tax relief.</p>
-    <p>Carry forward rules allow you to use up to three years of unused annual allowance from previous years, provided you were a member of a registered pension scheme in those years — which your SIPP qualifies you for.</p>
-  </article>
-
-  <article class="card">
-    <h2>Limited company directors</h2>
-    <p>If you operate through a limited company, the rules have an important distinction:</p>
+    <h2>Self-employed pension contribution limits 2026/27</h2>
+    <p>Two limits apply. The lower one is binding:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
-      <li><strong>Salary counts</strong> as net relevant earnings for the purposes of the 100% earnings cap on personal contributions.</li>
-      <li><strong>Dividends do not</strong> count as net relevant earnings for pension purposes — even though dividends form the bulk of many directors' income.</li>
-      <li>Many director-shareholders therefore keep their salary at or above the level of their intended personal pension contributions.</li>
+      <li><strong>Annual allowance: £60,000</strong> — the maximum total pension input in the tax year for which you can receive tax relief</li>
+      <li><strong>100% of relevant UK earnings</strong> — personal contributions attracting relief cannot exceed your trading profit (or salary, if a director) in the same year. Dividends do not count as relevant earnings.</li>
     </ul>
-    <p>Alternatively, a limited company can make <strong>employer pension contributions</strong> directly on behalf of the director. These are not subject to the 100% earnings cap in the same way, are not personal contributions, and are usually a deductible business expense — making them highly tax-efficient. The total of employer and personal contributions must still stay within the £60,000 annual allowance.</p>
-  </article>
+    <p>If your self-employment profit for 2026/27 is £38,000, you can contribute up to £38,000 gross and get full relief. Not £60,000. You can contribute more than your earnings, but the excess will not attract tax relief.</p>
+    <p><strong>Carry forward:</strong> If you were a member of a registered scheme in any of the previous three tax years, including a SIPP you opened but never contributed to, you can carry forward unused allowance from those years. A sole trader or contractor with a high-profit year can make much larger contributions. Potentially up to £240,000 in a single year with three years of unused £60,000 allowance.</p>
 
-  <article class="card">
-    <h2>National Insurance — no NI saving for the self-employed</h2>
-    <p>Unlike employees who use salary sacrifice (which saves employee and employer NI), self-employed people <strong>cannot save National Insurance</strong> by making pension contributions. Self-employed NI for 2026/27 is Class 4 NI: 6% on profits between £12,570 and £50,270, and 2% on profits above £50,270.</p>
-    <p>Pension contributions do not reduce the profits on which Class 4 NI is calculated. This is a meaningful difference from the salary sacrifice route available to employees.</p>
+    <h2>Claiming higher-rate and additional-rate relief via Self Assessment</h2>
+    <p>If your income is above £50,270 in 2026/27, you pay 40% on income in the higher-rate band. Total relief entitlement is 40%. But the provider claims only 20%. You claim the extra 20% on your SA return.</p>
+    <p>Above £125,140, the additional rate is 45%. Total entitlement is 45%. The provider claims 20%. You claim the extra 25% via SA.</p>
 
-    <h3>Indirect benefits: adjustable net income</h3>
-    <p>Although pension contributions do not save NI, they <em>do</em> reduce your adjustable net income, which can trigger other valuable thresholds:</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Worked example — higher-rate sole trader:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Trading profit 2026/27: <strong>£70,000</strong></li>
+        <li>Net contribution to SIPP: <strong>£10,000</strong></li>
+        <li>Provider claims 20% basic-rate relief → gross in pension: <strong>£12,500</strong></li>
+        <li>On SA return, enter £12,500 gross contribution</li>
+        <li>HMRC extends basic-rate band by £12,500 → 20% additional relief: <strong>£2,500</strong></li>
+        <li>Total tax relief: £2,500 + £2,500 = <strong>£5,000 (40%)</strong></li>
+        <li>Net cost of £12,500 in pension: <strong>£7,500</strong></li>
+      </ul>
+    </div>
+
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Worked example — basic-rate sole trader:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Trading profit 2026/27: <strong>£40,000</strong></li>
+        <li>Monthly net contribution: <strong>£300</strong></li>
+        <li>Monthly gross into pension (after provider top-up): <strong>£375</strong></li>
+        <li>Annual net paid: £3,600 / Annual gross in pension: <strong>£4,500</strong></li>
+        <li>Total annual relief: <strong>£900 (20%)</strong> — no SA claim needed</li>
+        <li>Net cost: £3,600 for £4,500 in the pension</li>
+      </ul>
+    </div>
+
+    <h2>No NI saving — but pension contributions still reduce adjusted net income</h2>
+    <p>Unlike employees on salary sacrifice, self-employed people <strong>cannot save NI</strong> through pension contributions. Class 4 NI for 2026/27 is charged on trading profits before pension contributions: 6% between £12,570 and £50,270, 2% above. Contributions do not reduce the profits NI is calculated on.</p>
+    <p>But SIPP contributions do reduce your <strong>adjusted net income (ANI)</strong>, the figure HMRC uses for multiple threshold tests. Reducing ANI can unlock significant additional savings:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
-      <li><strong>Below £50,000:</strong> retain or recover full Child Benefit — avoiding the High Income Child Benefit Tax Charge (HICBC).</li>
-      <li><strong>Below £100,000:</strong> restore the full Personal Allowance (£12,570), which tapers away between £100,000 and £125,140, effectively creating a 60% marginal tax rate in that band.</li>
+      <li><strong>Income £100,000–£125,140:</strong> Pension contributions reduce ANI. Every £2 reduction restores £1 of personal allowance — creating an effective relief rate of 60% in this band. A self-employed person earning £108,000 who contributes £8,000 gross reduces ANI to £100,000, restoring the full personal allowance.</li>
+      <li><strong>Income £60,000–£80,000:</strong> Reducing ANI below £60,000 eliminates the High Income Child Benefit Charge entirely. Between £60,000–£80,000, it proportionally reduces the clawback.</li>
+      <li><strong>Income near £100,000:</strong> Contributions that bring ANI below £100,000 preserve eligibility for 30 hours free childcare — potentially worth £5,000–£10,000/year.</li>
     </ul>
-  </article>
 
-  <article class="card">
-    <h2>Worked example — sole trader claiming higher-rate relief</h2>
-    <p>Emma is a sole trader with trading profits of £70,000 in 2026/27. She contributes £10,000 net to her SIPP.</p>
+    <h2>Limited company directors: using employer pension contributions</h2>
+    <p>Directors of owner-managed limited companies have an additional option: <strong>employer pension contributions</strong> paid directly from the company into a SIPP. It is one of the most tax-efficient ways to extract money from a company.</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
-      <li>Her SIPP provider claims 20% basic-rate relief: £10,000 × 25% = £2,500 (the gross-up on the net contribution). Gross contribution credited: £12,500.</li>
-      <li>Emma's adjusted net income falls from £70,000 to £57,500 after the gross pension contribution is deducted.</li>
-      <li>She has income above the higher-rate threshold (£50,270), so some of her contribution falls in the higher-rate band.</li>
-      <li>On her Self Assessment return, Emma enters £12,500 gross pension contributions. HMRC calculates the extra higher-rate relief: 20% × £7,230 (the portion in the 40% band) = approximately £1,446 additional relief claimed.</li>
-      <li>Total relief received: £2,500 (basic-rate top-up by provider) + £1,446 (higher-rate via SA) = £3,946. Net cost of the £12,500 gross contribution: around £8,554.</li>
+      <li>The company pays the gross amount into the director's pension — no income tax, no NI (employer or employee)</li>
+      <li>The contribution is a deductible business expense, reducing corporation tax at 19–25%</li>
+      <li>No 100% earnings cap applies to employer contributions in the same way as personal contributions</li>
+      <li>The total of employer and personal contributions must not exceed the £60,000 annual allowance</li>
+      <li>Dividends do not count as relevant earnings for personal contributions — a director drawing mostly dividends should direct contributions through the company as employer contributions</li>
     </ul>
-  </article>
+    <p>For a director in the 25% corporation tax bracket, a £10,000 employer pension contribution costs the company £7,500 after the £2,500 CT deduction. No income tax or NI on top. Compare that with extracting the same £10,000 as additional salary: roughly £4,700 in combined income tax and NI, leaving much less reaching the pension.</p>
 
   <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your pension tax relief</strong>
-    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Use our pension tax relief calculator to see your gross contribution, the automatic top-up and what you could reclaim via Self Assessment.</p>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">See your gross contribution, the automatic 20% top-up and how much extra to claim via Self Assessment.</p>
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
   </div>
 
@@ -73,31 +86,37 @@
     <details class="faq-item">
       <summary>Can self-employed people get pension tax relief?</summary>
       <div class="faq-answer">
-        <p>Yes. Self-employed people are fully entitled to pension tax relief on contributions to a registered pension scheme, typically a SIPP or personal pension. The relief at source method is standard: you pay the net contribution and your provider claims 20% basic-rate relief from HMRC. Higher-rate and additional-rate taxpayers claim the extra relief via Self Assessment.</p>
+        <p>Yes. Self-employed people are fully entitled to pension tax relief on contributions to a registered pension scheme (typically a SIPP or personal pension). Relief at source gives 20% basic-rate relief automatically. Higher-rate and additional-rate taxpayers claim extra relief via Self Assessment.</p>
       </div>
     </details>
     <details class="faq-item">
-      <summary>How much can a self-employed person pay into a pension?</summary>
+      <summary>How much can a self-employed person pay into a pension in 2026/27?</summary>
       <div class="faq-answer">
-        <p>Up to the lower of £60,000 (the annual allowance for 2026/27) or 100% of your UK net relevant earnings in the same tax year. For sole traders, net relevant earnings are broadly your taxable trading profit. If your profit is £40,000, your contributions attracting relief are capped at £40,000, even though the annual allowance is higher. You can carry forward unused allowance from the previous three tax years if you need to make a larger contribution.</p>
+        <p>Up to the lower of £60,000 (the annual allowance) or 100% of your UK relevant earnings. For a sole trader, relevant earnings are broadly your taxable trading profit. If your profit is £45,000, contributions attracting relief are capped at £45,000. Carry forward from prior years can allow larger contributions if you have unused allowance and sufficient earnings.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>How do I claim higher-rate pension relief as a self-employed person?</summary>
+      <div class="faq-answer">
+        <p>File a Self Assessment tax return for the year in which you made contributions. Enter the gross pension contributions (the amount in the pension including the provider's top-up) in the pensions section. HMRC extends your basic-rate band by this amount, reducing the income taxed at 40% or 45% and generating a refund. The SA deadline is 31 January following the end of the tax year.</p>
       </div>
     </details>
     <details class="faq-item">
       <summary>Do pension contributions reduce self-employed NI?</summary>
       <div class="faq-answer">
-        <p>No. Pension contributions do not reduce the profits used to calculate Class 4 National Insurance for self-employed people. This is different from salary sacrifice available to employees. However, pension contributions do reduce your adjustable net income, which can bring you below key thresholds — such as £100,000 (to restore the personal allowance) or £50,000 (to avoid the High Income Child Benefit Tax Charge).</p>
+        <p>No. Class 4 NI is calculated on trading profits before pension contributions, so there is no NI saving. However, contributions do reduce adjusted net income, which can restore the personal allowance at incomes above £100,000, reduce Child Benefit clawback above £60,000, and preserve childcare entitlement below £100,000.</p>
       </div>
     </details>
     <details class="faq-item">
       <summary>Can a limited company director pay into a SIPP?</summary>
       <div class="faq-answer">
-        <p>Yes. A director can make personal contributions to a SIPP up to the lower of the annual allowance or 100% of their salary (dividends do not count as relevant earnings). The company can also make employer pension contributions directly into the director's pension — these are a deductible business expense and are not subject to the 100% salary cap. The total of personal and employer contributions must stay within the £60,000 annual allowance.</p>
+        <p>Yes. A director can make personal contributions to a SIPP (capped at 100% of salary, as dividends don't count as relevant earnings). The company can also make employer pension contributions directly into the director's SIPP — these are deductible for corporation tax, free of income tax and NI, and not restricted by the 100% salary cap. Total personal and employer contributions must stay within the £60,000 annual allowance.</p>
       </div>
     </details>
     <details class="faq-item">
-      <summary>What if I have a low-profit year — can I still contribute to a pension?</summary>
+      <summary>What if I have a low-profit year — can I still contribute?</summary>
       <div class="faq-answer">
-        <p>You can always contribute to a pension regardless of your earnings, but tax relief on personal contributions is limited to 100% of your UK earnings in that year. Contributions above your earnings still go into the pension, but you do not receive income tax relief on the excess. If you have unused allowance from prior years and sufficient earnings, carry forward may allow larger contributions with full relief.</p>
+        <p>You can always contribute to a SIPP regardless of earnings, but income tax relief on personal contributions is limited to 100% of your UK earnings in that year. You can contribute up to £2,880 net (£3,600 gross) even with no income and still receive the 20% top-up. Contributions above your earnings go into the pension without attracting tax relief.</p>
       </div>
     </details>
   </div>
@@ -107,6 +126,7 @@
     <li><a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Tax on your private pension contributions</a></li>
     <li><a href="https://www.gov.uk/self-employed-national-insurance-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Self-employed National Insurance rates</a></li>
     <li><a href="https://www.gov.uk/government/publications/rates-and-allowances-pension-schemes/pension-schemes-rates" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Pension schemes rates and allowances</a></li>
+    <li><a href="https://www.gov.uk/self-assessment-tax-returns" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK — Self Assessment tax returns</a></li>
   </ul>
 
   <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">

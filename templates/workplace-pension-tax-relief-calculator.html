@@ -1,0 +1,162 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Workplace Pension Tax Relief Calculator 2026/27","description":"How workplace pension tax relief works in 2026/27: net pay arrangement, salary sacrifice and relief at source. Calculator, worked examples and key differences.","url":"{{ site_url }}/workplace-pension-tax-relief-calculator","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Workplace Pension Tax Relief Calculator","item":"{{ site_url }}/workplace-pension-tax-relief-calculator"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Calculator + Guide</div>
+  <h1>Workplace Pension Tax Relief Calculator 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Workplace pensions use three different tax relief methods: net pay arrangement (NPA), salary sacrifice, or relief at source. Which one your employer uses affects your take-home pay, whether you need to claim extra relief via Self Assessment, and how much you actually save. Use this calculator to compare them.</p>
+
+  <div class="calc-widget">
+    <div class="calc-widget-header">
+      <h2>Workplace Pension Tax Relief</h2>
+      <span class="calc-year-badge">2026/27</span>
+    </div>
+    <div class="calc-widget-body">
+      <div class="calc-grid-2">
+        <div class="field">
+          <label>Gross annual salary</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="wp_income" value="45000" min="0" oninput="wpCalc()">
+          </div>
+        </div>
+        <div class="field">
+          <label>Gross pension contribution</label>
+          <div class="currency-input">
+            <span class="currency-symbol">£</span>
+            <input type="number" id="wp_contrib" value="3000" min="0" oninput="wpCalc()">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="calc-widget-results">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;">
+        <div style="text-align:center;padding:0.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);">
+          <div style="font-size:0.7rem;color:var(--text-tertiary);font-weight:600;text-transform:uppercase;margin-bottom:0.25rem;">Relief at Source</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--accent);" id="wp_ras_net">,</div>
+          <div style="font-size:0.72rem;color:var(--text-tertiary);">net cost</div>
+        </div>
+        <div style="text-align:center;padding:0.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);">
+          <div style="font-size:0.7rem;color:var(--text-tertiary);font-weight:600;text-transform:uppercase;margin-bottom:0.25rem;">Net Pay</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--accent);" id="wp_np_net">,</div>
+          <div style="font-size:0.72rem;color:var(--text-tertiary);">net cost</div>
+        </div>
+        <div style="text-align:center;padding:0.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);">
+          <div style="font-size:0.7rem;color:var(--text-tertiary);font-weight:600;text-transform:uppercase;margin-bottom:0.25rem;">Salary Sacrifice</div>
+          <div style="font-size:1.1rem;font-weight:700;color:var(--accent);" id="wp_ss_net">,</div>
+          <div style="font-size:0.72rem;color:var(--text-tertiary);">net cost</div>
+        </div>
+      </div>
+      <div class="results-row"><span class="results-label">Your marginal income tax rate</span><span class="results-value"><span id="wp_rate">,</span></span></div>
+      <div class="results-row"><span class="results-label">Salary sacrifice NI saving (employee)</span><span class="results-value">£<span id="wp_ni_saving">,</span></span></div>
+      <div id="wp_ras_note" style="margin-top:0.6rem;font-size:0.78rem;color:var(--text-tertiary);"></div>
+    </div>
+  </div>
+
+    <h2>The three methods: which saves most?</h2>
+    <p>For most employees the ranking is: <strong>salary sacrifice &gt; net pay arrangement = relief at source (basic rate) &gt; relief at source (higher rate, unclaimed)</strong>.</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li><strong>Salary sacrifice:</strong> saves income tax AND National Insurance (8% main rate). Net cost: approximately 72% of gross contribution for a basic-rate taxpayer. No SA claim needed.</li>
+      <li><strong>Net pay arrangement:</strong> contribution deducted before tax, full marginal rate relief automatic. Net cost: 80% for a 20% taxpayer, 60% for a 40% taxpayer. No SA claim needed.</li>
+      <li><strong>Relief at source (20% taxpayer):</strong> provider claims 20% automatically. Net cost: 80% of gross. No further action needed.</li>
+      <li><strong>Relief at source (40%+ taxpayer):</strong> provider claims 20% only, you must claim extra 20% via Self Assessment. Full 40% relief available but requires action.</li>
+    </ul>
+
+    <h2>Auto-enrolment minimum contributions 2026/27</h2>
+    <p>Under auto-enrolment, the minimum total contribution is <strong>8% of qualifying earnings</strong> (between £6,240 and £50,270). At least 3% must come from your employer and at least 5% from you. Many employers offer enhanced matching above these minimums.</p>
+    <p><strong>Always contribute enough to get the full employer match.</strong> If your employer matches up to 5% and you only put in 3%, you are leaving 2% of salary unclaimed.</p>
+
+    <h2>Do I need to file Self Assessment for my workplace pension?</h2>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li><strong>Salary sacrifice:</strong> No SA needed for pension relief, it is automatic.</li>
+      <li><strong>Net pay arrangement:</strong> No SA needed, full relief is applied through payroll.</li>
+      <li><strong>Relief at source, basic-rate taxpayer:</strong> No SA needed, 20% is your full entitlement.</li>
+      <li><strong>Relief at source, higher-rate taxpayer (40%+):</strong> Yes, you must claim extra relief via SA or PAYE code adjustment. Your provider's annual statement shows the gross contribution to report.</li>
+    </ul>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Compare methods in more detail</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/salary-sacrifice-pension-calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Salary Sacrifice Calculator</a>
+      <a href="/relief-at-source-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Relief at Source Calculator</a>
+      <a href="/net-pay-arrangement-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Net Pay Arrangement</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How do I tell which method my workplace pension uses?</summary>
+      <div class="faq-answer"><p>Check your payslip. Under salary sacrifice, your gross salary is reduced and the contribution appears as an employer pension payment. Under net pay, the contribution reduces your taxable pay before income tax is calculated. Under relief at source, the contribution comes from your post-tax pay and your take-home drops by the full net amount.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I run a personal SIPP alongside my workplace pension?</summary>
+      <div class="faq-answer"><p>Yes. Both count towards the £60,000 annual allowance. Using a SIPP for additional savings alongside your workplace pension (to capture employer matching) is a common strategy for growing a pension pot efficiently.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Does my employer have to offer salary sacrifice?</summary>
+      <div class="faq-answer"><p>No. Salary sacrifice requires a formal contract variation and is a commercial decision for each employer. If your employer does not offer it, ask HR whether it can be introduced, given the employer NI saving (15% of sacrificed amounts), many employers benefit from offering it.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> Estimates only. 2026/27 rates for England, Wales and Northern Ireland. Not financial advice.</p>
+  </div>
+</section>
+
+<script>
+const PA = 12570, HRT = 50270, ART = 125140;
+const ENI_THRESHOLD = 12570, ENI_UPPER = 50270;
+const BASIC = 0.20, HIGHER = 0.40, ADDITIONAL = 0.45;
+const EMP_NI_MAIN = 0.08, EMP_NI_UPPER = 0.02;
+
+function getMR(income) {
+  if (income <= PA) return 0;
+  if (income <= HRT) return BASIC;
+  if (income <= ART) return HIGHER;
+  return ADDITIONAL;
+}
+function getEmpNI(income, contrib) {
+  if (income <= ENI_THRESHOLD) return 0;
+  if (income <= ENI_UPPER) {
+    return Math.min(contrib, income - ENI_THRESHOLD) * EMP_NI_MAIN;
+  }
+  const aboveUpper = income - ENI_UPPER;
+  const belowUpper = income - ENI_THRESHOLD - aboveUpper;
+  if (contrib <= aboveUpper) return contrib * EMP_NI_UPPER;
+  return aboveUpper * EMP_NI_UPPER + Math.min(contrib - aboveUpper, belowUpper) * EMP_NI_MAIN;
+}
+function wpCalc() {
+  const income = +document.getElementById('wp_income').value || 0;
+  const contrib = +document.getElementById('wp_contrib').value || 0;
+  const mr = getMR(income);
+  const rasNet = contrib - contrib * BASIC - Math.max(0, (mr - BASIC) * contrib);
+  const npNet = contrib * (1 - mr);
+  const empNI = getEmpNI(income, contrib);
+  const ssNet = contrib * (1 - mr) - empNI;
+  const fmt = n => '£' + n.toLocaleString('en-GB', {minimumFractionDigits:0,maximumFractionDigits:0});
+  document.getElementById('wp_ras_net').textContent = fmt(rasNet);
+  document.getElementById('wp_np_net').textContent = fmt(npNet);
+  document.getElementById('wp_ss_net').textContent = fmt(ssNet);
+  document.getElementById('wp_rate').textContent = Math.round(mr * 100) + '%';
+  document.getElementById('wp_ni_saving').textContent = Math.round(empNI).toLocaleString('en-GB');
+  const note = document.getElementById('wp_ras_note');
+  if (mr > BASIC) {
+    const extra = (mr - BASIC) * contrib;
+    note.textContent = 'Relief at source: provider claims 20% (£' + Math.round(contrib*0.2).toLocaleString() + ') automatically. You must claim an extra £' + Math.round(extra).toLocaleString() + ' via Self Assessment.';
+  } else {
+    note.textContent = 'Relief at source: provider claims 20% automatically, no further claim needed at basic rate.';
+  }
+}
+window.onload = wpCalc;
+</script>
+{% endblock %}

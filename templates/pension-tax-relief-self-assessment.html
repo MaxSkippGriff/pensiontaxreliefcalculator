@@ -1,14 +1,14 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Pension Tax Relief and Self Assessment 2026/27</h1>
   <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>For many people, Self Assessment and pension contributions are closely linked. If you are a higher or additional-rate taxpayer in a relief at source pension scheme, Self Assessment is how you reclaim the extra tax relief you are owed. But pension contributions can also affect Self Assessment in other important ways — most notably by reducing your adjusted net income, which can restore a lost Personal Allowance or reduce a High Income Child Benefit Charge.</p>
+  <p>If you pay 40% or 45% tax and contribute to a relief at source pension, Self Assessment is how you reclaim the extra relief you are owed. But pension contributions can affect your SA return in other ways too. They reduce your adjusted net income, which can restore a lost Personal Allowance or reduce the High Income Child Benefit Charge.</p>
 
   <h2>When pension contributions appear on your Self Assessment return</h2>
-  <p>You will typically need to declare pension contributions on your Self Assessment return in these circumstances:</p>
+  <p>You will typically need to declare pension contributions in these circumstances:</p>
   <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
     <li>You are a higher or additional-rate taxpayer in a <strong>relief at source</strong> scheme and want to claim the extra relief beyond 20%.</li>
     <li>Your income exceeds £100,000 and you want to use pension contributions to reduce adjusted net income and restore your Personal Allowance.</li>
@@ -17,26 +17,26 @@
   </ul>
 
   <h2>Relief at source: claiming extra relief via Self Assessment</h2>
-  <p>With a relief at source scheme, your provider claims 20% basic rate relief from HMRC on your behalf. If you are a higher-rate (40%) or additional-rate (45%) taxpayer, you can claim the remaining relief on your Self Assessment return.</p>
-  <p>On the return, navigate to the pensions section and enter the total gross amount contributed to relief at source schemes during the tax year. The gross amount is what went into your pension — your net payment plus the 20% the provider claimed. Your annual pension statement will show this figure.</p>
-  <p>HMRC will extend your basic rate tax band by the gross contribution amount, effectively taxing more of your income at 20% rather than 40% or 45%, which creates the additional relief.</p>
+  <p>Under a relief at source scheme, your provider claims 20% basic rate relief from HMRC automatically. If you pay 40% or 45% tax, you can claim the rest on your SA return.</p>
+  <p>In the pensions section, enter the total gross amount contributed to relief at source schemes in the tax year. The gross amount is what went into your pension: your net payment plus the 20% the provider claimed. Your annual pension statement shows this figure.</p>
+  <p>HMRC extends your basic rate band by the gross contribution, taxing more of your income at 20% instead of 40% or 45%. That creates the extra relief.</p>
 
   <h2>Net pay and salary sacrifice: no SA entry needed for basic relief</h2>
-  <p>If your contributions go through a net pay arrangement or salary sacrifice, the relief is already applied through payroll. Your P60 and payslips will show your taxable pay after the deduction. You do not need to enter anything on Self Assessment specifically to claim that pension relief — it has already been taken off.</p>
-  <p>However, you may still want to include these contributions when calculating your adjusted net income (see below), particularly if you are in the Personal Allowance taper zone or subject to the Child Benefit charge.</p>
+  <p>If your contributions go through net pay or salary sacrifice, the relief is already applied through payroll. Your P60 and payslips will show taxable pay after the deduction. Nothing more to enter on your SA return for the pension relief itself.</p>
+  <p>But you may still want to account for these contributions when calculating adjusted net income, particularly if you are in the Personal Allowance taper zone or subject to the Child Benefit charge.</p>
 
   <h2>Adjusted net income: the broader picture</h2>
-  <p>Adjusted net income is your total income minus certain reliefs, including pension contributions. It is the figure used to determine:</p>
+  <p>Adjusted net income is your total income minus certain reliefs, including pension contributions. It determines:</p>
   <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
     <li>Whether your Personal Allowance tapers (above £100,000)</li>
     <li>Whether you owe the High Income Child Benefit Charge (above £60,000)</li>
     <li>Your entitlement to certain tax credits</li>
   </ul>
-  <p>Pension contributions — including both your own contributions and, for relief at source, the provider top-up — are deducted when calculating adjusted net income. This means a large enough pension contribution can shift you below a key threshold.</p>
+  <p>Your own contributions and, for relief at source, the provider top-up are deducted when calculating adjusted net income. A large enough contribution can drop you below a key threshold.</p>
 
   <h2>Worked example: restoring the Personal Allowance</h2>
-  <p>Sam earns £110,000. The Personal Allowance of £12,570 tapers above £100,000 at £1 for every £2 of excess income. With income £10,000 above the threshold, Sam loses £5,000 of Personal Allowance — worth an extra £2,000 in income tax (at 40%).</p>
-  <p>Sam pays £20,000 gross into a personal pension (relief at source). This reduces adjusted net income to £90,000 — below the £100,000 threshold.</p>
+  <p>Sam earns £110,000. The £12,570 Personal Allowance tapers above £100,000 at £1 for every £2 of excess income. Sam's income is £10,000 above the threshold, so £5,000 of allowance is lost. That costs an extra £2,000 in tax at 40%.</p>
+  <p>Sam pays £20,000 gross into a personal pension under relief at source. Adjusted net income falls to £90,000, below the £100,000 threshold.</p>
   <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
     <li>The full Personal Allowance of £12,570 is restored.</li>
     <li>Tax saving from restored allowance: £12,570 × 40% = £5,028.</li>
@@ -44,10 +44,10 @@
     <li>Total tax saving: approximately £9,028 on a £20,000 gross contribution.</li>
     <li>Effective net cost: around £10,972 for £20,000 into the pension.</li>
   </ul>
-  <p>This illustrates why pension contributions are particularly powerful for people with income just above £100,000.</p>
+  <p>If your income regularly sits just above £100,000, this is one of the most efficient uses of a pension contribution available.</p>
 
   <h2>Record keeping for Self Assessment</h2>
-  <p>Keep the following to hand before completing your return:</p>
+  <p>Before completing your return, have these to hand:</p>
   <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
     <li>Annual pension statements from each provider showing gross contributions</li>
     <li>Your P60 (shows taxable pay after any salary sacrifice or net pay deductions)</li>
@@ -57,7 +57,7 @@
 
   <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your relief</strong>
-    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and pension contribution to see your estimated relief — including how much extra you might be able to claim via Self Assessment.</p>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Enter your income and contribution to see your estimated relief, including how much extra you can claim via Self Assessment.</p>
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
   </div>
 

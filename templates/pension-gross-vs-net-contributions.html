@@ -1,13 +1,12 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "article_layout.html" %}
+{% block article_body %}
 <section class="section">
   <div class="badge">Guide</div>
   <h1>Gross vs Net Pension Contributions Explained 2026/27</h1>
   <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
 
-  <p>When you make a pension contribution, the amount you actually pay (net) differs from what ends up in your pension pot (gross). How that difference is made up depends on whether your scheme uses relief at source or a net pay arrangement. Getting this distinction right matters for claiming the correct tax relief and for checking whether you are staying within the annual allowance.</p>
+  <p>The amount you pay into a pension (net) is different from what ends up in your pot (gross). How the gap is bridged depends on whether your scheme uses relief at source or a net pay arrangement. Getting this right matters for claiming the correct tax relief and for tracking your annual allowance.</p>
 
-  <article class="card">
     <h2>Relief at source</h2>
     <p>Relief at source is used by most personal pensions and SIPPs, and by some workplace schemes. Under this method:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
@@ -15,14 +14,12 @@
       <li>Your pension provider claims the 20% basic-rate relief from HMRC and adds it to your pension pot.</li>
       <li>So a £800 net payment from you becomes £1,000 gross in your pension.</li>
     </ul>
-    <p>If you are a higher-rate (40%) or additional-rate (45%) taxpayer, the automatic top-up only covers the basic 20%. You must claim the remaining relief yourself via Self Assessment or a PAYE tax code adjustment:</p>
+    <p>If you are a higher-rate (40%) or additional-rate (45%) taxpayer, the automatic top-up only covers the basic 20%. You have to claim the rest yourself, via Self Assessment or a PAYE code adjustment:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
       <li><strong>Higher-rate taxpayer:</strong> entitled to an extra 20% on the gross contribution — claimed via Self Assessment.</li>
       <li><strong>Additional-rate taxpayer:</strong> entitled to an extra 25% on the gross contribution — claimed via Self Assessment.</li>
     </ul>
-  </article>
 
-  <article class="card">
     <h2>Net pay arrangement</h2>
     <p>Net pay arrangements are common in workplace pension schemes. Under this method:</p>
     <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
@@ -30,23 +27,17 @@
       <li>Your taxable income is reduced by the full contribution amount, so you save tax at your marginal rate automatically.</li>
       <li>There is no further relief to claim via Self Assessment — it has already been fully relieved through payroll.</li>
     </ul>
-    <p>For basic-rate taxpayers, both methods deliver the same effective cost: 80p per £1 of gross pension contribution. For higher-rate taxpayers, net pay also delivers the right result automatically (60p per £1 gross), whereas relief at source requires a Self Assessment claim to achieve the same.</p>
-  </article>
+    <p>For basic-rate taxpayers, both methods cost the same: 80p per £1 gross. For higher-rate taxpayers, net pay gives the right result automatically (60p per £1 gross). Relief at source needs a Self Assessment claim to reach the same outcome.</p>
 
-  <article class="card">
     <h2>The net pay anomaly for low earners</h2>
-    <p>For employees earning below the personal allowance (£12,570 in 2026/27) who are in a <strong>net pay</strong> scheme, a problem arises. Because their income is already below the tax threshold, there is no income tax being charged — and therefore no tax to save when the contribution is deducted pre-tax.</p>
-    <p>By contrast, if they were in a <strong>relief at source</strong> scheme, their provider would still claim 20% basic-rate relief from HMRC, effectively giving them a subsidy even though they pay no income tax. Under net pay, they receive no such top-up.</p>
-    <p>The government introduced a top-up payment scheme to compensate low earners in net pay arrangements, but the practical delivery of this has been complex. If you earn below the personal allowance and your employer uses net pay, it is worth asking your employer or pension provider about your relief entitlement.</p>
-  </article>
+    <p>Employees earning below the personal allowance (£12,570 in 2026/27) who are in a <strong>net pay</strong> scheme face a problem. Their income is below the tax threshold, so no income tax is being charged. There is nothing to save when the contribution is deducted pre-tax.</p>
+    <p>In a <strong>relief at source</strong> scheme, the provider would still claim 20% basic-rate relief from HMRC even if you pay no income tax. Under net pay, you get nothing.</p>
+    <p>The government introduced a top-up scheme to compensate low earners in net pay arrangements, but delivery has been complex. If you earn below the personal allowance and your employer uses net pay, ask your employer or pension provider about your relief entitlement.</p>
 
-  <article class="card">
     <h2>Scottish taxpayers and relief at source</h2>
-    <p>Scottish income tax rates differ from the rest of the UK — with six bands ranging from 19% (starter rate) to 48% (top rate). However, pension providers using relief at source always claim at the UK basic rate of 20%, regardless of the Scottish rates that apply to the individual.</p>
-    <p>This means a Scottish starter-rate taxpayer (19%) in a relief at source scheme actually gets <em>more</em> than their marginal rate as automatic relief. Conversely, Scottish higher-rate (42%) or advanced-rate (45%) taxpayers must claim the extra relief via Self Assessment — and the amount to claim is the difference between their Scottish rate and 20%.</p>
-  </article>
+    <p>Scotland has six income tax bands, from 19% (starter rate) to 48% (top rate). But pension providers under relief at source always claim 20% from HMRC regardless of where you live.</p>
+    <p>A Scottish starter-rate (19%) taxpayer in a relief at source scheme actually gets more than their marginal rate automatically. But Scottish higher-rate (42%) or advanced-rate (45%) taxpayers must claim the extra via Self Assessment. The amount to claim is the difference between their Scottish rate and 20%.</p>
 
-  <article class="card">
     <h2>Worked example</h2>
     <table style="width:100%;border-collapse:collapse;font-size:0.88rem;color:var(--text-secondary);margin-bottom:0.5rem;">
       <thead>
@@ -90,11 +81,10 @@
       </tbody>
     </table>
     <p style="font-size:0.85rem;color:var(--text-tertiary);">All figures based on a £1,000 gross pension contribution. Annual allowance is always measured against the gross figure.</p>
-  </article>
 
   <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
     <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Work out your own figures</strong>
-    <p style="margin:0 0 0.75rem;font-size:0.9rem;">Our calculator shows the gross contribution, the net cost after relief, and what to claim via Self Assessment — for relief at source, net pay and salary sacrifice.</p>
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;">The calculator shows the gross contribution, the net cost after relief, and what to claim via Self Assessment for each method.</p>
     <a href="/calculator" style="display:inline-block;background:var(--accent);color:#fff;font-size:0.85rem;font-weight:700;padding:0.5rem 1.2rem;border-radius:999px;text-decoration:none;">Open the calculator</a>
   </div>
 

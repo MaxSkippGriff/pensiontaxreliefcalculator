@@ -1,0 +1,86 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Defined Benefit Pension Tax Relief 2026/27","description":"How tax relief works in defined benefit pension schemes in 2026/27: net pay arrangement, annual allowance calculation for DB and how to check your pension input.","url":"{{ site_url }}/defined-benefit-pension-tax-relief","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Defined Benefit Pension Tax Relief","item":"{{ site_url }}/defined-benefit-pension-tax-relief"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>Defined Benefit Pension Tax Relief 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Defined benefit pensions, whether final salary or career average, provide guaranteed income in retirement. They deliver tax relief automatically through the net pay arrangement. The annual allowance calculation for DB schemes is more complex than for DC pensions. And for high earners, the DB accrual value can be surprisingly large.</p>
+
+    <h2>How tax relief works in a DB scheme</h2>
+    <p>All defined benefit schemes use a <strong>net pay arrangement</strong>. Contributions are deducted from gross salary before income tax is calculated. You automatically get relief at your full marginal rate, 20%, 40% or 45% (or the Scottish equivalents), with no Self Assessment claim needed.</p>
+    <p>Your payslip will show a reduced taxable pay figure. There is nothing else to do. It is correct from day one of membership.</p>
+    <p>AVCs to a DB scheme typically also use net pay. But if you make AVCs to a separate personal pension or SIPP, that runs under relief at source. Any higher-rate claim for those needs to go through Self Assessment.</p>
+
+    <h2>The DB annual allowance calculation: 16× accrual</h2>
+    <p>The annual allowance for DB schemes is not based on monetary contributions. It is based on the <strong>value of the benefit accrual</strong> in the year. HMRC uses this formula:</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Pension Input Amount (DB) = 16 × (closing pension − opening pension adjusted for inflation)</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Opening pension: your annual pension entitlement at start of year (index-linked for inflation)</li>
+        <li>Closing pension: your annual pension entitlement at end of year</li>
+        <li>Plus any increase in the pension commencement lump sum (PCLS) ÷ 12</li>
+      </ul>
+    </div>
+    <p><strong>Example:</strong> Your DB pension entitlement rises from £8,000/year to £10,200/year in 2026/27 after inflation adjustment. Pension Input Amount: 16 × (£10,200 − £8,000) = 16 × £2,200 = <strong>£35,200</strong>. That comes off your £60,000 allowance, leaving only £24,800 for additional DC contributions or AVCs.</p>
+
+    <h2>Why DB inputs can exceed £60,000</h2>
+    <p>Senior public sector workers, teachers, NHS consultants and civil servants can breach the £60,000 AA without making any voluntary contributions. An NHS consultant with a significant pay rise, or a civil servant with a large promotion, can accrue pension rights worth £60,000+ in a single year.</p>
+    <p>When the pension input exceeds £60,000 (or the tapered allowance for high earners), an <strong>annual allowance charge</strong> arises on the excess. You pay it via Self Assessment. But you can ask the scheme to pay the charge on your behalf ('scheme pays'), with the cost deducted from your eventual pension. For compulsory scheme pays, where the excess is above £2,000 and total inputs exceed £60,000, the scheme must pay if you ask.</p>
+
+    <h2>DB + DC: combining schemes</h2>
+    <p>Many people have both a DB workplace pension and a separate SIPP. Both count against the same £60,000 annual allowance. You need to add the DB pension input amount and all DC contributions together to check you are within the limit.</p>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Example:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>DB pension input amount: £28,000</li>
+        <li>Employee AVC contributions: £5,000</li>
+        <li>Personal SIPP contributions (gross): £10,000</li>
+        <li>Total pension inputs: <strong>£43,000</strong>, within the £60,000 AA</li>
+        <li>Remaining available: £17,000 for further contributions or carry forward</li>
+      </ul>
+    </div>
+    <p>Get the pension input amount from your DB scheme administrator each year before making additional SIPP contributions. This matters most near the end of the tax year when catch-up contributions are common.</p>
+
+    <h2>Obtaining your pension input amount</h2>
+    <p>Your DB scheme must provide a pension savings statement if your inputs exceed £60,000 in a year, or if you are in the tapered allowance zone. You can also request it directly. The statement shows the pension input period amount, which is the figure to use for annual allowance purposes.</p>
+    <p>If you are a high-earning public sector worker, request the statement every year. Estimates based on salary alone are often wrong. The inflation adjustment and PCLS component can shift the final figure significantly.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Related guides and calculators</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/annual-allowance-checker" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Annual Allowance Checker</a>
+      <a href="/tapered-annual-allowance" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Tapered Annual Allowance</a>
+      <a href="/pension-carry-forward-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Carry Forward Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Does a DB pension use relief at source or net pay?</summary>
+      <div class="faq-answer"><p>All DB schemes use net pay arrangement. Contributions are deducted before income tax, so full marginal rate relief is automatic. No Self Assessment claim is needed for the DB pension contributions themselves.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>What if my DB pension input exceeds £60,000?</summary>
+      <div class="faq-answer"><p>The excess above the annual allowance (or tapered allowance) is subject to the annual allowance charge, payable via Self Assessment. You can ask the scheme to pay the charge ('scheme pays'), which reduces your future pension entitlement proportionally. Alternatively, carry forward from prior years can absorb the excess if sufficient unused allowance exists.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Do salary increases affect my DB pension input amount?</summary>
+      <div class="faq-answer"><p>Yes, significantly. A large salary increase leads to a larger pension accrual for that year (since DB benefits are often expressed as a fraction of final or average salary). This can cause pension input amounts to spike unexpectedly in a promotion year. NHS consultants stepping up to a new pay point and senior civil servants receiving significant pay awards are at particular risk of inadvertently breaching the annual allowance.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> This guide is for general information only, not financial or tax advice. DB pension input calculations are complex; always obtain the figure from your scheme administrator. Sources: <a href="https://www.gov.uk/pension-annual-allowance" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK: Pension annual allowance</a>.</p>
+  </div>
+</section>
+{% endblock %}

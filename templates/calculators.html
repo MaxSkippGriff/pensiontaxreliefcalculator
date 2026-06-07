@@ -31,6 +31,45 @@
       <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Annual Allowance Checker</div>
       <div style="font-size:0.82rem;color:var(--text-secondary);">Check whether your total pension input exceeds the £60,000 annual allowance.</div>
     </a>
+    <a href="/pension-relief-self-employed-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Self-Employed Pension Relief Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Calculate SIPP relief for sole traders and freelancers — relief at source and Self Assessment.</div>
+    </a>
+    <a href="/workplace-pension-tax-relief-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Workplace Pension Tax Relief Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Compare net pay arrangement, salary sacrifice and relief at source side by side.</div>
+    </a>
+    <a href="/pension-carry-forward-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Pension Carry Forward Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Find how much unused annual allowance you can carry forward from the previous three years.</div>
+    </a>
+    <a href="/net-pay-arrangement-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Net Pay Arrangement Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">See how net pay arrangement delivers relief automatically and compare to relief at source.</div>
+    </a>
+    <a href="/loss-of-personal-allowance-pension-calculator" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Personal Allowance Restoration Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">Calculate how much pension to contribute to restore the personal allowance at £100k+.</div>
+    </a>
+    <a href="/how-much-pension-contribution-to-reduce-tax" style="display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.3rem;">Calculator</div>
+      <div style="font-size:0.95rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Contribution to Reduce Tax Calculator</div>
+      <div style="font-size:0.82rem;color:var(--text-secondary);">How much to contribute to hit key ANI thresholds: £100k, £80k or £60k.</div>
+    </a>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Pension relief by salary</h2>
+    <div class="pill-grid">
+      {% for sal in [30000, 35000, 40000, 45000, 50000, 55000, 60000, 70000, 80000, 100000] %}
+      <a href="/pension-contribution-from-salary/{{ sal }}" class="pill">£{{ "{:,}".format(sal) }} salary</a>
+      {% endfor %}
+    </div>
   </div>
 
   <div style="margin-top:2rem;font-size:0.82rem;color:var(--text-tertiary);">

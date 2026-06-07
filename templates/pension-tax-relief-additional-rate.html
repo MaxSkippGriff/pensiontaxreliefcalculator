@@ -1,0 +1,112 @@
+{% extends "article_layout.html" %}
+{% block jsonld %}
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"45% Additional Rate Pension Tax Relief 2026/27","description":"Additional-rate taxpayers get 45% pension relief in 2026/27: provider claims 20%, you claim the extra 25% via Self Assessment. Worked examples for income over £125,140.","url":"{{ site_url }}/pension-tax-relief-additional-rate","datePublished":"2026-05-27","dateModified":"2026-05-27","author":{"@type":"Person","name":"James Whitfield"},"publisher":{"@type":"Organization","name":"PensionTaxReliefCalculator.co.uk","url":"{{ site_url }}"},"inLanguage":"en-GB"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site_url }}/"},{"@type":"ListItem","position":2,"name":"Additional Rate Pension Tax Relief","item":"{{ site_url }}/pension-tax-relief-additional-rate"}]}
+</script>
+{% endblock %}
+{% block article_body %}
+<section class="section">
+  <div class="badge">Guide</div>
+  <h1>45% Additional Rate Pension Tax Relief 2026/27</h1>
+  <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:1rem;">Published by the UK Money Calculators editorial team. Last updated for the 2026/27 tax year.</p>
+
+  <p>Income above £125,140 is taxed at 45% in 2026/27. You are entitled to 45% pension relief on your contributions. But your provider only claims 20% automatically. The extra 25% has to be claimed via Self Assessment.</p>
+
+    <h2>How 45% relief works</h2>
+    <p>The mechanism is the same as for 40% taxpayers. But the extra claim is larger. Under relief at source:</p>
+    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Provider claims 20% basic-rate relief automatically, £800 becomes £1,000 in the pension</li>
+      <li>You claim the additional 25% (45% − 20%) via Self Assessment</li>
+      <li>HMRC extends your basic-rate band by the gross contribution, less income is taxed at 45%</li>
+    </ul>
+    <div style="background:var(--surface-alt);border-radius:var(--radius);padding:1rem 1.25rem;margin:1rem 0;font-size:0.9rem;">
+      <strong>Example, Marcus, income £150,000:</strong>
+      <ul style="color:var(--text-secondary);line-height:2;padding-left:1.25rem;margin:0.5rem 0 0;">
+        <li>Pays £15,000 net to SIPP</li>
+        <li>Provider tops up to £18,750 gross (÷ 0.8)</li>
+        <li>Provider claims 20% = £3,750</li>
+        <li>Via Self Assessment: 25% × £18,750 = <strong>£4,688</strong> additional claim</li>
+        <li>Total relief: 45% × £18,750 = <strong>£8,438</strong></li>
+        <li>Net cost: £15,000 − £4,688 = <strong>£10,312</strong></li>
+        <li>Effective cost: 55p per £1 in pension</li>
+      </ul>
+    </div>
+
+    <h2>The £100,000–£125,140 band: effective 60% rate</h2>
+    <p>Before the additional rate kicks in at £125,140, income between £100,000 and £125,140 carries an effective 60% marginal rate. Every £2 of ANI in that range costs 40% income tax plus an effective 20% more from the lost personal allowance. Pension contributions that reduce ANI into this band save at 60%.</p>
+    <p>Take a taxpayer with income of £130,000 making a £10,000 gross pension contribution. The first £4,860 falls in the 60%-effective band, reducing ANI from £130,000 towards £125,140. The remaining £5,140 falls in the 45% band. The blended effective relief rate is well above 45%.</p>
+
+    <h2>Contribution table: 45% additional rate</h2>
+    <div style="overflow-x:auto;margin-top:0.5rem;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem;">
+        <thead>
+          <tr style="background:var(--surface-alt);">
+            <th style="text-align:left;padding:0.6rem;border-bottom:2px solid var(--border);">Gross contribution</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Provider claims (20%)</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">SA claim (25%)</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Total relief (45%)</th>
+            <th style="text-align:right;padding:0.6rem;border-bottom:2px solid var(--border);">Net cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for g in [5000, 10000, 15000, 20000, 30000, 60000] %}
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:0.5rem 0.6rem;">£{{ "{:,}".format(g) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,}".format(g//5) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;color:var(--accent);font-weight:600;">£{{ "{:,}".format((g*25)//100) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;font-weight:600;">£{{ "{:,}".format((g*45)//100) }}</td>
+            <td style="text-align:right;padding:0.5rem 0.6rem;">£{{ "{:,}".format(g - (g*45)//100) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0.5rem;">Assumes full additional-rate (45%) income on the contribution. Actual relief may differ where contributions span different rate bands.</p>
+
+    <h2>Self Assessment claim: what to enter</h2>
+    <ol style="color:var(--text-secondary);font-size:0.9rem;line-height:2;padding-left:1.5rem;margin-bottom:0.85rem;">
+      <li>Obtain your annual pension statement, find the <strong>gross contribution</strong> figure (includes provider's top-up)</li>
+      <li>Log into HMRC Self Assessment (SA100 online)</li>
+      <li>In 'Pension contributions', enter the gross amount under 'relief at source' contributions</li>
+      <li>HMRC calculates the band extension and issues repayment or reduction in your tax liability</li>
+      <li>File by <strong>31 January 2028</strong> for the 2026/27 tax year</li>
+    </ol>
+    <p style="color:var(--text-secondary);font-size:0.9rem;">Back-claims are available for up to four prior tax years. If you have not been claiming, the amount could be significant.</p>
+
+    <h2>Net pay arrangement: simpler for additional-rate payers</h2>
+    <p>If your employer uses a net pay arrangement, the full 45% is applied automatically through payroll. No Self Assessment needed for the pension element. For additional-rate taxpayers, this is the simplest method. It removes any risk of forgetting the SA claim.</p>
+    <p>Salary sacrifice also delivers 45% automatically, plus saves employee NI at 2% above £50,270. Take a £20,000 salary sacrifice by an additional-rate taxpayer earning £150,000: income tax saving 45% × £20,000 = £9,000; NI saving 2% × £20,000 = £400. Total saving £9,400 on a £20,000 contribution. Effective cost £10,600.</p>
+
+  <div style="margin:2rem 0;padding:1.25rem 1.5rem;background:var(--accent-light);border-radius:var(--radius);border:1.5px solid rgba(27,107,74,0.25);">
+    <strong style="color:var(--accent);display:block;margin-bottom:0.4rem;">Calculate your relief</strong>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.5rem;">
+      <a href="/higher-rate-pension-relief-calculator" style="font-size:0.83rem;background:var(--accent);color:#fff;padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Higher/Additional Rate Calculator</a>
+      <a href="/pension-relief-over-100k" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">Over £100k Relief Guide</a>
+      <a href="/loss-of-personal-allowance-pension-calculator" style="font-size:0.83rem;background:var(--surface);color:var(--accent);border:1px solid var(--accent);padding:0.35rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:600;">PA Loss Calculator</a>
+    </div>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>What is the additional rate threshold in 2026/27?</summary>
+      <div class="faq-answer"><p>£125,140. Income above this amount is taxed at 45% in England, Wales and Northern Ireland. In Scotland, the top rate is 48% on income above £125,140 (there is no additional rate band as in the rest of the UK, Scotland's rate jumps from 45% at £75,000 directly to 48%).</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I claim the extra 25% relief through PAYE instead of Self Assessment?</summary>
+      <div class="faq-answer"><p>Yes, contact HMRC (0300 200 3300) and request a PAYE code adjustment. HMRC will reduce your tax code to deliver the relief through your monthly payslip. This avoids the need for Self Assessment but achieves the same result. However, you must update HMRC each year with the current year's contributions.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary>Is the annual allowance the same for additional-rate taxpayers?</summary>
+      <div class="faq-answer"><p>The standard AA is £60,000 for all taxpayers. However, additional-rate taxpayers often have high incomes, potentially triggering the tapered annual allowance (for adjusted income above £260,000). Check whether the taper applies before making large contributions.</p></div>
+    </details>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--surface-alt);border-radius:var(--radius);border:1px solid var(--border);">
+    <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;"><strong style="color:var(--text-primary);">Disclaimer:</strong> General information only, not financial or tax advice. 2026/27 rates for England, Wales and Northern Ireland unless stated.</p>
+  </div>
+</section>
+{% endblock %}
