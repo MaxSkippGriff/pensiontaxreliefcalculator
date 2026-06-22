@@ -9,3 +9,4 @@ env/
 .claude/
 *.db
 
+.pytest_cache/

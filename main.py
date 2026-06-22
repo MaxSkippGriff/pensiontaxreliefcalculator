@@ -135,6 +135,7 @@ def sitemap():
         (f"{SITE_URL}/privacy","0.3","yearly"),
         (f"{SITE_URL}/contact","0.3","yearly"),
         (f"{SITE_URL}/disclaimer","0.3","yearly"),
+        (f"{SITE_URL}/editorial-standards","0.4","yearly"),
         (f"{SITE_URL}/claim-higher-rate-pension-tax-relief","0.6","monthly"),
         (f"{SITE_URL}/pension-tax-relief-self-assessment","0.6","monthly"),
         (f"{SITE_URL}/net-pay-arrangement-low-earners","0.6","monthly"),
@@ -228,13 +229,43 @@ def privacy():
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Privacy","url":SITE_URL+"/privacy"}],
     ))
 
-@app.route("/contact")
+@app.route("/editorial-standards")
+def editorial_standards():
+    return render_template("editorial_standards.html", **_ctx(
+        title="Editorial Standards, PensionTaxReliefCalculator.co.uk",
+        meta_description="How PensionTaxReliefCalculator.co.uk writes, reviews and maintains its calculator content and guides on UK pension tax relief.",
+        canonical_url=SITE_URL+"/editorial-standards",
+        breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Editorial Standards","url":SITE_URL+"/editorial-standards"}],
+    ))
+
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip()
+        message = request.form.get("message", "").strip()
+        try:
+            import firestore_client as _fc
+            db = _fc.get_db()
+            if db is not None:
+                db.collection("contact_messages").add({
+                    "name": name,
+                    "email": email,
+                    "message": message,
+                    "site": SITE_URL,
+                    "created_at": _fc.server_timestamp(),
+                    "read": False,
+                })
+        except Exception:
+            pass
+        return redirect("/contact?sent=1")
+    sent = request.args.get("sent") == "1"
     return render_template("contact.html", **_ctx(
         title="Contact, PensionTaxReliefCalculator.co.uk",
         meta_description="Get in touch with PensionTaxReliefCalculator.co.uk.",
         canonical_url=SITE_URL+"/contact",
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Contact","url":SITE_URL+"/contact"}],
+        sent=sent,
     ))
 
 @app.route("/disclaimer")
@@ -327,6 +358,15 @@ def guide_gross_vs_net():
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Gross vs Net Contributions","url":SITE_URL+"/pension-gross-vs-net-contributions"}],
     ))
 
+_SELF_EMPLOYED_FAQS = [
+    {"q": "Can self-employed people get pension tax relief?", "a": "Yes. Self-employed people are fully entitled to pension tax relief on contributions to a registered pension scheme (typically a SIPP or personal pension). Relief at source gives 20% basic-rate relief automatically. Higher-rate and additional-rate taxpayers claim extra relief via Self Assessment."},
+    {"q": "How much can a self-employed person pay into a pension in 2026/27?", "a": "Up to the lower of £60,000 (the annual allowance) or 100% of your UK relevant earnings. For a sole trader, relevant earnings are broadly your taxable trading profit. If your profit is £45,000, contributions attracting relief are capped at £45,000. Carry forward from prior years can allow larger contributions if you have unused allowance and sufficient earnings."},
+    {"q": "How do I claim higher-rate pension relief as a self-employed person?", "a": "File a Self Assessment tax return for the year in which you made contributions. Enter the gross pension contributions (the amount in the pension including the provider's top-up) in the pensions section. HMRC extends your basic-rate band by this amount, reducing the income taxed at 40% or 45% and generating a refund. The SA deadline is 31 January following the end of the tax year."},
+    {"q": "Do pension contributions reduce self-employed NI?", "a": "No. Class 4 NI is calculated on trading profits before pension contributions, so there is no NI saving. However, contributions do reduce adjusted net income, which can restore the personal allowance at incomes above £100,000, reduce Child Benefit clawback above £60,000, and preserve childcare entitlement below £100,000."},
+    {"q": "Can a limited company director pay into a SIPP?", "a": "Yes. A director can make personal contributions to a SIPP (capped at 100% of salary, as dividends don't count as relevant earnings). The company can also make employer pension contributions directly into the director's SIPP — these are deductible for corporation tax, free of income tax and NI, and not restricted by the 100% salary cap. Total personal and employer contributions must stay within the £60,000 annual allowance."},
+    {"q": "What if I have a low-profit year — can I still contribute?", "a": "You can always contribute to a SIPP regardless of earnings, but income tax relief on personal contributions is limited to 100% of your UK earnings in that year. You can contribute up to £2,880 net (£3,600 gross) even with no income and still receive the 20% top-up. Contributions above your earnings go into the pension without attracting tax relief."},
+]
+
 @app.route("/pension-tax-relief-self-employed")
 def guide_self_employed():
     return render_template("pension-tax-relief-self-employed.html", **_ctx(
@@ -334,6 +374,7 @@ def guide_self_employed():
         meta_description="How self-employed people claim pension tax relief in 2026/27. Contribute up to £60,000/year to a SIPP, get 20% relief at source automatically, claim extra 20% via Self Assessment if you pay higher-rate tax.",
         canonical_url=SITE_URL+"/pension-tax-relief-self-employed",
         breadcrumbs=[{"name":"Home","url":SITE_URL+"/"},{"name":"Self-Employed Pension Tax Relief","url":SITE_URL+"/pension-tax-relief-self-employed"}],
+        faq_items=_SELF_EMPLOYED_FAQS,
     ))
 
 @app.route("/sipp-tax-relief-calculator")

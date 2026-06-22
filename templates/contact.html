@@ -5,17 +5,40 @@
   <h1>Contact</h1>
   <p>Have a question, spotted an error, or want to suggest an improvement? Get in touch.</p>
 
+  {% if sent %}
   <div class="card" style="padding:1.5rem;margin-top:1rem;max-width:480px;">
-    <h2 style="font-size:1.1rem;margin-bottom:0.5rem;">Email us</h2>
-    <p style="margin-bottom:0;">
-      <a href="mailto:editorial@pensiontaxreliefcalculator.co.uk" style="color:var(--accent);font-weight:600;font-size:1rem;">editorial@pensiontaxreliefcalculator.co.uk</a>
-    </p>
+    <p style="font-weight:600;margin:0 0 0.5rem;">Message sent.</p>
+    <p style="margin:0;">Thanks for getting in touch. We aim to respond within 2 business days.</p>
+    <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--text-secondary);">We can't provide personal tax or financial advice.</p>
   </div>
+  {% else %}
+  <div class="card" style="padding:1.5rem;margin-top:1rem;max-width:480px;">
+    <p style="margin:0 0 0.75rem;font-size:0.9rem;color:var(--text-secondary);">We can't provide personal tax or financial advice. For pension tax questions, please refer to <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK pension tax relief guidance</a> or consult a qualified financial adviser.</p>
+
+    <form method="POST" action="/contact">
+      <div style="margin-bottom:0.9rem;">
+        <label for="contact-name" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">Name <span style="font-weight:400;color:var(--text-secondary);">(optional)</span></label>
+        <input type="text" id="contact-name" name="name" autocomplete="name"
+          style="width:100%;box-sizing:border-box;padding:0.5rem 0.7rem;border:1px solid var(--border-strong);border-radius:6px;font-size:0.9rem;background:var(--surface);color:var(--text-primary);outline:none;">
+      </div>
+      <div style="margin-bottom:0.9rem;">
+        <label for="contact-email" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">Email <span style="color:var(--accent);">*</span></label>
+        <input type="email" id="contact-email" name="email" required autocomplete="email"
+          style="width:100%;box-sizing:border-box;padding:0.5rem 0.7rem;border:1px solid var(--border-strong);border-radius:6px;font-size:0.9rem;background:var(--surface);color:var(--text-primary);outline:none;">
+      </div>
+      <div style="margin-bottom:1.1rem;">
+        <label for="contact-message" style="display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">Message <span style="color:var(--accent);">*</span></label>
+        <textarea id="contact-message" name="message" required rows="5"
+          style="width:100%;box-sizing:border-box;padding:0.5rem 0.7rem;border:1px solid var(--border-strong);border-radius:6px;font-size:0.9rem;background:var(--surface);color:var(--text-primary);outline:none;resize:vertical;"></textarea>
+      </div>
+      <button type="submit"
+        style="padding:0.55rem 1.4rem;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:0.9rem;font-weight:600;cursor:pointer;">Send message</button>
+    </form>
+  </div>
+  {% endif %}
 
   <p style="margin-top:1.5rem;font-size:0.88rem;color:var(--text-secondary);">
-    We aim to respond within 2 business days. For general questions about pension tax relief, please refer to
-    <a href="https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" target="_blank" rel="noopener" style="color:var(--accent);">GOV.UK pension tax relief guidance</a>
-    or consult a qualified financial adviser.
+    We aim to respond within 2 business days.
   </p>
 </section>
 {% endblock %}
